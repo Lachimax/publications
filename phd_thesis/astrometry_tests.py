@@ -25,22 +25,23 @@ import craftutils.observation.image as image
 
 keys = p.keys()
 
-default_path = os.path.join(
-    os.path.expanduser("~"),
-    "/Data/test/astrometry_2022/"
-)
-
 
 def main(
-        test_dir: str = default_path,
+        test_dir: str,
+        astrometry_net_path: bool,
         fields: str = None,
         epochs: str = None,
         exclude: str = None,
         override_status: bool = False,
-        retry: bool = False
+        retry: bool = False,
 ):
     # Create directory to perform tests in.
     u.mkdir_check_nested(test_dir, remove_last=False)
+
+    gaia_path = os.path.join(test_dir, "astrometry_tests_ngaia.yaml")
+    ngaia = p.load_params(gaia_path)
+    if ngaia is None:
+        ngaia = {}
     # Load the status file, which records whether each test, for each epoch, has been performed.
     # If a test succeeds, it will be recorded as 'fine'; otherwise, the traceback call is recorded.
     status_path = os.path.join(test_dir, "astrometry_tests_status.yaml")
@@ -239,7 +240,18 @@ def main(
         print("Processing field", fld_name)
         if fld_name in exclude:
             continue
+        # Forcing Gaia catalogs onto DR3, and checking how this affects the number of stars.
         fld = field.FRBField.from_params(fld_name)
+        if fld_name not in ngaia:
+            fld.retrieve_catalogue("gaia", force_update=True, data_release=2)
+            gaia_dr2 = fld.load_catalogue("gaia", data_release=2)
+            ngaia[fld_name] = {
+                "dr2": len(gaia_dr2)
+            }
+            fld.retrieve_catalogue("gaia", force_update=True)
+            gaia_dr3 = fld.load_catalogue("gaia")
+            ngaia[fld_name]["dr3"] = len(gaia_dr3)
+            p.save_params(gaia_path, ngaia)
         print(fld.gather_epochs_imaging)
         # Gather imaging epochs for this field
         epochs_imaging = fld.gather_epochs_imaging()
@@ -382,7 +394,7 @@ def main(
                         ra = fld.centre_coords.ra.value
                         dec = fld.centre_coords.dec.value
                         u.system_command_verbose(
-                            command=f'python2 "../utils/astrometry-client.py" --apikey "{keys["astrometry"]}" -u "{path_to_uncorrected}" -w --newfits "{output_file}" --ra "{ra}" --dec "{dec}" --radius 0.5 --private --no_commercial',
+                            command=f'python2 "{astrometry_net_path}" --apikey "{keys["astrometry"]}" -u "{path_to_uncorrected}" -w --newfits "{output_file}" --ra "{ra}" --dec "{dec}" --radius 0.5 --private --no_commercial',
                         )
 
                         img_ast = image.FORS2CoaddedImage(output_file)
@@ -416,7 +428,12 @@ def main(
 if __name__ == '__main__':
     import argparse
 
-    parser = argparse.ArgumentParser(description="Script for testing of astrometry correction methods.")
+    parser = argparse.ArgumentParser(
+        description="Script for testing of astrometry correction methods."
+    )
+    default_path = os.path.join(
+        os.path.expanduser("~"), "Data", "test", "astrometry_2022"
+    )
     parser.add_argument(
         "-p",
         help="Path to output directory. Must have plenty of space.",
@@ -451,6 +468,15 @@ if __name__ == '__main__':
         help="Reprocess failed fields.",
         action="store_true"
     )
+    default_path_client = os.path.join(
+        os.path.expanduser("~"), "Projects", "publications", "utils", "astrometry-client.py"
+    )
+    parser.add_argument(
+        "--astrometry_net_path",
+        help="Path to astrometry-client.py.",
+        type=str,
+        default=default_path_client
+    )
 
     args = parser.parse_args()
 
@@ -460,5 +486,6 @@ if __name__ == '__main__':
         exclude=args.exclude,
         epochs=args.epochs,
         override_status=args.override_status,
-        retry=args.retry
+        retry=args.retry,
+        astrometry_net_path=args.astrometry_net_path
     )
