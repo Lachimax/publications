@@ -359,6 +359,7 @@ def main(
                     message="4. Offline Gaia on individual, with epoch correction",
                     frames_name="astrometry",
                     coadded_name="coadded",
+                    stage_kwargs={"correct_astrometry_frames": {"correct_to_epoch": True}}
                 )
                 del epoch
 
