@@ -312,6 +312,8 @@ def main(
                     message="2. Offline Gaia on coadded image",
                     frames_name="normalised",
                     coadded_name="coadded_astrometry",
+                    stage_kwargs={"correct_astrometry_coadded": {"correct_to_epoch": True}}
+
                 )
                 del epoch
 
