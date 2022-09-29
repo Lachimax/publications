@@ -155,8 +155,6 @@ def main(
                 for stage_name in epoch.do:
                     if stage_name not in epoch.param_file:
                         epoch.param_file[stage_name] = {}
-                        if stage_name in stage_kwargs:
-                            epoch.param_file[stage_name] = stage_kwargs[stage_name]
                     # Force the stages to be performed as required, overwriting the input param file
                     epoch.do_kwargs[stage_name] = True
                 if "coadd" not in epoch.param_file:
@@ -164,6 +162,7 @@ def main(
                 epoch.param_file["coadd"]["frames"] = frames_name
                 if "source_extraction" not in epoch.param_file:
                     epoch.param_file["source_extraction"] = {}
+                epoch.param_file.update(stage_kwargs)
                 epoch.param_file["source_extraction"]["image_type"] = coadded_name
                 # So that we're on an even footing for all tests, set the offset tolerance for astrometry diagnostics to
                 # 2 arcseconds
