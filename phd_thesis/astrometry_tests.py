@@ -202,7 +202,7 @@ def main(
                 for tb in traceback.format_tb(sys.exc_info()[2]):
                     tb_message.append(str(tb))
                 status[epoch_name_this][exp_name]["processing"] = tb_message
-                p.save_params(file_path, files)
+            p.save_params(file_path, files)
 
             shutil.copy(status_path, status_path.replace(".yaml", f"_backup_{str(time.Time.now())}.yaml"))
             shutil.copy(results_path, results_path.replace(".yaml", f"_backup_{str(time.Time.now())}.yaml"))
@@ -280,6 +280,8 @@ def main(
         print("Found epochs:")
         print(list(epochs_imaging.keys()))
         for epoch_name in epochs_imaging:
+            if "combined" in epoch_name:
+                continue
             epoch_dict = epochs_imaging
             if epoch_dict[epoch_name]["instrument"] == "vlt-fors2" and (epochs is None or epoch_name in epochs):
                 print("Processing epoch", epoch_name)
