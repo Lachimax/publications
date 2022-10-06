@@ -447,7 +447,7 @@ if __name__ == '__main__':
         "-p",
         help="Path to output directory. Must have plenty of space.",
         type=str,
-        default=f"/home/lachlan/Data/test/astrometry_2022/"
+        default=default_path
     )
     parser.add_argument(
         "--fields", "--field",
