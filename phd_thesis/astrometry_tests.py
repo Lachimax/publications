@@ -13,10 +13,12 @@
 #   'keys.json' file created by craft-optical-followup in the param directory.
 
 import os
+import shutil
 import sys
 import traceback
 
 import astropy.units as units
+import astropy.time as time
 
 import craftutils.observation.field as field
 import craftutils.params as p
@@ -45,6 +47,7 @@ def main(
     # Load the status file, which records whether each test, for each epoch, has been performed.
     # If a test succeeds, it will be recorded as 'fine'; otherwise, the traceback call is recorded.
     status_path = os.path.join(test_dir, "astrometry_tests_status.yaml")
+    shutil.copy(status_path, status_path.replace(".yaml", f"_backup_{str(time.Time.now())}.yaml"))
     status = p.load_params(status_path)
     if status is None:
         status = {}
@@ -56,6 +59,7 @@ def main(
         files = {}
     # Load the results file, in which the epoch-specific astrometry and PSF statistics for each test are stored.
     results_path = os.path.join(test_dir, "astrometry_tests_results.yaml")
+    shutil.copy(results_path, results_path.replace(".yaml", f"_backup_{str(time.Time.now())}.yaml"))
     results = p.load_params(results_path)
     if results is None:
         results = {}
@@ -64,14 +68,15 @@ def main(
     # the experiment has been performed successfully previously (as determined from the 'status' file)
     def do_this(
             exp_name: str,
+            epoch_name_this: str,
     ):
         # If passed --override_status, the script re-processes everything.
         if override_status:
             do = True
-        elif retry and status[epoch_name][exp_name]["processing"] != "fine":
+        elif retry and status[epoch_name_this][exp_name]["processing"] != "fine":
             do = True
         else:
-            do = status[epoch_name][exp_name]["processing"] is None
+            do = status[epoch_name_this][exp_name]["processing"] is None
         return do
 
     def experiment(
@@ -111,7 +116,7 @@ def main(
                 "coadded_from": None,
                 "diagnostics_from": None
             }
-        do = do_this(exp_name=exp_name)
+        do = do_this(exp_name=exp_name, epoch_name_this=epoch_name_this)
         if do:
             print("Initialising epoch...")
             if epoch_this is None:
@@ -197,9 +202,10 @@ def main(
                 for tb in traceback.format_tb(sys.exc_info()[2]):
                     tb_message.append(str(tb))
                 status[epoch_name_this][exp_name]["processing"] = tb_message
-                p.save_params(status_path, status)
                 p.save_params(file_path, files)
-            
+
+            shutil.copy(status_path, status_path.replace(".yaml", f"_backup_{str(time.Time.now())}.yaml"))
+            shutil.copy(results_path, results_path.replace(".yaml", f"_backup_{str(time.Time.now())}.yaml"))
             p.save_params(status_path, status)
             ##########
             # Analysis
@@ -231,8 +237,11 @@ def main(
                     tb_message.append(str(tb))
                 status[epoch_name_this][exp_name]["analysis"] = tb_message
             epoch_this.update_output_file()
+            shutil.copy(status_path, status_path.replace(".yaml", f"_backup_{str(time.Time.now())}.yaml"))
+            shutil.copy(results_path, results_path.replace(".yaml", f"_backup_{str(time.Time.now())}.yaml"))
             p.save_params(status_path, status)
             p.save_params(results_path, results)
+
 
         del epoch_this
 
@@ -414,6 +423,8 @@ def main(
                         status[epoch_name][exp_name_this]["processing"] = "nova failure"
                 del epoch
 
+                shutil.copy(status_path, status_path.replace(".yaml", f"_backup_{str(time.Time.now())}.yaml"))
+                shutil.copy(results_path, results_path.replace(".yaml", f"_backup_{str(time.Time.now())}.yaml"))
                 p.save_params(status_path, status)
                 p.save_params(file_path, files)
                 p.save_params(results_path, results)
