@@ -1,13 +1,11 @@
 # Code by Lachlan Marnoch, 2022
 
-# This script produces the figures seen as Figure 2a in Ryder et al 2022 (arXiv link forthcoming; DOI link forthcoming)
+# This script produces the figures seen as Figure 2a in Ryder et al 2022 (arXiv: https://arxiv.org/abs/2210.04680)
 # and performs the photometry on those images.
 
 # Prerequisites:
 #   craft-optical-followup; tested on ryder+2022 branch (latest commit):
-# Written using the latest version of the branch of craft-optical-followup found at
-# https://github.com/Lachimax/craft-optical-followup/tree/ryder+2022
-# Incompatibilities may occur with other branches (including master) and versions.
+#       https://github.com/Lachimax/craft-optical-followup/tree/ryder+2022
 
 import os
 
