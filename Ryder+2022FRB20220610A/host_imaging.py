@@ -1,7 +1,7 @@
 # Code by Lachlan Marnoch, 2022
 
-# This script produces the figures seen as Figure 2a in Ryder et al 2022 (arXiv: https://arxiv.org/abs/2210.04680)
-# and performs the photometry on those images.
+# Produces the figures seen in **Figure 2a**, and performs photometry on the imaging as specified in **S1.6**,
+# of Ryder et al 2022 (arXiv: https://arxiv.org/abs/2210.04680)
 
 # Prerequisites:
 #   craft-optical-followup; tested on ryder+2022 branch (latest commit):
@@ -16,7 +16,7 @@ import astropy.units as units
 from astropy.coordinates import SkyCoord
 import astropy.table as table
 
-from craftutils.observation import field, image, instrument
+from craftutils.observation import field, image
 from craftutils import plotting as pl
 
 
@@ -240,7 +240,8 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="Script for testing of astrometry correction methods."
+        description="Produces the figures seen in **Figure 2a**, and performs photometry on the imaging as specified in"
+                    " **S1.6** of Ryder et al 2022 (arXiv: https://arxiv.org/abs/2210.04680)"
     )
     default_output_path = os.path.join(
         os.path.expanduser("~"), "Data", "analysis", "Ryder+2022"
