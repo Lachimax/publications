@@ -10,7 +10,7 @@ The paper can be found at:
 
 #### Prerequisites:
 
-- `craft-optical-followup`; tested on `ryder+2022 branch` (latest commit):
+- `craft-optical-followup`; tested on `ryder+2022` branch (latest commit):
   https://github.com/Lachimax/craft-optical-followup/tree/ryder+2022
 - `astropy`; tested with version `5.0.4`
 - `matplotlib`; tested with version `3.5.2`
