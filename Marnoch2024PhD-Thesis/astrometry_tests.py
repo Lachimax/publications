@@ -12,6 +12,8 @@ Prerequisites:
       https://github.com/Lachimax/craft-optical-followup/tree/astrometry-tests
 - To run test 5, an account and API key from https://nova.astrometry.net/api_help; the API key must be placed in the
   'keys.json' file created by craft-optical-followup in the param directory.
+- `astropy`; tested with version `5.0.4`
+- `matplotlib`; tested with version `3.5.2`
 """
 
 import os
