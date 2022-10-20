@@ -1,11 +1,15 @@
-# Code by Lachlan Marnoch, 2022
+"""
+Code by Lachlan Marnoch, 2022
 
-# Produces the figures seen in **Figure 2a**, and performs photometry on the imaging as specified in **S1.6**,
-# of Ryder et al 2022 (arXiv: https://arxiv.org/abs/2210.04680)
+Produces the figures seen in **Figure 2a**, and performs photometry on the imaging as specified in **S1.6**,
+of Ryder et al 2022 (arXiv: https://arxiv.org/abs/2210.04680)
 
-# Prerequisites:
-#   craft-optical-followup; tested on ryder+2022 branch (latest commit):
-#       https://github.com/Lachimax/craft-optical-followup/tree/ryder+2022
+Prerequisites:
+- `craft-optical-followup`; tested on `ryder+2022` branch (latest commit):
+  https://github.com/Lachimax/craft-optical-followup/tree/ryder+2022
+- `astropy`; tested with version `5.0.4`
+- `matplotlib`; tested with version `3.5.2`
+"""
 
 import os
 

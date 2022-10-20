@@ -1,16 +1,18 @@
-# Code by Lachlan Marnoch, 2022
+"""
+Code by Lachlan Marnoch, 2022
 
-# This script is for running the tests for comparing the various astrometry solving methods for use in the
-# craft-optical-followup imaging pipeline, to be described in-depth in forthcoming thesis.
+This script is for running the tests for comparing the various astrometry solving methods for use in the
+craft-optical-followup imaging pipeline, to be described in-depth in forthcoming thesis.
 
-# Instructions:
-#   This script should be run from the directory that contains it.
+Instructions:
+- This script should be run from the directory that contains it.
 
-# Prerequisites:
-#   craft-optical-followup; tested on astrometry-tests branch (latest commit):
-#       https://github.com/Lachimax/craft-optical-followup/tree/astrometry-tests
-#   To run test 5, an account and API key from https://nova.astrometry.net/api_help; the API key must be placed in the
-#   'keys.json' file created by craft-optical-followup in the param directory.
+Prerequisites:
+- `craft-optical-followup`; tested on `astrometry-tests` branch (latest commit):
+      https://github.com/Lachimax/craft-optical-followup/tree/astrometry-tests
+- To run test 5, an account and API key from https://nova.astrometry.net/api_help; the API key must be placed in the
+  'keys.json' file created by craft-optical-followup in the param directory.
+"""
 
 import os
 import shutil

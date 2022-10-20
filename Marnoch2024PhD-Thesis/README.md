@@ -2,6 +2,11 @@ These scripts are for reproducing certain results described in my forthcoming Ph
 
 A link to the thesis will be available here.
 
+
+### Prerequisites
+
+The prerequisites for running each script can be found in the header docstring.
+
 #### Scripts: 
 
 - `astrometry_tests.py`: runs tests for comparing the various astrometry solving methods for use in the 
