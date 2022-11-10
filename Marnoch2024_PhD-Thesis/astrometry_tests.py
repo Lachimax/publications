@@ -445,7 +445,7 @@ if __name__ == '__main__':
         description="Script for testing of astrometry correction methods."
     )
     default_path = os.path.join(
-        os.path.expanduser("~"), "Data", "test", "astrometry_2022"
+        os.path.expanduser("~"), "Data", "publications", "Marnoch2024_PhD-Thesis", "astrometry_tests"
     )
     parser.add_argument(
         "-p",

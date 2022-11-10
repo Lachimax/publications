@@ -248,7 +248,7 @@ if __name__ == '__main__':
                     " **S1.6** of Ryder et al 2022 (arXiv: https://arxiv.org/abs/2210.04680)"
     )
     default_output_path = os.path.join(
-        os.path.expanduser("~"), "Data", "analysis", "Ryder+2022"
+        os.path.expanduser("~"), "Data", "publications", "output", "Ryder+2022_FRB20220610A"
     )
     parser.add_argument(
         "-p",
@@ -257,7 +257,7 @@ if __name__ == '__main__':
         default=default_output_path
     )
     default_image_path = os.path.join(
-        os.path.expanduser("~"), "Data", "Publications", "Ryder+2022"
+        os.path.expanduser("~"), "Data", "publications", "input", "Ryder+2022_FRB20220610A"
     )
     parser.add_argument(
         "--image_dir",
