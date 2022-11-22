@@ -1,0 +1,94 @@
+centre:
+  dec: {decimal: -33.51374722222222, dms: -33d30m49.49s}
+  ra: {decimal: 351.07314999999994, hms: 23h24m17.556s}
+data_path: FRB20220610A/
+extent: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: deg}
+  value: 0.1
+frb:
+  dm: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: pc / cm3}
+    value: 1458.1
+  host_galaxy:
+    name: HG20220610A
+    photometry_args_manual:
+      a: !astropy.units.Quantity
+        unit: !astropy.units.Unit {unit: arcsec}
+        value: 0.0
+      b: !astropy.units.Quantity
+        unit: !astropy.units.Unit {unit: arcsec}
+        value: 0.0
+      kron_radius: 3.5
+      theta: !astropy.units.Quantity
+        unit: !astropy.units.Unit {unit: arcsec}
+        value: 0.0
+    plotting: {frame: null}
+    position:
+      dec: {decimal: -33.5137099990557, dms: null}
+      ra: {decimal: 351.073361375717, hms: null}
+    position_err:
+      a: {stat: 0.0, sys: 0.0}
+      b: {stat: 0.0, sys: 0.0}
+      dec: {stat: 0.0, sys: 0.0}
+      healpix_path: null
+      ra: {stat: 0.0, sys: 0.0}
+      sigma: null
+      theta: 0.0
+    type: galaxy
+    z: 1.016
+  mjd: 58000
+  name: FRB20220610A
+  photometry_args_manual:
+    a: !astropy.units.Quantity
+      unit: !astropy.units.Unit {unit: arcsec}
+      value: 0.0
+    b: !astropy.units.Quantity
+      unit: !astropy.units.Unit {unit: arcsec}
+      value: 0.0
+    kron_radius: 3.5
+    theta: !astropy.units.Quantity
+      unit: !astropy.units.Unit {unit: arcsec}
+      value: 0.0
+  plotting: {frame: null}
+  position:
+    dec: {decimal: -33.51374722222222, dms: -33d30m49.37s}
+    ra: {decimal: 351.07314999999994, hms: 23h24m17.569s}
+  position_err:
+    alpha: {stat: "0:0:0.04h", sys: 0.0}
+    delta: {stat: 0.5, sys: 0.0}
+    healpix_path: null
+    sigma: null
+    theta: 0.0
+  snr: 0.0
+  type: FRB
+name: FRB20220610A
+objects:
+- name: null
+  photometry_args_manual:
+    a: !astropy.units.Quantity
+      unit: !astropy.units.Unit {unit: arcsec}
+      value: 0.0
+    b: !astropy.units.Quantity
+      unit: !astropy.units.Unit {unit: arcsec}
+      value: 0.0
+    kron_radius: 3.5
+    theta: !astropy.units.Quantity
+      unit: !astropy.units.Unit {unit: arcsec}
+      value: 0.0
+  plotting: {frame: null}
+  position:
+    dec: {decimal: 0.0, dms: null}
+    ra: {decimal: 0.0, hms: null}
+  position_err:
+    a: {stat: 0.0, sys: 0.0}
+    b: {stat: 0.0, sys: 0.0}
+    dec: {stat: 0.0, sys: 0.0}
+    healpix_path: null
+    ra: {stat: 0.0, sys: 0.0}
+    sigma: null
+    theta: 0.0
+  type: null
+subtraction:
+  template_epochs: {des: null, fors2: null, sdss: null, xshooter: null}
+survey: FURBY
+type: FRBField

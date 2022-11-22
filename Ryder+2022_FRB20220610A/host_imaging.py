@@ -28,7 +28,9 @@ def main(
         output_dir: str,
         input_dir: str,
 ):
-    frb220610_field = field.FRBField.from_params("FRB20220610A")
+    script_dir = os.path.dirname(__file__)
+    field_name = "FRB20220610A"
+    frb220610_field = field.FRBField.from_file(os.path.join(script_dir, "param", field_name, field_name))
     # Load the image files.
     g_img = image.FORS2CoaddedImage(
         os.path.join(
