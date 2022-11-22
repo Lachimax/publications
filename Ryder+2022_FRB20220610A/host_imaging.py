@@ -26,31 +26,31 @@ from craftutils import plotting as pl
 
 def main(
         output_dir: str,
-        image_dir: str,
+        input_dir: str,
 ):
     frb220610_field = field.FRBField.from_params("FRB20220610A")
     # Load the image files.
     g_img = image.FORS2CoaddedImage(
         os.path.join(
-            image_dir,
+            input_dir,
             "FRB20220610A_VLT-FORS2_g-HIGH_combined.fits"
         )
     )
     R_img = image.FORS2CoaddedImage(
         os.path.join(
-            image_dir,
+            input_dir,
             "FRB20220610A_VLT-FORS2_R-SPECIAL_2022-07-01.fits"
         )
     )
     J_img = image.HAWKICoaddedImage(
         os.path.join(
-            image_dir,
+            input_dir,
             "FRB20220610A_VLT-HAWK-I_J_2022-09-29.fits"
         )
     )
     K_img = image.HAWKICoaddedImage(
         os.path.join(
-            image_dir,
+            input_dir,
             "FRB20220610A_VLT-HAWK-I_Ks_2022-07-24.fits"
         )
     )
@@ -117,11 +117,11 @@ def main(
         for i, img in enumerate(imgs):
             img.load_wcs()
             if vertical:
-                ax_1 = fig.add_subplot(len(imgs), 1, i + 1, projection=img.wcs)
+                ax_1 = fig.add_subplot(len(imgs), 1, i + 1, projection=img.wcs[0])
                 extra_height_top_factor = 1.5
                 spread_factor = 0.5
             else:
-                ax_1 = fig.add_subplot(1, len(imgs), i + 1, projection=img.wcs)
+                ax_1 = fig.add_subplot(1, len(imgs), i + 1, projection=img.wcs[0])
                 extra_height_top_factor = 0.8
                 spread_factor = 1.5
             ra, dec = ax_1.coords
@@ -243,32 +243,40 @@ def main(
 if __name__ == '__main__':
     import argparse
 
+    paper_name = "Ryder+2022_FRB20220610A"
+    default_data_dir = os.path.join(
+        os.path.expanduser("~"),
+        "Data",
+        "publications",
+        paper_name
+    )
+    default_output_path = os.path.join(
+        default_data_dir, "output"
+    )
+    default_input_path = os.path.join(
+        default_data_dir, "input"
+    )
+
     parser = argparse.ArgumentParser(
         description="Produces the figures seen in **Figure 2a**, and performs photometry on the imaging as specified in"
                     " **S1.6** of Ryder et al 2022 (arXiv: https://arxiv.org/abs/2210.04680)"
     )
-    default_output_path = os.path.join(
-        os.path.expanduser("~"), "Data", "publications", "output", "Ryder+2022_FRB20220610A"
-    )
     parser.add_argument(
-        "-p",
+        "-o",
         help="Path to output directory.",
         type=str,
         default=default_output_path
     )
-    default_image_path = os.path.join(
-        os.path.expanduser("~"), "Data", "publications", "input", "Ryder+2022_FRB20220610A"
-    )
     parser.add_argument(
-        "--image_dir",
-        help="Path to directory containing image files.",
+        "-i",
+        help="Path to directory containing input files.",
         type=str,
-        default=default_image_path
+        default=default_input_path
     )
 
     args = parser.parse_args()
 
     main(
-        output_dir=args.p,
-        image_dir=args.image_dir
+        input_dir=args.i,
+        output_dir=args.o
     )
