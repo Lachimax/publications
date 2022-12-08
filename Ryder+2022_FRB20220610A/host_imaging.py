@@ -108,7 +108,8 @@ def main(
 
     def plot_science(
             vertical: bool,
-            output_path: str
+            output_path: str,
+            all_loc: bool = False
     ):
 
         if vertical:
@@ -134,13 +135,17 @@ def main(
             else:
                 scale_bar_obj = None
 
+            show_frb = False
+            if all_loc or i == 1:
+                show_frb = True
+
             frb220610_field.plot_host(
                 fig=fig,
                 ax=ax_1,
                 img=img,
                 frame=4 * units.arcsec,
                 imshow_kwargs={"cmap": "plasma"},
-                show_frb=(i == 1),
+                show_frb=show_frb,
                 frb_kwargs={
                     "edgecolor": "black",
                     "lw": 2,
@@ -197,6 +202,7 @@ def main(
 
     plot_science(vertical=True, output_path=os.path.join(output_dir, "FRB20220610A_gRK_vertical"))
     plot_science(vertical=False, output_path=os.path.join(output_dir, "FRB20220610A_gRK_horizontal"))
+    plot_science(vertical=False, all_loc=True, output_path=os.path.join(output_dir, "FRB20220610A_gRK_horizontal_all_loc"))
 
     imgs = [
         g_img,
