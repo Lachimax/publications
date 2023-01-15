@@ -1,0 +1,39 @@
+centre:
+  dec: {decimal: -16.15139903, dms: -16d09m05.0365s}
+  ra: {decimal: 339.97918417, hms: 22h39m55.00420s}
+data_path: FRB20210117/
+extent: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: deg}
+  value: 0.2
+frb:
+  dm: 729.0
+  host_galaxy:
+    name: HG20210117
+    position:
+      dec: {decimal: null, dms: -16d09m05.560s}
+      ra: {decimal: null, hms: 22h39m55.0707s}
+    position_err:
+      a: {stat: 0.0, sys: 0.0}
+      b: {stat: 0.0, sys: 0.0}
+      dec: {stat: 0.0, sys: 0.0}
+      ra: {stat: 0.0, sys: 0.0}
+      sigma: null
+      theta: 0.0
+    z: 0.214
+  mjd: 58000
+  name: FRB20210117
+  position:
+    alpha: { decimal: null, hms: 22h39m55.015s }
+    delta: { decimal: null, dms: -16d09m05.453s }
+  position_err:
+    alpha: {stat: 0.12738819918016078, sys: 0.0}
+    delta: {stat: 0.11723956159351934, sys: 0.0}
+    sigma: null
+    theta: 0.0
+  tns_name: FRB20210117A
+name: FRB20210117
+objects: {}
+subtraction:
+  template_epochs: {des: 0, fors2: null, sdss: null, xshooter: null}
+type: FRBField
+survey: CRAFT_ICS
