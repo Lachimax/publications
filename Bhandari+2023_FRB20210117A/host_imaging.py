@@ -35,9 +35,9 @@ def main(
     # Establish image object
     img_fors2_I = image.FORS2CoaddedImage(os.path.join(input_dir, "FRB20210117_VLT-FORS2_I-BESS_2021-06-12.fits"))
 
+    # Use image object to plot FRB host, including error ellipse
     for img in [
         img_fors2_I,
-        # img_fors2_g, img_hawki_H, img_hawki_J, img_hawki_K
     ]:
         ax, fig, other = field_frb20210117.plot_host(
             # fig=fig,
