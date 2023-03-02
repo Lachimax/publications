@@ -1,0 +1,15 @@
+data_availability: To inquire after the data used by these scripts, please contact
+  me directly.
+paper_description: |
+  The scripts found in this directory are for reproducing the portions of 
+  Bhandari et al 2023 for which I am responsible.
+prerequisites:
+  astropy: 5.0.4
+  craft-optical-followup: {branch: bhandari+2023, url: 'https://github.com/Lachimax/craft-optical-followup'}
+  matplotlib: 3.5.2
+publication:
+  first_author_surname: Bhandari
+  multi_author: true
+  urls: {DOI: null, arXiv: https://arxiv.org/abs/2211.16790}
+  year: 2023
+references: []
