@@ -1,14 +1,5 @@
-"""
-Code by Lachlan Marnoch, 2022
-
-Produces the left-hand panel of **Figure 1** of Bhandari et al 2023 (arXiv: https://arxiv.org/abs/2211.16790)
-
-Prerequisites:
-- `craft-optical-followup`; tested on `bhandari+2023` branch (latest commit):
-    https://github.com/Lachimax/craft-optical-followup/tree/bhandari+2023
-- `astropy`; tested with version `5.0.4`
-- `matplotlib`; tested with version `3.5.2`
-"""
+#!/usr/bin/env python
+# Code by Lachlan Marnoch, 20XX
 
 import os
 
@@ -18,6 +9,10 @@ from astropy import units
 
 from craftutils.observation import field, image
 from craftutils.utils import mkdir_check_nested
+
+import lib
+
+description = "Produces the left-hand panel of **Figure 1**."
 
 
 def main(
@@ -70,40 +65,26 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="Produces the left-hand panel of **Figure 1** of Bhandari et al 2023"
-                    " (arXiv: https://arxiv.org/abs/2211.16790)"
-    )
-
-    paper_name = "Bhandari+2023_FRB20210117A"
-    default_data_dir = os.path.join(
-        os.path.expanduser("~"),
-        "Data",
-        "publications",
-        paper_name
-    )
-    default_output_path = os.path.join(
-        default_data_dir, "output"
-    )
-    default_input_path = os.path.join(
-        default_data_dir, "input"
+        description=description
     )
 
     parser.add_argument(
         "-o",
         help="Path to output directory.",
         type=str,
-        default=default_output_path
+        default=lib.default_output_path
     )
     parser.add_argument(
         "-i",
         help="Path to directory containing input files.",
         type=str,
-        default=default_input_path
+        default=lib.default_input_path
     )
 
     args = parser.parse_args()
-
+    output_path = args.o
+    input_path = args.i
     main(
-        input_dir=args.i,
-        output_dir=args.o,
+        output_dir=output_path,
+        input_dir=input_path
     )

@@ -1,15 +1,5 @@
-"""
-Code by Lachlan Marnoch, 2022
-
-Produces the figures seen in **Figure 2a**, and performs photometry on the imaging as specified in **S1.6**,
-of Ryder et al 2022 (arXiv: https://arxiv.org/abs/2210.04680)
-
-Prerequisites:
-- `craft-optical-followup`; tested on `ryder+2022` branch (latest commit):
-    https://github.com/Lachimax/craft-optical-followup/tree/ryder+2022
-- `astropy`; tested with version `5.0.4`
-- `matplotlib`; tested with version `3.5.2`
-"""
+#!/usr/bin/env python
+# Code by Lachlan Marnoch, 2022
 
 import os
 
@@ -22,6 +12,10 @@ import astropy.table as table
 
 from craftutils.observation import field, image
 from craftutils import plotting as pl
+
+import lib
+
+description = "Produces the figures seen in **Figure 2a**, and performs photometry on the imaging as specified in **S1.6**."
 
 
 def main(
@@ -202,7 +196,8 @@ def main(
 
     plot_science(vertical=True, output_path=os.path.join(output_dir, "FRB20220610A_gRK_vertical"))
     plot_science(vertical=False, output_path=os.path.join(output_dir, "FRB20220610A_gRK_horizontal"))
-    plot_science(vertical=False, all_loc=True, output_path=os.path.join(output_dir, "FRB20220610A_gRK_horizontal_all_loc"))
+    plot_science(vertical=False, all_loc=True,
+                 output_path=os.path.join(output_dir, "FRB20220610A_gRK_horizontal_all_loc"))
 
     imgs = [
         g_img,
@@ -251,40 +246,27 @@ def main(
 if __name__ == '__main__':
     import argparse
 
-    paper_name = "Ryder+2022_FRB20220610A"
-    default_data_dir = os.path.join(
-        os.path.expanduser("~"),
-        "Data",
-        "publications",
-        paper_name
-    )
-    default_output_path = os.path.join(
-        default_data_dir, "output"
-    )
-    default_input_path = os.path.join(
-        default_data_dir, "input"
+    parser = argparse.ArgumentParser(
+        description=description
     )
 
-    parser = argparse.ArgumentParser(
-        description="Produces the figures seen in **Figure 2a**, and performs photometry on the imaging as specified in"
-                    " **S1.6** of Ryder et al 2022 (arXiv: https://arxiv.org/abs/2210.04680)"
-    )
     parser.add_argument(
         "-o",
         help="Path to output directory.",
         type=str,
-        default=default_output_path
+        default=lib.default_output_path
     )
     parser.add_argument(
         "-i",
         help="Path to directory containing input files.",
         type=str,
-        default=default_input_path
+        default=lib.default_input_path
     )
 
     args = parser.parse_args()
-
+    output_path = args.o
+    input_path = args.i
     main(
-        input_dir=args.i,
-        output_dir=args.o
+        output_dir=output_path,
+        input_dir=input_path
     )
