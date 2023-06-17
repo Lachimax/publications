@@ -1,0 +1,16 @@
+data_availability: To inquire after the data used by these scripts, please contact
+  me directly.
+paper_description: |
+  These scripts are for reproducing the portions of 
+  Glowacki et al 2022 for which I am responsible.
+prerequisites:
+  astropy: 5.0.4
+  craft-optical-followup: {branch: ryder+2022, url: 'https://github.com/Lachimax/craft-optical-followup'}
+  matplotlib: 3.5.2
+  numpy: 1.22.3
+publication:
+  first_author_surname: Glowacki
+  multi_author: true
+  urls: {DOI: null, arXiv: null}
+  year: 2023
+references: []

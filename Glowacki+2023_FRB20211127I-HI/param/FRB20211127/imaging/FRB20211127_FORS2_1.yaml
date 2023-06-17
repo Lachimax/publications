@@ -1,0 +1,41 @@
+astrometry: {tweak: true}
+coadd: {frames: astrometry}
+convert_to_cs: {upper_only: false}
+correct_astrometry_coadded: {tweak: true}
+correct_astrometry_frames: {
+  method: individual, time_limit: 120, tweak: true, upper_only: false,
+}
+data_path: /home/lachlan/Data/FRB20211127/imaging/vlt-fors2/FRB20211127_FORS2_1
+date: !astropy.time.Time {format: isot, in_subfmt: '*', jd1: 2459609.0, jd2: -0.22906620370370367,
+  out_subfmt: '*', precision: 3, scale: utc}
+do: {download: false}
+download: {}
+dual_mode_source_extraction: {}
+field: FRB20211127
+get_photometry: {}
+initial_setup: {skip_esoreflex_copy: false}
+instrument: vlt-fors2
+name: FRB20211127_FORS2_1
+notes: ['Skip download because the ESO archive does not correctly associate a set
+    of g_HIGH flats with this epoch; they had to be downloaded manually, and will
+    hence be deleted and not redownloaded by the script.', 'There is a satellite trail
+    in FORS2.2022-01-28T05:53:43.402.']
+photometric_calibration:
+  class_star_tolerance: 0.95
+  distance_tolerance: null
+  image_type: coadded_trimmed
+  snr_min: 100
+program_id: 105.204W.003
+register_frames: {}
+sextractor:
+  aperture_diameters: [7.72]
+  dual_mode: true
+  kron_factor: 2.5
+  kron_radius_min: 3.5
+  threshold: 1.5
+skip: {esoreflex_copy: false, esorex: false, sextractor: false, sextractor_individual: false}
+sort_reduced: {alternate_dir: null, delete_eso_output: false}
+source_extraction: {do_astrometry_diagnostics: true}
+target: FRB 211127 host
+trim_coadded: {reproject: false}
+trim_reduced: {}
