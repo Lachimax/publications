@@ -1,0 +1,18 @@
+data_availability: To inquire after the data used by these scripts, please contact
+  me directly.
+paper_description: The scripts found in this directory are for...
+prerequisites:
+  astropy: 5.0.4
+  craft-optical-followup: {branch: marnoch+2023, url: 'https://github.com/Lachimax/craft-optical-followup'}
+  matplotlib: 3.5.2
+  numpy: 1.22.3
+publication:
+  first_author_surname: Marnoch
+  multi_author: true
+  urls: {DOI: null, arXiv: null}
+  year: 2023
+references: ['Aggarwal, K. et al 2021: Probabilistic Association of Transients to
+    their Hosts (PATH), ApJ 95:911:2 [https://doi.org/10.3847/1538-4357/abe8d2]',
+  'Gordon, A. C. et al 2023: The Demographics, Stellar Populations, and Star Formation
+    Histories of Fast Radio Burst Host Galaxies: Implications for the Progenitors
+    [https://arxiv.org/abs/2302.05465]']
