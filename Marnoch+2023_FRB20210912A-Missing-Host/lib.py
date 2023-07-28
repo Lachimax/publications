@@ -1372,9 +1372,10 @@ def magnitude_redshift_plot(
         do_mean=False,
         do_median=False,
         do_other_photometry=False,
-        grey_lines=False
+        grey_lines=False,
+        n_panels: int = 1,
 ):
-    ident = ident = f"{suffix}_{textwidth_factor}tw"
+    ident = f"{suffix}_{textwidth_factor}tw"
     if do_legend:
         ident += "_legend"
     if draw_lstar:
@@ -1397,16 +1398,37 @@ def magnitude_redshift_plot(
         ident += "_grey-lines"
     print("Plotting", ident, "...")
 
-    band_name = band.machine_name()
-    limits = load_limits(path_slug)
-    limit = limits[band.name]["mag"][4].value
+    if frbs is None:
+        frbs = list(model_dict.keys())
+
+    if do_pdf_panel:
+        n_panels_ = n_panels + 1
+        heights = [1] + [3] * n_panels
+    else:
+        n_panels_ = n_panels
+        heights = [3] * n_panels
+
+    if isinstance(grey_lines, bool):
+        grey_lines = [grey_lines] * n_panels
+    if isinstance(do_median, bool):
+        do_median = [do_median] * n_panels
+    if not isinstance(frbs[0], list):
+        frbs = [frbs] * n_panels
+    if not isinstance(band, list):
+        band = [band] * n_panels
+
+    fig = plt.figure(figsize=(textwidth * textwidth_factor, textwidth_factor * textwidth * 0.4 * n_panels))
+    gs = fig.add_gridspec(nrows=n_panels_, ncols=1, height_ratios=heights)
+
     load_band_z_tables()
-    band_z_tbl = band_z_mag_tables[band_name]
 
     # Plot the distributions panel in the figure
     if do_pdf_panel:
-        fig = plt.figure(figsize=(textwidth * textwidth_factor, textwidth * textwidth_factor * 0.5))
-        gs = fig.add_gridspec(nrows=2, ncols=1, height_ratios=[1, 3])
+        band_this = band[0]
+
+        band_name = band_this.machine_name()
+        band_z_tbl = band_z_mag_tables[band_name]
+
         ax_pdf = fig.add_subplot(gs[0, 0])
 
         ax_pdf.plot(
@@ -1427,154 +1449,182 @@ def magnitude_redshift_plot(
         ax_pdf.tick_params(bottom=False, labelsize=tick_fontsize)
         ax_pdf.xaxis.set_ticks([])
 
-        ax = fig.add_subplot(gs[1, 0])
-
-        fig.subplots_adjust(hspace=0.)
+    if do_pdf_panel:
+        n = 1
     else:
-        fig = plt.figure(figsize=(textwidth * textwidth_factor, textwidth * textwidth_factor * 0.5))
-        ax = fig.add_subplot()
+        n = 0
 
-    if frbs is None:
-        frbs = list(model_dict.keys())
+    for panel in range(n, n_panels_):
 
-    # Limit line
-    kwargs_lim_def = dict(c="black", lw=2, ls=":")
-    kwargs_lim_def.update(kwargs_lim)
-    ax.plot(
-        (0.0, 4.),
-        (limit, limit),
-        **kwargs_lim_def
-    )
-    if path_lim:
-        path_limit = faintest[band_name]
-        kwargs_path_def = dict(c="black", lw=2, ls="--")
-        kwargs_path_def.update(kwargs_path_lim)
-        ax.plot((0.0, 4.), (path_limit, path_limit), label="$m_\mathrm{faintest}$", **kwargs_path_def)
-
-    frbs.sort()
-
-    for n, frb in enumerate(frbs):
-
-        model_dict_frb = model_dict[frb]
-        i, _ = u.find_nearest(band_z_tbl["z"], model_dict_frb["z"])
-        # Draw the line
-        if grey_lines:
-            colour = "black"
-            alpha = 0.1
-            lw = 5
+        if do_pdf_panel:
+            index = panel - 1
         else:
-            colour = model_dict_frb["colour"]
-            alpha = 1.
-            lw = 1.5
-        ax.plot(
-            band_z_tbl["z"],
-            band_z_tbl[frb],
-            color=colour,  # colour[n],
-            alpha=alpha,
-            zorder=-1,
-            lw=lw
-        )
-        # Draw the photometry data point
-        if not grey_lines:
-            ax.scatter(
-                model_dict_frb["z"],
-                band_z_tbl[frb][i],
-                color=model_dict_frb["colour"],
-                alpha=1.,
-                marker=model_dict_frb["marker"],
-                edgecolors="black",
-                label=frb.replace("FRB", "FRB\,"),
-                zorder=1
-            )
-        # Pulls photometry from the host table and overplots it, more of a debug thing
-        if draw_observed_phot:
-            thisrow = None
-            frbdigits = frb[3:]
-            if len(frbdigits) > 8:
-                frbdigits = frbdigits[:8]
-            for row in phot_tbl:
-                #                 print(frbdigits, row["field_name"], row["object_name"])
-                if row["field_name"].startswith(frb) and f"HG{frbdigits}" in row["object_name"]:
-                    thisrow = row
-                    break
-            #             print(thisrow)
-            if thisrow is not None:
-                colstring = f"mag_best_{band.instrument.name}_{band.name.replace('_', '-')}"
-                colstring_err = colstring + "_err"
-                if thisrow[colstring] > -999. * units.mag and thisrow[colstring_err] > -999. * units.mag:
-                    ax.scatter(model_dict_frb["z"], thisrow[colstring].value, marker="x", color="black")
+            index = panel
 
-    ax.invert_yaxis()
-    ax.set_xlabel("$z$", fontsize=axis_fontsize)
-    ax.set_ylabel(f"$m_\mathrm{{{band.band_name}}}$", fontsize=axis_fontsize)
+        band_this = band[index]
 
-    if do_mean:
-        band_z_flux_tbl = band_z_flux_tables[band_name]
-        if grey_lines:
-            colour = "red"
-            lw = 2
-        else:
-            colour = "grey"
-            lw = 3
+        band_name = band_this.machine_name()
+        limits = load_limits(path_slug)
+        limit = limits[band_this.name]["mag"][4].value
+        band_z_tbl = band_z_mag_tables[band_name]
+
+        grey = grey_lines[index]
+        median = do_median[index]
+
+        ax = fig.add_subplot(gs[panel, 0])
+        fig.subplots_adjust(hspace=0.)
+
+        # Limit line
+        kwargs_lim_def = dict(c="black", lw=2, ls=":")
+        kwargs_lim_def.update(kwargs_lim)
         ax.plot(
-            band_z_flux_tbl["z"],
-            band_z_flux_tbl["mean_mag"],
-            color=colour,
-            zorder=1,
-            lw=lw,
-            ls="--"
+            (0.0, 4.),
+            (limit, limit),
+            **kwargs_lim_def
         )
-    if do_median:
-        if grey_lines:
-            colour = "red"
-            lw = 2
-        else:
-            colour = "grey"
-            lw = 3
-        ax.plot(
-            band_z_tbl["z"],
-            band_z_tbl["median"],
-            color=colour,
-            zorder=1,
-            lw=lw,
-            ls=":"
-        )
-    if do_other_photometry:
-        other_frbs = list(set(model_dict.keys()) - set(frbs))
-        for n, frb in enumerate(other_frbs):
+        if path_lim:
+            path_limit = faintest[band_name]
+            kwargs_path_def = dict(c="black", lw=2, ls="--")
+            kwargs_path_def.update(kwargs_path_lim)
+            ax.plot((0.0, 4.), (path_limit, path_limit), label="$m_\mathrm{faintest}$", **kwargs_path_def)
+
+        frbs_ = frbs[index]
+
+        frbs_.sort()
+
+        for n, frb in enumerate(frbs_):
+
             model_dict_frb = model_dict[frb]
             i, _ = u.find_nearest(band_z_tbl["z"], model_dict_frb["z"])
-            # Draw the photometry data point
-            ax.scatter(
-                model_dict_frb["z"],
-                band_z_tbl[frb][i],
-                color="black",
-                alpha=1.,
-                marker="x",
-                label=frb.replace("FRB", "FRB\,"),
-                zorder=0
+            # Draw the line
+            if grey:
+                colour = "black"
+                alpha = 0.1
+                lw = 5
+            else:
+                colour = model_dict_frb["colour"]
+                alpha = 1.
+                lw = 1.5
+            ax.plot(
+                band_z_tbl["z"],
+                band_z_tbl[frb],
+                color=colour,  # colour[n],
+                alpha=alpha,
+                zorder=-1,
+                lw=lw
             )
+            # Draw the photometry data point
+            if not grey:
+                ax.scatter(
+                    model_dict_frb["z"],
+                    band_z_tbl[frb][i],
+                    color=model_dict_frb["colour"],
+                    alpha=1.,
+                    marker=model_dict_frb["marker"],
+                    edgecolors="black",
+                    label=frb.replace("FRB", "FRB\,"),
+                    zorder=1
+                )
+            # Pulls photometry from the host table and overplots it, more of a debug thing
+            if draw_observed_phot:
+                thisrow = None
+                frbdigits = frb[3:]
+                if len(frbdigits) > 8:
+                    frbdigits = frbdigits[:8]
+                for row in phot_tbl:
+                    #                 print(frbdigits, row["field_name"], row["object_name"])
+                    if row["field_name"].startswith(frb) and f"HG{frbdigits}" in row["object_name"]:
+                        thisrow = row
+                        break
+                #             print(thisrow)
+                if thisrow is not None:
+                    colstring = f"mag_best_{band_this.instrument.name}_{band_this.name.replace('_', '-')}"
+                    colstring_err = colstring + "_err"
+                    if thisrow[colstring] > -999. * units.mag and thisrow[colstring_err] > -999. * units.mag:
+                        ax.scatter(model_dict_frb["z"], thisrow[colstring].value, marker="x", color="black")
 
-    # Draw L* fraction lines
-    if draw_lstar:
-        if l_star_table is None:
-            load_l_star_table()
-        ax.plot(l_star_table["z"], l_star_table["m_r(L*)"], c="grey", ls=":", label="L*")
-        ax.plot(l_star_table["z"], l_star_table["m_r(0.1L*)"], c="grey", ls="--", label="0.1 L*")
-        ax.plot(l_star_table["z"], l_star_table["m_r(0.01L*)"], c="grey", ls="-.", label="0.01 L*")
+        ax.invert_yaxis()
+        ax.set_xlabel("$z$", fontsize=axis_fontsize)
+        ax.set_ylabel(f"$m_\mathrm{{{band_this.band_name}}}$", fontsize=axis_fontsize)
 
-    if do_pdf_shading:
-        ax, c = pdf_shading(ax, alpha=1.)  # , pdf=band_table["p(z|DM)"], z=band_table["z"])
+        if do_mean:
+            band_z_flux_tbl = band_z_flux_tables[band_name]
+            if grey:
+                colour = "red"
+                lw = 2
+            else:
+                colour = "grey"
+                lw = 3
+            ax.plot(
+                band_z_flux_tbl["z"],
+                band_z_flux_tbl["mean_mag"],
+                color=colour,
+                zorder=1,
+                lw=lw,
+                ls="--"
+            )
+        if median:
+            if grey:
+                colour = "red"
+                lw = 2
+            else:
+                colour = "grey"
+                lw = 3
+            ax.plot(
+                band_z_tbl["z"],
+                band_z_tbl["median"],
+                color=colour,
+                zorder=1,
+                lw=lw,
+                ls=":"
+            )
+        if do_other_photometry:
+            other_frbs = list(set(model_dict.keys()) - set(frbs_))
+            for n, frb in enumerate(other_frbs):
+                model_dict_frb = model_dict[frb]
+                i, _ = u.find_nearest(band_z_tbl["z"], model_dict_frb["z"])
+                # Draw the photometry data point
+                ax.scatter(
+                    model_dict_frb["z"],
+                    band_z_tbl[frb][i],
+                    color="black",
+                    alpha=1.,
+                    marker="x",
+                    label=frb.replace("FRB", "FRB\,"),
+                    zorder=0
+                )
 
-    ax.set_xlim(min(band_z_tbl["z"]), 2.)
-    ax.set_ylim(32, 10)
-    if textwidth_factor < 1.:
-        yticks = np.arange(12, 32, 4)
-    else:
-        yticks = np.arange(12, 32, 2)
-    ax.set_yticks(yticks)
-    ax.set_xticks(np.arange(0.25, 2.25, 0.25))
-    ax.tick_params(labelsize=tick_fontsize)
+        # Draw L* fraction lines
+        if draw_lstar:
+            if l_star_table is None:
+                load_l_star_table()
+            ax.plot(l_star_table["z"], l_star_table["m_r(L*)"], c="grey", ls=":", label="L*")
+            ax.plot(l_star_table["z"], l_star_table["m_r(0.1L*)"], c="grey", ls="--", label="0.1 L*")
+            ax.plot(l_star_table["z"], l_star_table["m_r(0.01L*)"], c="grey", ls="-.", label="0.01 L*")
+
+        if do_pdf_shading:
+            ax, c = pdf_shading(ax, alpha=1.)  # , pdf=band_table["p(z|DM)"], z=band_table["z"])
+
+        ax.set_xlim(min(band_z_tbl["z"]), 2.)
+        ax.set_ylim(32, 10)
+        if textwidth_factor < 1.:
+            yticks = np.arange(12, 32, 4)
+        else:
+            yticks = np.arange(12, 32, 2)
+        ax.set_yticks(yticks)
+        if panel == n_panels_ - 1:
+            ax.set_xticks(np.arange(0.25, 2.25, 0.25))
+        else:
+            ax.tick_params(bottom=False, labelsize=tick_fontsize)
+            ax.xaxis.set_ticks([])
+
+        ax.tick_params(labelsize=tick_fontsize)
+
+        if do_pdf_shading:
+            fig.colorbar(c, ax=ax, location="bottom")
+
+        #     plt.tight_layout()
+
     if do_legend:
         if legend_frbs is None:
             ax.legend(
@@ -1600,10 +1650,6 @@ def magnitude_redshift_plot(
                 handles=legend_elements,
                 loc=(1.03, 0)
             )
-    if do_pdf_shading:
-        fig.colorbar(c, ax=ax, location="bottom")
-
-    #     plt.tight_layout()
 
     subdir = os.path.join(output_path, "z_magnitude_diagrams")
     u.mkdir_check(subdir)
@@ -1612,15 +1658,15 @@ def magnitude_redshift_plot(
     fig.savefig(
         os.path.join(
             subdir,
-            f"m{band.band_name}_z_{ident}.pdf"),
+            f"m{band[0].band_name}_z_{ident}.pdf"),
         bbox_inches='tight'
     )
     fig.savefig(
         os.path.join(
             subdir,
-            f"m{band.band_name}_z_{ident}.png"),
+            f"m{band[0].band_name}_z_{ident}.png"),
         bbox_inches='tight', dpi=200
     )
     plt.close(fig)
 
-    return ax, fig
+    return fig

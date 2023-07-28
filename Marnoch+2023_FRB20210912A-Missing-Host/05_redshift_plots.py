@@ -62,7 +62,6 @@ def main(
         "FRB20190714A",
         # "FRB20181112",
         "FRB20210807D",
-        # "FRB20220610A",
         "FRB20200430A",
         "FRB20190711A",
         "FRB20220105A",
@@ -78,7 +77,6 @@ def main(
         # "FRB20190714A",
         # "FRB20181112",
         # "FRB20210807D",
-        # "FRB20220610A",
         # "FRB20200430A",
         "FRB20190711A",
         # "FRB20220105A",
@@ -96,7 +94,6 @@ def main(
         "FRB20190711A",
         # "FRB20210807",
         "FRB20211127I",
-        # "FRB20220610A"
     ]
 
     lib.set_plot_properties(frbs=hosts_R + hosts_K)
@@ -152,6 +149,21 @@ def main(
     )
 
     lib.magnitude_redshift_plot(
+        band=lib.K_hawki,
+        frbs=hosts_R,
+        draw_lstar=False,
+        draw_observed_phot=False,
+        suffix="selection",
+        textwidth_factor=0.5,
+        path_lim=False,
+        do_pdf_panel=False,
+        do_legend=False
+        # do_pdf_shading=True,
+        # legend_frbs=hosts_R + hosts_K
+        # color=colors
+    )
+
+    lib.magnitude_redshift_plot(
         band=lib.R_fors2,
         frbs=hosts_R,
         draw_lstar=False,
@@ -169,14 +181,14 @@ def main(
         frbs=hosts_R,
         draw_lstar=False,
         draw_observed_phot=False,
-        suffix="selection",
+        suffix="selection_pdf_RKhosts",
         path_lim=False,
         do_pdf_panel=True,
         # do_pdf_shading=True,
         legend_frbs=hosts_R + hosts_K,
-        do_median=True,
-        do_mean=True,
-        # do_other_photometry=True
+        # do_median=True,
+        # do_mean=True,
+        do_other_photometry=True
         # color=colors
     )
 
@@ -185,14 +197,59 @@ def main(
         frbs=hosts_R,
         draw_lstar=False,
         draw_observed_phot=False,
-        suffix="selection",
+        suffix="selection_pdf",
         path_lim=False,
         do_pdf_panel=True,
         # do_pdf_shading=True,
-        legend_frbs=hosts_R + hosts_K,
+        legend_frbs=hosts_R,  # + hosts_K,
         # do_median=True,
         # do_mean=True,
         do_other_photometry=True
+        # color=colors
+    )
+
+    lib.magnitude_redshift_plot(
+        band=lib.R_fors2,
+        frbs=hosts_R,
+        draw_lstar=False,
+        draw_observed_phot=False,
+        suffix="selection_pdf",
+        path_lim=False,
+        do_pdf_panel=True,
+        # do_pdf_shading=True,
+        legend_frbs=hosts_R,  # + hosts_K,
+        # do_median=True,
+        # do_mean=True,
+        do_other_photometry=False
+        # color=colors
+    )
+
+    lib.magnitude_redshift_plot(
+        band=[lib.R_fors2, lib.K_hawki],
+        suffix="all_twin",
+        grey_lines=True,
+        do_median=True,
+        # do_mean=True,
+        do_legend=False,
+        n_panels=2,
+        textwidth_factor=0.5
+    )
+
+    lib.magnitude_redshift_plot(
+        band=[lib.R_fors2, lib.K_hawki],
+        frbs=hosts_R,
+        draw_lstar=False,
+        draw_observed_phot=False,
+        suffix="selection_twin",
+        path_lim=False,
+        do_pdf_panel=True,
+        # do_pdf_shading=True,
+        legend_frbs=hosts_R,  # + hosts_K,
+        do_median=False,
+        grey_lines=False,
+        n_panels=2,
+        # do_mean=True,
+        do_other_photometry=False
         # color=colors
     )
 
