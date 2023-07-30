@@ -1,0 +1,73 @@
+centre:
+  alpha: { decimal: 0.0, hms: 23h23m10.352s }
+  delta: { decimal: 0.0, dms: -30d24m19.2451s }
+data_path: FRB20210912/
+extent: !astropy.units.Quantity
+  unit: !astropy.units.Unit { unit: deg }
+  value: 0.1
+frb:
+  dm: !astropy.units.Quantity
+    unit: !astropy.units.Unit { unit: pc / cm3 }
+    value: 1233.696
+  dm_err: 0.006
+  width_int: !astropy.units.Quantity
+    unit: !astropy.units.Unit { unit: us }
+    value: 26
+  width_int_err: !astropy.units.Quantity
+    unit: !astropy.units.Unit { unit: us }
+    value: 2
+  tau: !astropy.units.Quantity
+    unit: !astropy.units.Unit { unit: us }
+    value: 59
+  tau_err: !astropy.units.Quantity
+    unit: !astropy.units.Unit { unit: us }
+    value: 4
+  nu_scattering: !astropy.units.Quantity
+    unit: !astropy.units.Unit { unit: MHz }
+    value: 1263.5
+  host_galaxy:
+    name: HG20210912
+    photometry_args_manual:
+      a: !astropy.units.Quantity
+        unit: !astropy.units.Unit { unit: arcsec }
+        value: 3.0
+      b: !astropy.units.Quantity
+        unit: !astropy.units.Unit { unit: arcsec }
+        value: 3.0
+      kron_radius: 1.0
+      theta: !astropy.units.Quantity
+        unit: !astropy.units.Unit { unit: arcsec }
+        value: 0.0
+      fix_pos: true
+    position:
+      alpha: { decimal: 0.0, hms: 23h23m10.352s }
+      delta: { decimal: 0.0, dms: -30d24m19.2451s }
+    position_err:
+      a: { stat: 0.0, sys: 0.0 }
+      b: { stat: 0.0, sys: 0.0 }
+      dec: { stat: 0.0, sys: 0.0 }
+      ra: { stat: 0.0, sys: 0.0 }
+      sigma: null
+      theta: 0.0
+    type: null
+    z: null
+  mjd: 58000
+  name: FRB20210912
+  position:
+    alpha: { decimal: 0.0, hms: 23h23m10.352s }
+    delta: { decimal: 0.0, dms: -30d24m19.2451s }
+  position_err:
+    a: { stat: 0.0, sys: 0.0 }
+    b: { stat: 0.0, sys: 0.0 }
+    alpha: { stat: 0.4304887897107978, sys: 0.0 }
+    delta: { stat: 0.2966348943682091, sys: 0.0 }
+    sigma: null
+    theta: 0.0
+  type: FRB
+  tns_name: FRB20210912A
+name: FRB20210912
+objects: []
+subtraction:
+  template_epochs: { des: null, fors2: null, sdss: null, xshooter: null }
+survey: CRAFT_ICS
+type: FRBField

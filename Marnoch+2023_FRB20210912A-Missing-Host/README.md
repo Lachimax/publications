@@ -1,6 +1,14 @@
-The scripts found in this directory are for...
+The scripts found in this directory are for reproducing results in Marnoch et al 2023
+
+ The paper can be found at:
+ - arXiv: https://arxiv.org/abs/2307.14702
 
 ### Scripts
+
+#### `00_misc_values.py`
+
+Derives some miscellaneous values quoted in the paper.
+
 
 #### `01_association.py`
 
@@ -40,8 +48,13 @@ Uses GAMA DR4 and mNFW profiles to estimate a partial foreground halo contributi
 
 #### `07_scattering.py`
 
-Uses the framework of Cordes et al 2022 (https://www.doi.org/10.3847/1538-4357/ac6873) to estimate the host dispersion
+Uses the framework of Cordes et al 2022 to estimate the host dispersion
 measure contribution from the scattering timescale.
+
+
+#### `08_bright_stars.py`
+
+Finds the nuisance stars in Gaia and makes some check plots.
 
 
 #### `09_frbstats.py`
@@ -50,13 +63,12 @@ Uses the FRBSTATS catalogue of FRBs (https://www.herta-experiment.org/frbstats/)
 consistent with z>1.
 
 
-#### `dm_breakdown.py`
-Does something cool.
-
 ### Prerequisites
  - `astropy`: tested with version `5.0.4`
  - `craft-optical-followup`(https://github.com/Lachimax/craft-optical-followup); tested with:
    - Branch: `marnoch+2023` (latest commit)
+ - `frb`; tested with:
+   - Branch: `main` (latest commit)
  - `matplotlib`: tested with version `3.5.2`
  - `numpy`: tested with version `1.22.3`
 
@@ -66,4 +78,6 @@ To inquire after the data used by these scripts, please contact me directly.
 
 ### References
  - Aggarwal, K. et al 2021: Probabilistic Association of Transients to their Hosts (PATH), ApJ 95:911:2 [https://doi.org/10.3847/1538-4357/abe8d2]
+ - Cordes, J. et al 2022: Redshift Estimation and Constraints on Intergalactic and Interstellar Media from Dispersion and Scattering of Fast Radio Bursts, ApJ 88:931:2 [https://doi.org/10.3847/1538-4357/AC6873]
  - Gordon, A. C. et al 2023: The Demographics, Stellar Populations, and Star Formation Histories of Fast Radio Burst Host Galaxies: Implications for the Progenitors [https://arxiv.org/abs/2302.05465]
+ - Marnoch, L. et al 2023: The unseen host galaxy and high dispersion measure of a precisely-localised Fast Radio Burst suggests a high-redshift origin [https://arxiv.org/abs/2307.14702]

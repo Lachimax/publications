@@ -48,12 +48,10 @@ def main(
 
     dm_host = 50 * objects.dm_units
     dm_mw_halo = 40 * objects.dm_units
-    # frbs = []
     dm_ism = []
     dm_igm = []
     z_from_dm = []
     z_from_dm_nohost = []
-    # z_factor = 1 / (923 * objects.dm_units)
 
     frbstats.sort("frb")
     n = len(frbstats)
@@ -92,10 +90,7 @@ def main(
             z_from_dm_nohost.append(0.)
 
         del frb
-        # frbs.append(frb)
         print(f"Processed {i} / {n}: {row['frb']}:", z_from_dm_this, dm_igm_this)
-    # print(len(frbs))
-    # frbstats["frbobject"] = frbs
     frbstats["dm_ism"] = dm_ism
     frbstats["dm_igm"] = dm_igm
     frbstats["z_from_dm"] = z_from_dm

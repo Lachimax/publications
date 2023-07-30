@@ -20,7 +20,7 @@ from craftutils.plotting import latex_setup, textwidths, textheights
 import lib
 
 description = """
-Uses the framework of Cordes et al 2022 (https://www.doi.org/10.3847/1538-4357/ac6873) to estimate the host dispersion
+Uses the framework of Cordes et al 2022 to estimate the host dispersion
 measure contribution from the scattering timescale.
 """
 

@@ -71,6 +71,32 @@ def main(
     path_cat_02 = consolidated[0.2]
     path_cat_02["coord"] = coordinates.SkyCoord(path_cat_02["ra"], path_cat_02["dec"])
 
+    # Obtain the m_faintest values (the faintest PATH candidate in each band that was also detected in another band)
+    mag_cols = [
+        "mag_FRB20210912_VLT-FORS2_g-HIGH_2021-10-04_subbed_trimmed",
+        "mag_FRB20210912_VLT-FORS2_R-SPECIAL_2021-10-09_subbed_trimmed",
+        "mag_FRB20210912_VLT-FORS2_I-BESS_2021-10-04_subbed_trimmed",
+        "mag_FRB20210912_VLT-HAWKI_Ks_coadded_mean"
+    ]
+    relevant = path_cat_02.copy()
+    faintest_dict = {}
+    for col in mag_cols:
+        relevant.sort(col, reverse=True)
+        faintest = None
+        for row in relevant:
+            n_detected = 0
+            for val in row[mag_cols]:
+                if val != -999.:
+                    n_detected += 1
+            if n_detected > 1:
+                faintest = row
+                break
+        faintest_dict[col] = {}
+        faintest_dict[col]["m"] = faintest[col]
+        faintest_dict[col]["id"] = str(faintest["id"])
+
+    p.save_params(os.path.join(path_dir, "faintest.yaml"), faintest_dict)
+
     # Generate object yaml file (for craft-optical-pipeline use)
     yaml_dict = {}
 

@@ -83,7 +83,8 @@ model_dict = {
 do_not_load = [
 ]
 
-fld = field.Field.from_params("FRB20210912")
+# fld = field.Field.from_params("FRB20210912")
+fld = field.Field.from_file(os.path.join(script_dir, "param", "FRB20210912", "FRB20210912.yaml"))
 
 frb_list = field.list_fields()
 phot_tbl = table.QTable.read(
