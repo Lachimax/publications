@@ -6,7 +6,9 @@ The scripts found in this directory are for reproducing the portions of Ryder et
 ### Scripts
 
 #### `host_imaging.py`
-Produces the figures seen in **Figure 2a**, and performs photometry on the imaging as specified in **S1.6**.
+
+Produces panels A, B & C of **Figure 2** and performs photometry on the imaging as specified in **S1.6**.
+
 
 ### Prerequisites
  - `astropy`: tested with version `5.0.4`
