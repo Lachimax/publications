@@ -3,7 +3,7 @@ Bhandari et al 2023 for which I am responsible.
 
 
  The paper can be found at:
- - arXiv: https://arxiv.org/abs/2211.16790
+ - DOI: https://doi.org/10.3847/1538-4357/acc178
 
 ### Scripts
 
@@ -19,3 +19,6 @@ Produces the left-hand panel of **Figure 1**.
 ### Data Availability
 
 To inquire after the data used by these scripts, please contact me directly.
+
+### References
+ - Bhandari, S. et al: A Nonrepeating Fast Radio Burst in a Dwarf Host Galaxy, ApJ 949:1:65 [https://www.doi.org/10.3847/1538-4357/acc1e3]

@@ -10,6 +10,11 @@ prerequisites:
 publication:
   first_author_surname: Bhandari
   multi_author: true
-  urls: {DOI: null, arXiv: https://arxiv.org/abs/2211.16790}
+  urls: {DOI: https://doi.org/10.3847/1538-4357/acc178, arXiv: null}
   year: 2023
-references: []
+references: [
+  "Bhandari, S. et al: 
+    A Nonrepeating Fast Radio Burst in a Dwarf Host Galaxy, 
+    ApJ 949:1:65
+    [https://www.doi.org/10.3847/1538-4357/acc1e3]"
+]

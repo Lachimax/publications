@@ -3,11 +3,15 @@ data_availability: To inquire after the data used by these scripts, please conta
 paper_description: The scripts found in this directory are for reproducing the portions of Ryder et al 2022 for which I am responsible.
 prerequisites:
   astropy: 5.0.4
-  craft-optical-followup: { branch: bhandari+2023, url: 'https://github.com/Lachimax/craft-optical-followup' }
+  craft-optical-followup: { branch: ryder+2022, url: 'https://github.com/Lachimax/craft-optical-followup' }
   matplotlib: 3.5.2
 publication:
   first_author_surname: Ryder
   multi_author: true
   urls: { DOI: null, arXiv: https://arxiv.org/abs/2210.04680 }
   year: 2023
-references: [ ]
+references: [
+  "Ryder, S. D. et al: 
+    Probing the distant universe with a very luminous fast radio burst at redshift 1, 
+    [https://arxiv.org/abs/2210.04680]"
+]

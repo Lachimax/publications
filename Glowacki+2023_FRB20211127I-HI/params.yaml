@@ -11,6 +11,11 @@ prerequisites:
 publication:
   first_author_surname: Glowacki
   multi_author: true
-  urls: {DOI: null, arXiv: null}
+  urls: {DOI: https://doi.org/10.3847/1538-4357/acc1e3, arXiv: null}
   year: 2023
-references: []
+references: [
+  "Glowacki, M. et al: 
+    WALLABY Pilot Survey: H i in the Host Galaxy of a Fast Radio Burst, 
+    ApJ 949:1:25 
+    [https://www.doi.org/10.3847/1538-4357/acc1e3]"
+]

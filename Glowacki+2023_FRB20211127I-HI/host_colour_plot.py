@@ -10,7 +10,7 @@ from craftutils.observation import field, image
 
 import lib
 
-description = "Reproduces the colour optical image used in the background of **Figure X** of Glowacki et al 2022."
+description = "Reproduces the colour optical image used in the background of **Figure 1**."
 
 
 def main(

@@ -13,9 +13,12 @@ Produces panels A, B & C of **Figure 2** and performs photometry on the imaging 
 ### Prerequisites
  - `astropy`: tested with version `5.0.4`
  - `craft-optical-followup`(https://github.com/Lachimax/craft-optical-followup); tested with:
-   - Branch: `bhandari+2023` (latest commit)
+   - Branch: `ryder+2022` (latest commit)
  - `matplotlib`: tested with version `3.5.2`
 
 ### Data Availability
 
 To inquire after the data used by these scripts, please contact me directly.
+
+### References
+ - Ryder, S. D. et al: Probing the distant universe with a very luminous fast radio burst at redshift 1, [https://arxiv.org/abs/2210.04680]
