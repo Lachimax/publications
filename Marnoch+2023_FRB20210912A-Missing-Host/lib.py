@@ -54,6 +54,7 @@ default_input_path = os.path.join(
     default_data_dir, "input"
 )
 input_path = default_input_path
+repo_data = os.path.join(script_dir, "data")
 
 
 def set_input_path(path):
@@ -253,7 +254,6 @@ markers_best = [
     "P",
     "+",
     "x"
-    "2"
 ]
 
 colours = [
@@ -551,11 +551,12 @@ def load_band_z_tables():
 
 def load_p_z_dm():
     global p_z_dm
+    dir_this = os.path.join(repo_data, "james.c.w-p-z-dm")
     if p_z_dm is None:
-        p_z_dm = np.load(os.path.join(input_path, "c.w.james-p-z-dm", "all_pzgdm.npy"))
+        p_z_dm = np.load(os.path.join(dir_this, "all_pzgdm.npy"))
     global z_p_z_dm
     if z_p_z_dm is None:
-        z_p_z_dm = np.load(os.path.join(input_path, "c.w.james-p-z-dm", "zvals.npy"))
+        z_p_z_dm = np.load(os.path.join(dir_this, "zvals.npy"))
     global p_z_dm_best
     if p_z_dm_best is None:
         p_z_dm_best = p_z_dm[0]
@@ -1062,7 +1063,8 @@ def set_plot_properties(frbs: list = None):
     frbs_other = list(set(model_dict.keys()) - set(frbs))
     n = len(frbs_other)  # - len(colours)
     colours_rb = list(cm.rainbow(np.linspace(0, 1, n)))
-    markers_all = list(Line2D.markers.keys())
+    print()
+    markers_all = list(Line2D.filled_markers)
     for i, frb in enumerate(frbs_other):
         model_dict[frb]["marker"] = markers_all[i]
         model_dict[frb]["colour"] = colours_rb[i]
@@ -1216,7 +1218,7 @@ def band_mag_table(band: fil.Filter):
 
     ax_pdf = ax.twinx()
     ax_pdf.set_ylabel("Host fraction", rotation=-90, labelpad=35, fontsize=axis_fontsize)
-    ax_pdf.yaxis.set_ticks([], visible=False)
+    ax_pdf.tick_params(right=False,labelright=False)
     ax.yaxis.set_ticks_position('both')
     ax.tick_params(axis="y", labelright=True, labelsize=tick_fontsize)
     ax.tick_params(axis="x", labelsize=tick_fontsize)

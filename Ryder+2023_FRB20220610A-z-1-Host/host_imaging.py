@@ -17,9 +17,7 @@ from craftutils import plotting as pl
 
 import lib
 
-description = """
-Produces panels A, B & C of **Figure 2** and performs photometry on the imaging as specified in **S1.6**.
-"""
+description = "Produces panels A, B & C of **Figure 2** and performs photometry on the imaging as specified in **S1.6**."
 
 
 def main(
@@ -27,7 +25,7 @@ def main(
         input_dir: str,
         skip_photometry: bool,
 ):
-    tick_fontsize = 13
+    tick_fontsize = 14
     script_dir = os.path.dirname(__file__)
     field_name = "FRB20220610A"
     frb220610_field = field.FRBField.from_file(os.path.join(script_dir, "param", field_name, field_name))
@@ -128,21 +126,8 @@ def main(
                 extra_height_top_factor = 0.8
                 spread_factor = 1.5
             ra, dec = ax_1.coords
-
-            ra.set_ticks(
-                values=units.Quantity([
-                    Angle("23h24m17.92s"),
-                    Angle("23h24m17.67s"),
-                    Angle("23h24m17.42s"),
-                    # Angle("23h24m17.45s")
-                ]).to("deg")
-                # spacing=0.2 * units.hourangle / 3600
-            )
-            ra.set_ticklabel(
-                fontsize=tick_fontsize,
-                # rotation=45,
-                # pad=50
-            )
+            ra.set_ticks(spacing=0.1 * units.hourangle / 3600)
+            ra.set_ticklabel(fontsize=tick_fontsize)
             dec.set_ticklabel(fontsize=tick_fontsize)
 
             ax_1.set_title(header_strings[i], size=16)
