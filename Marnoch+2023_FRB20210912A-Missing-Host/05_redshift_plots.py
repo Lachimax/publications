@@ -254,10 +254,14 @@ def main(
     )
 
     for band in lib.bands_default:
+        lib.textwidth = pl.textheights["mqthesis"]
         lib.magnitude_redshift_plot(
             band=band,
             suffix="all",
+            textwidth_factor=1.,
+            height=pl.textwidths["mqthesis"]
         )
+        lib.textwidth = pl.textwidths["MNRAS"]
         lib.magnitude_redshift_plot(
             band=band,
             suffix="all",

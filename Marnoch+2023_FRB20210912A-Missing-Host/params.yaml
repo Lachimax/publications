@@ -6,10 +6,10 @@ data_availability: To inquire after other data used by these scripts, please con
   me directly.
 paper_description: The scripts found in this directory are for reproducing results in Marnoch et al 2023.
 prerequisites:
-  astropy: 5.0.4
+  astropy: 5.2.1
   craft-optical-followup: { branch: marnoch+2023, url: 'https://github.com/Lachimax/craft-optical-followup' }
   frb: { branch: main, url: https://github.com/FRBs/FRB }
-  matplotlib: 3.5.2
+  matplotlib: 3.7.1
   numpy: 1.22.3
 publication:
   first_author_surname: Marnoch
@@ -30,8 +30,8 @@ references: [
     [https://arxiv.org/abs/2302.05465]',
   'James, C. W. et al 2021:
     *The z–DM distribution of fast radio bursts*,
-    MNRAS 509:4:4775--4802',
+    MNRAS 509:4:4775-4802',
   'Marnoch, L. et al 2023: 
-    The unseen host galaxy and high dispersion measure of a precisely-localised Fast Radio Burst suggests a high-redshift origin 
+    *The unseen host galaxy and high dispersion measure of a precisely-localised Fast Radio Burst suggests a high-redshift origin* 
     [https://arxiv.org/abs/2307.14702]'
 ]
