@@ -88,12 +88,6 @@ do_not_load = [
 fld = field.Field.from_file(os.path.join(script_dir, "param", "FRB20210912", "FRB20210912.yaml"))
 
 frb_list = field.list_fields()
-phot_tbl = table.QTable.read(
-    os.path.join(
-        p.config["table_dir"],
-        "master_select_objects_table.ecsv"
-    )
-)
 
 faintest = {
     "vlt-fors2_g-HIGH": 27.3,
@@ -479,15 +473,9 @@ def load_prospector_files():
             model_dict[frb_name] = {}
 
         # Check for an associated row in the photometry table
-        thisrow = None
         frbdigits = frb_name[3:]
         if len(frbdigits) > 8:
             frbdigits = frbdigits[:8]
-        for row in phot_tbl:
-            if row["field_name"].startswith(frb_name) and f"HG{frbdigits}" in row["object_name"]:
-                thisrow = row
-                break
-        model_dict[frb_name]["phot_tbl_row"] = thisrow
 
         model_flux_path = os.path.join(model_dir, f"{event}_model_spectrum_FM07.txt")
         if not os.path.isfile(model_flux_path):
@@ -501,7 +489,7 @@ def load_prospector_files():
         if not os.path.isfile(observed_flux_path):
             observed_flux_path = os.path.join(model_dir, f"{event}_observed_spectrum_FM07.txt")
 
-        print(frb_name, z)
+        # print(frb_name, z)
         model = sed.GordonProspectorModel(
             model_flux_path=model_flux_path,
             model_wavelength_path=model_wavelength_path,
@@ -1218,7 +1206,7 @@ def band_mag_table(band: fil.Filter):
 
     ax_pdf = ax.twinx()
     ax_pdf.set_ylabel("Host fraction", rotation=-90, labelpad=35, fontsize=axis_fontsize)
-    ax_pdf.tick_params(right=False,labelright=False)
+    ax_pdf.tick_params(right=False, labelright=False)
     ax.yaxis.set_ticks_position('both')
     ax.tick_params(axis="y", labelright=True, labelsize=tick_fontsize)
     ax.tick_params(axis="x", labelsize=tick_fontsize)
@@ -1377,6 +1365,8 @@ def magnitude_redshift_plot(
         do_other_photometry=False,
         grey_lines=False,
         n_panels: int = 1,
+        height_ratio=0.4,
+        height=None
 ):
     ident = f"{suffix}_{textwidth_factor}tw"
     if do_legend:
@@ -1420,7 +1410,9 @@ def magnitude_redshift_plot(
     if not isinstance(band, list):
         band = [band] * n_panels
 
-    fig = plt.figure(figsize=(textwidth * textwidth_factor, textwidth_factor * textwidth * 0.4 * n_panels))
+    if height is None:
+        height = textwidth_factor * textwidth * height_ratio * n_panels
+    fig = plt.figure(figsize=(textwidth * textwidth_factor, height))
     gs = fig.add_gridspec(nrows=n_panels_, ncols=1, height_ratios=heights)
 
     load_band_z_tables()
@@ -1528,23 +1520,6 @@ def magnitude_redshift_plot(
                     label=frb.replace("FRB", "FRB\,"),
                     zorder=1
                 )
-            # Pulls photometry from the host table and overplots it, more of a debug thing
-            if draw_observed_phot:
-                thisrow = None
-                frbdigits = frb[3:]
-                if len(frbdigits) > 8:
-                    frbdigits = frbdigits[:8]
-                for row in phot_tbl:
-                    #                 print(frbdigits, row["field_name"], row["object_name"])
-                    if row["field_name"].startswith(frb) and f"HG{frbdigits}" in row["object_name"]:
-                        thisrow = row
-                        break
-                #             print(thisrow)
-                if thisrow is not None:
-                    colstring = f"mag_best_{band_this.instrument.name}_{band_this.name.replace('_', '-')}"
-                    colstring_err = colstring + "_err"
-                    if thisrow[colstring] > -999. * units.mag and thisrow[colstring_err] > -999. * units.mag:
-                        ax.scatter(model_dict_frb["z"], thisrow[colstring].value, marker="x", color="black")
 
         ax.invert_yaxis()
         ax.set_xlabel("$z$", fontsize=axis_fontsize)

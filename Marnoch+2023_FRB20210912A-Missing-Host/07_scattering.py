@@ -64,7 +64,7 @@ def main(
 
     latex_setup()
 
-    cordes_2022_tbl3 = table.Table.read(os.path.join(lib.input_path, "cordes+2022", "cordes+2022_table-3.ecsv"))
+    cordes_2022_tbl3 = table.Table.read(os.path.join(lib.repo_data, "cordes+2022", "cordes+2022_table-3.ecsv"))
 
     fig = plt.figure(figsize=(textwidths["mqthesis"], textwidths["mqthesis"] * 0.5))
     for i, dm_array in enumerate((dm_arrays, dm_arrays / (1 + z_host))):

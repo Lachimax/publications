@@ -68,7 +68,7 @@ consistent with z>1.
  - `craft-optical-followup`(https://github.com/Lachimax/craft-optical-followup); tested with:
    - Branch: `marnoch+2023` (latest commit)
  - `frb`(https://github.com/FRBs/FRB); tested with:
-   - Branch: `main`
+   - Branch: `main` (latest commit)
  - `matplotlib`: tested with version `3.7.1`
  - `numpy`: tested with version `1.22.3`
 

@@ -1,0 +1,27 @@
+coadd: {frames: normalised}
+correct_astrometry_frames: {back_subbed: true, tweak: false, upper_only: false}
+data_path: /home/lachlan/Data/FRB20210912/imaging/vlt-fors2/2019-10-04-FRB20210912_FORS2_1
+date: !astropy.time.Time {format: iso, in_subfmt: '*', jd1: 2459492.0, jd2: -0.5,
+  out_subfmt: date, precision: 3, scale: utc}
+do: {correct_astrometry_coadded: true, correct_astrometry_frames: false, subtract_background_frames: true}
+field: FRB20210912
+initial_setup: {skip_esoreflex_copy: false}
+instrument: vlt-fors2
+name: FRB20210912_FORS2_1
+normalisation: {upper_only: true}
+notes: ['The normal astrometry procedure produces definite ghosting in g-band, probably
+    because of the bright saturated stars. The only way I''ve gotten it to work is
+    via astrometry_coadded (doing the astrometry solution on the coadded image instead
+    of the frames)']
+photometric_calibration: {distance_tolerance: 0.5}
+program_id: 105.204W.003
+registration: {register: false}
+sextractor:
+  aperture_diameters: [7.72]
+  dual_mode: true
+  kron_factor: 2.5
+  kron_radius_min: 3.5
+  threshold: 1.5
+skip: {astrometry_net: false, esorex: false, sextractor: false, sextractor_individual: false}
+subtract_background_frames: {frames: normalised}
+target: FRB 210912 host
