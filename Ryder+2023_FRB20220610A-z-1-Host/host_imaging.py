@@ -17,7 +17,9 @@ from craftutils import plotting as pl
 
 import lib
 
-description = "Produces panels A, B & C of **Figure 2** and performs photometry on the imaging as specified in **S1.6**."
+description = """
+Produces panels A, B & C of **Figure 2** and performs photometry on the imaging as specified in **S1.6**.
+"""
 
 
 def main(
@@ -25,7 +27,7 @@ def main(
         input_dir: str,
         skip_photometry: bool,
 ):
-    tick_fontsize = 14
+    tick_fontsize = 13
     script_dir = os.path.dirname(__file__)
     field_name = "FRB20220610A"
     frb220610_field = field.FRBField.from_file(os.path.join(script_dir, "param", field_name, field_name))
@@ -116,6 +118,9 @@ def main(
             fig = plt.figure(figsize=(12, 6))
 
         for i, img in enumerate(imgs):
+
+            panel_id = chr(ord("A") + i)
+
             img.load_wcs()
             if vertical:
                 ax_1 = fig.add_subplot(len(imgs), 1, i + 1, projection=img.wcs[0])
@@ -126,8 +131,21 @@ def main(
                 extra_height_top_factor = 0.8
                 spread_factor = 1.5
             ra, dec = ax_1.coords
-            ra.set_ticks(spacing=0.1 * units.hourangle / 3600)
-            ra.set_ticklabel(fontsize=tick_fontsize)
+
+            ra.set_ticks(
+                values=units.Quantity([
+                    Angle("23h24m17.92s"),
+                    Angle("23h24m17.67s"),
+                    Angle("23h24m17.42s"),
+                    # Angle("23h24m17.45s")
+                ]).to("deg")
+                # spacing=0.2 * units.hourangle / 3600
+            )
+            ra.set_ticklabel(
+                fontsize=tick_fontsize,
+                # rotation=45,
+                # pad=50
+            )
             dec.set_ticklabel(fontsize=tick_fontsize)
 
             ax_1.set_title(header_strings[i], size=16)
@@ -162,6 +180,16 @@ def main(
                     "text_kwargs": {"fontsize": 14},
                     "extra_height_top_factor": extra_height_top_factor
                 }
+            )
+            # Draw panel label
+            ax_1.text(
+                0.05, 0.95,
+                f"{panel_id}",
+                horizontalalignment='left',
+                verticalalignment='top',
+                transform=ax_1.transAxes,
+                c="white",
+                fontsize=15
             )
             cbar = plt.colorbar(
                 other_args["mapping"],
@@ -200,7 +228,7 @@ def main(
                     x_text, y_text = img.world_to_pixel(text_coord)
 
                     if clump_name != "all":
-                        ax_1.text(x_text, y_text, f"${clump_name.lower()}$", fontsize=22, color="white")
+                        ax_1.text(x_text, y_text, f"{clump_name.lower()}", fontsize=22, color="white")
                     # Draw ellipse
                     e = Ellipse(
                         xy=(x, y),
