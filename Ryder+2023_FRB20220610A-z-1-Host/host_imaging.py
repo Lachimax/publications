@@ -18,7 +18,8 @@ from craftutils import plotting as pl
 import lib
 
 description = """
-Produces panels A, B & C of **Figure 2** and performs photometry on the imaging as specified in **S1.6**.
+Produces panels A, B & C of **Figure 2** and performs photometry on the imaging as specified in **S1.6**, generating
+the data for **Table S2**.
 """
 
 
@@ -243,62 +244,24 @@ def main(
 
             # Draw X-Shooter slits
             if i == 1:
-                acq_star = SkyCoord("23h24m17.084s -33d30m23.540s")
-                # target = SkyCoord(acq_star.ra + 6.2 * units.arcsec, acq_star.dec - 26.3 * units.arcsec)
                 target = SkyCoord("23h24m17.580s -33d30m49.840s")
-                print(acq_star.to_string(style="hmsdms"))
-                print(target.to_string(style="hmsdms"))
-                print(frb220610_field.frb.position.to_string(style="hmsdms"))
-                target_x, target_y = img.world_to_pixel(target)
-                slit_width = img.pixel(1 * units.arcsec).value
-                slit_length = img.pixel(11 * units.arcsec).value
+                slit_width = 1 * units.arcsec
+                slit_length = 11 * units.arcsec
 
-                theta = 45
-                rec_x = target_x + np.sin(np.deg2rad(theta)) * slit_length / 2 + np.cos(
-                    np.deg2rad(theta)) * slit_width / 2
-                rec_y = target_y - np.cos(np.deg2rad(theta)) * slit_length / 2 - np.sin(
-                    np.deg2rad(theta)) * slit_width / 2
-
-                print("\nRECTANGLE")
-                print(rec_x, rec_y, slit_width, slit_length)
-                print("\n")
-                # ax_1.scatter(target_x, target_y, marker="x", c="white")
-                # ax_1.scatter(rec_x, rec_y, marker="x", c="black")
-                rect_1 = Rectangle(
-                    (rec_x, rec_y),
-                    slit_width,
-                    slit_length,
-                    # rotation_point="center",
-                    angle=theta,
-                    linewidth=2,
-                    edgecolor='white',
-                    facecolor='none'
+                img.plot_slit(
+                    ax=ax_1,
+                    centre=target,
+                    width=slit_width,
+                    length=slit_length,
+                    position_angle=90 * units.deg
                 )
-                ax_1.add_artist(rect_1)
-
-                theta = 90
-                rec_x = target_x + np.sin(np.deg2rad(theta)) * slit_length / 2 + np.cos(
-                    np.deg2rad(theta)) * slit_width / 2
-                rec_y = target_y - np.cos(np.deg2rad(theta)) * slit_length / 2 - np.sin(
-                    np.deg2rad(theta)) * slit_width / 2
-
-                print("\nRECTANGLE")
-                print(rec_x, rec_y, slit_width, slit_length)
-                print("\n")
-                # ax_1.scatter(target_x, target_y, marker="x", c="white")
-                # ax_1.scatter(rec_x, rec_y, marker="x", c="black")
-
-                rect_2 = Rectangle(
-                    (rec_x, rec_y),
-                    slit_width,
-                    slit_length,
-                    # rotation_point="center",
-                    angle=90,
-                    linewidth=2,
-                    edgecolor='white',
-                    facecolor='none'
+                img.plot_slit(
+                    ax=ax_1,
+                    centre=target,
+                    width=slit_width,
+                    length=slit_length,
+                    position_angle=45 * units.deg
                 )
-                ax_1.add_artist(rect_2)
 
         fig.savefig(output_path + ".pdf", bbox_inches='tight')
         fig.savefig(output_path + ".png", bbox_inches='tight')
@@ -322,11 +285,14 @@ def main(
 
         clumps = []
 
-        for img in imgs:
-            print(img.filter_name)
-            band_name = img.filter.band_name
-            for clump_name in apertures:
+        for clump_name in apertures:
+            print(f"\n{clump_name}:")
+
+            for img in imgs:
+                band_name = img.filter.band_name
+
                 aperture = apertures[clump_name]
+
                 # Extract photometry using SEP
                 phot = img.sep_elliptical_magnitude(
                     centre=aperture["centre"],
@@ -348,14 +314,37 @@ def main(
                 aperture.update(phot_better)
 
                 plt.title(f"{img.instrument.nice_name()}, {img.filter.nice_name()}")
-                print(clump_name, ":", phot["mag"][0], "+/-", phot["mag_err"][0], "; SNR ==", phot["snr"][0])
-                clumps.append(apertures[clump_name])
+                print(f"{img.filter_name}: {phot['mag'][0]} +/- {phot['mag_err'][0]}; SNR == {phot['snr'][0]}")
+
+            clumps.append(apertures[clump_name])
 
         # Write table of photometry to disk.
         clump_tbl = table.QTable(clumps)
+        clump_tbl.sort("obj_name")
         clump_tbl.write(os.path.join(output_dir, "photometry_table.csv"), overwrite=True)
         clump_tbl.write(os.path.join(output_dir, "photometry_table.ecsv"), overwrite=True)
 
+        latex_tbl = table.QTable()
+
+        latex_tbl["component"] = clump_tbl["obj_name"]
+        latex_tbl["ra"] = clump_tbl["centre"].ra.to(units.hourangle).to_string(precision=2, format='latex')
+        latex_tbl["dec"] = clump_tbl["centre"].dec.to_string(precision=1, format='latex')
+        latex_tbl["theta"] = -clump_tbl["theta"]
+        latex_tbl["a"] = clump_tbl["a"]
+        latex_tbl["b"] = clump_tbl["b"]
+        latex_tbl["g"] = clump_tbl["mag_g"].round(2)
+        latex_tbl["g_err"] = clump_tbl["mag_err_g"].round(2)
+        latex_tbl["R"] = clump_tbl["mag_R"].round(2)
+        latex_tbl["R_err"] = clump_tbl["mag_err_R"].round(2)
+        latex_tbl["J"] = clump_tbl["mag_J"].round(2)
+        latex_tbl["J_err"] = clump_tbl["mag_err_J"].round(2)
+        latex_tbl["Ks"] = clump_tbl["mag_Ks"].round(2)
+        latex_tbl["Ks_err"] = clump_tbl["mag_err_Ks"].round(2)
+        latex_tbl["R-Ks"] = (clump_tbl["mag_R"] - clump_tbl["mag_Ks"]).round(2)
+        latex_tbl["R-Ks_err"] = np.sqrt(clump_tbl["mag_err_R"] ** 2 + clump_tbl["mag_err_Ks"] ** 2).round(2)
+
+        cl_pds = latex_tbl.to_pandas().transpose()
+        cl_pds.to_csv(os.path.join(output_dir, "table_s2.csv"))
 
 if __name__ == '__main__':
     import argparse
