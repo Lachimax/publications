@@ -19,7 +19,7 @@ import lib
 
 description = """
 Produces panels A, B & C of **Figure 2** and performs photometry on the imaging as specified in **S1.6**, generating
-the data for **Table S2**.
+the data for **Table S2**. Also generates a special version of the figure for my PhD thesis.
 """
 
 
@@ -104,17 +104,21 @@ def main(
     header_strings = [
         r"$g$-band",
         r"$R$-band",
-        r"$K_\mathrm{s}$-band"
+        r"$K_\mathrm{s}$-band",
     ]
 
     def plot_science(
             vertical: bool,
             output_path: str,
-            all_loc: bool = False
+            all_loc: bool = False,
+            cmaps=("plasma", "plasma", "plasma"),
+            thesis=False
     ):
 
         if vertical:
             fig = plt.figure(figsize=(6, 12))
+        elif thesis:
+            fig = plt.figure(figsize=(pl.textwidths["mqthesis"], pl.textwidths["mqthesis"]))
         else:
             fig = plt.figure(figsize=(12, 6))
 
@@ -127,6 +131,10 @@ def main(
                 ax_1 = fig.add_subplot(len(imgs), 1, i + 1, projection=img.wcs[0])
                 extra_height_top_factor = 1.5
                 spread_factor = 0.5
+            elif thesis:
+                ax_1 = fig.add_subplot(2, 2, i + 1, projection=img.wcs[0])
+                extra_height_top_factor = 1.5
+                spread_factor = 0.
             else:
                 ax_1 = fig.add_subplot(1, len(imgs), i + 1, projection=img.wcs[0])
                 extra_height_top_factor = 0.8
@@ -149,10 +157,10 @@ def main(
             )
             dec.set_ticklabel(fontsize=tick_fontsize)
 
-            ax_1.set_title(header_strings[i], size=16)
+            ax_1.set_title(header_strings[i], size=14)
 
             # Draw the scale bar only on the final image.
-            if i == 2:
+            if i == 2 and not thesis:
                 scale_bar_obj = frb220610_field.frb.host_galaxy
             else:
                 scale_bar_obj = None
@@ -166,7 +174,7 @@ def main(
                 ax=ax_1,
                 img=img,
                 frame=4 * units.arcsec,
-                imshow_kwargs={"cmap": "plasma"},
+                imshow_kwargs={"cmap": cmaps[i]},
                 show_frb=show_frb,
                 frb_kwargs={
                     "edgecolor": "black",
@@ -182,45 +190,57 @@ def main(
                     "extra_height_top_factor": extra_height_top_factor
                 }
             )
+            if thesis:
+                dec.set_axislabel(" ")
+                ra.set_axislabel(" ")
             # Draw panel label
-            ax_1.text(
-                0.05, 0.95,
-                f"{panel_id}",
-                horizontalalignment='left',
-                verticalalignment='top',
-                transform=ax_1.transAxes,
-                c="white",
-                fontsize=15
-            )
-            cbar = plt.colorbar(
-                other_args["mapping"],
-                ax=ax_1,
-                location="bottom"
-            )
-            cbar.set_label(
-                label="counts s$^{-1}$",
-                size=14
-            )
-            cbar.ax.tick_params(
-                labelsize=12,
-                labelrotation=45,
-            )
+            if not thesis:
+                ax_1.text(
+                    0.05, 0.95,
+                    f"{panel_id}",
+                    horizontalalignment='left',
+                    verticalalignment='top',
+                    transform=ax_1.transAxes,
+                    c="white",
+                    fontsize=15
+                )
+                cbar = plt.colorbar(
+                    other_args["mapping"],
+                    ax=ax_1,
+                    location="bottom"
+                )
+                cbar.set_label(
+                    label="counts s$^{-1}$",
+                    size=14
+                )
+                cbar.ax.tick_params(
+                    labelsize=12,
+                    labelrotation=45,
+                )
 
             # Turn off horizontal axis tick labels for vertical format.
             if vertical:
                 if i < 2:
                     ra.set_ticklabel_visible(False)
+            elif thesis:
+                if i in (0, 1):
+                    ra.set_ticklabel_visible(False)
+                if i in (1, 3):
+                    dec.set_ticklabel_visible(False)
             else:
                 if i > 0:
                     dec.set_ticklabel_visible(False)
             # Draw apertures only on first panel.
-            if i == 0:
+            if i == 0 or thesis:
                 for clump_name in apertures:
                     aperture = apertures[clump_name]
                     aperture["obj_name"] = clump_name
                     a = aperture["a"]
                     b = aperture["b"]
                     theta = aperture["theta"]
+                    offset_factor = aperture["text_offset_factor"]
+                    if thesis:
+                        offset_factor *= 0.8
                     text_coord = SkyCoord(
                         aperture["centre"].ra + aperture["text_offset_factor"] * 1.1 * a,
                         aperture["centre"].dec - b / 2
@@ -243,7 +263,7 @@ def main(
                     ax_1.add_artist(e)
 
             # Draw X-Shooter slits
-            if i == 1:
+            if i == 1 and not thesis:
                 target = SkyCoord("23h24m17.580s -33d30m49.840s")
                 slit_width = 1 * units.arcsec
                 slit_length = 11 * units.arcsec
@@ -263,15 +283,62 @@ def main(
                     position_angle=45 * units.deg
                 )
 
+        if thesis:
+            ax = fig.add_subplot(1, 1, 1)
+            ax.set_frame_on(False)
+            ax.tick_params(left=False, right=False, top=False, bottom=False)
+            ax.yaxis.set_ticks([])
+            ax.xaxis.set_ticks([])
+            # ax.set_ticks([])
+            # ax.set_aspect("equal")
+            ax.set_xlabel(
+                "Right Ascension (J2000)",
+                labelpad=30,
+                fontsize=14
+            )
+            ax.set_ylabel(
+                "Declination (J2000)",
+                labelpad=30.,
+                fontsize=14,
+                rotation=-90
+            )
+            ax.yaxis.set_label_position("right")
+
         fig.savefig(output_path + ".pdf", bbox_inches='tight')
         fig.savefig(output_path + ".png", bbox_inches='tight')
 
-    plot_science(vertical=True, output_path=os.path.join(output_dir, "FRB20220610A_gRK_vertical"))
-    plot_science(vertical=False, output_path=os.path.join(output_dir, "FRB20220610A_gRK_horizontal"))
+    plot_science(
+        vertical=True,
+        output_path=os.path.join(output_dir, "FRB20220610A_gRK_vertical")
+    )
+    plot_science(
+        vertical=False,
+        output_path=os.path.join(output_dir, "FRB20220610A_gRK_horizontal")
+    )
     plot_science(
         vertical=False,
         all_loc=True,
         output_path=os.path.join(output_dir, "FRB20220610A_gRK_horizontal_all_loc")
+    )
+
+    imgs = [g_img, R_img, J_img, K_img]
+    header_strings = [
+        r"VLT/FORS2, $g$-band",
+        r"VLT/FORS2, $R$-band",
+        r"VLT/HAWK-I, $J$-band",
+        r"VLT/HAWK-I, $K_\mathrm{s}$-band",
+    ]
+    latex_kwargs = {
+        "packages": [],
+    }
+    pl.latex_setup(**latex_kwargs)
+
+    plot_science(
+        vertical=False,
+        all_loc=True,
+        output_path=os.path.join(output_dir, "FRB20220610A_gRJK_thesis"),
+        cmaps=(g_img.filter.cmap, R_img.filter.cmap, J_img.filter.cmap, K_img.filter.cmap),
+        thesis=True
     )
 
     if not skip_photometry:

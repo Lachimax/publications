@@ -17,7 +17,7 @@ To inquire after the data used by these scripts, please contact me directly.
 #### `host_imaging.py`
 
 Produces panels A, B & C of **Figure 2** and performs photometry on the imaging as specified in **S1.6**, generating
-the data for **Table S2**.
+the data for **Table S2**. Also generates a special version of the figure for my PhD thesis.
 
 
 ### References
