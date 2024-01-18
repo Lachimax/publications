@@ -74,8 +74,7 @@ def main(
             )
             limits[fil] = results
             results.write(os.path.join(output_dir_this, f"limits_{dict_name}_{fil}.ecsv"), overwrite=True)
-            print(fil, ":", results[4]["mag"],) #img.get_zeropoint(cat_name="best", img_name="self"))
-
+            print(fil, ":", results[4]["mag"], )  # img.get_zeropoint(cat_name="best", img_name="self"))
 
 
 if __name__ == '__main__':

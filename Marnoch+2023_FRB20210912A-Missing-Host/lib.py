@@ -67,8 +67,8 @@ objects.set_cosmology("Planck18")
 afg_units = units.pc ** (-2 / 3) * units.km ** (-1 / 3)
 
 model_dir = os.path.join(
-    input_path,
-    "a.c.gordon-prospector-models"
+    repo_data,
+    "gordon.a.c-prospector-models"
 )
 model_files = os.listdir(model_dir)
 events = list(set(map(lambda f: f[:6], model_files)))
@@ -1356,7 +1356,9 @@ def magnitude_redshift_plot(
         kwargs_path_lim={},
         textwidth_factor=1.,
         do_pdf_panel: bool = False,
+        pdf_panel_from = None,
         do_pdf_shading: bool = False,
+        pdf_y_axis: str = None,
         do_legend: bool = True,
         legend_frbs: list = None,
         path_slug: str = "trimmed",
@@ -1366,7 +1368,8 @@ def magnitude_redshift_plot(
         grey_lines=False,
         n_panels: int = 1,
         height_ratio=0.4,
-        height=None
+        height=None,
+        limit_override=None
 ):
     ident = f"{suffix}_{textwidth_factor}tw"
     if do_legend:
@@ -1419,7 +1422,10 @@ def magnitude_redshift_plot(
 
     # Plot the distributions panel in the figure
     if do_pdf_panel:
-        band_this = band[0]
+        if pdf_panel_from is not None:
+            band_this = pdf_panel_from
+        else:
+            band_this = band[0]
 
         band_name = band_this.machine_name()
         band_z_tbl = band_z_mag_tables[band_name]
@@ -1439,7 +1445,9 @@ def magnitude_redshift_plot(
             c="darkorange",
             ls=":"
         )
-        ax_pdf.set_ylabel("Probability\ndensity", fontsize=axis_fontsize)
+        if pdf_y_axis is None:
+            pdf_y_axis = "Probability\ndensity"
+        ax_pdf.set_ylabel(pdf_y_axis, fontsize=axis_fontsize)
         ax_pdf.set_xlim(0.01, 2.)
         ax_pdf.tick_params(bottom=False, labelsize=tick_fontsize)
         ax_pdf.xaxis.set_ticks([])
@@ -1459,8 +1467,14 @@ def magnitude_redshift_plot(
         band_this = band[index]
 
         band_name = band_this.machine_name()
-        limits = load_limits(path_slug)
-        limit = limits[band_this.name]["mag"][4].value
+        if limit_override is None:
+            limits = load_limits(path_slug)
+            limit = limits[band_this.name]["mag"][4].value
+        else:
+            limit = limit_override
+
+        print(f"PANEL {panel + 1} / {n_panels_}: {band_this.name} LIMIT:", limit)
+
         band_z_tbl = band_z_mag_tables[band_name]
 
         grey = grey_lines[index]
@@ -1647,4 +1661,4 @@ def magnitude_redshift_plot(
     )
     plt.close(fig)
 
-    return fig
+    return ax, fig

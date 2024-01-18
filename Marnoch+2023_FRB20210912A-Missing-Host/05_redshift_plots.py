@@ -42,6 +42,7 @@ def main(
         c="purple"
     )
     ax.set_xlabel("$z$")
+    ax.set_ylabel("Probability density")
     ax.set_xlim(0., 5)
 
     dirpath = os.path.join(output_path, "distributions")
@@ -253,6 +254,24 @@ def main(
         # color=colors
     )
 
+    lib.magnitude_redshift_plot(
+        band=[lib.R_fors2, lib.K_hawki],
+        frbs=hosts_R,
+        draw_lstar=False,
+        draw_observed_phot=False,
+        suffix="selection_twin",
+        path_lim=False,
+        do_pdf_panel=False,
+        # do_pdf_shading=True,
+        legend_frbs=hosts_R,  # + hosts_K,
+        do_median=False,
+        grey_lines=False,
+        n_panels=2,
+        # do_mean=True,
+        do_other_photometry=False
+        # color=colors
+    )
+
     for band in lib.bands_default:
         lib.textwidth = pl.textheights["mqthesis"]
         lib.magnitude_redshift_plot(
@@ -279,6 +298,47 @@ def main(
             do_legend=False,
             textwidth_factor=0.5
         )
+        ax, fig = lib.magnitude_redshift_plot(
+            band=band,
+            suffix="all",
+            grey_lines=True,
+            do_median=True,
+            # do_mean=True,
+            do_legend=False,
+            textwidth_factor=0.5,
+            height_ratio=0.6,
+            do_pdf_panel=True,
+            pdf_y_axis="$p$"
+        )
+
+        limit_this = 28.3
+        ax, fig = lib.magnitude_redshift_plot(
+            band=band,
+            suffix="all_jwst",
+            grey_lines=True,
+            do_median=True,
+            # do_mean=True,
+            do_legend=False,
+            textwidth_factor=0.5,
+            height_ratio=0.6,
+            do_pdf_panel=True,
+            pdf_panel_from=lib.R_fors2,
+            pdf_y_axis="$p$",
+            # limit=limit_this
+        )
+        ax.plot(
+            (1.8, 1.8),
+            (0, 50),
+            c="cyan", lw=2, ls=":"
+        )
+        ax.plot(
+            (0.0, 4.),
+            (limit_this, limit_this),
+            c="violet", lw=2,
+        )
+        fig.savefig(os.path.join(lib.output_path, f"jwst_{band.machine_name()}.pdf"), bbox_inches='tight')
+
+
         lib.magnitude_redshift_plot(
             band=band,
             frbs=hosts_R,

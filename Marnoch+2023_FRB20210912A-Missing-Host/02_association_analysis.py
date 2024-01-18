@@ -113,6 +113,39 @@ def main(
     # Set up images
     lib.load_images()
 
+    # Individual plots
+
+    for img in (
+            lib.g_img_trimmed,
+            lib.R_img_trimmed,
+            lib.I_img_trimmed,
+            lib.K_img
+        ):
+        lib.candidate_image(
+            images=[img],
+            path_cat=path_cat_02,
+            plot_width=textwidths["mqthesis"],
+            plot_height=textwidths["mqthesis"],
+            n_x=1,
+            n_y=1,
+            ylabelpad=30,
+            label=True,
+            band_titles=True,
+            suffix=img.filter.band_name
+        )
+        lib.candidate_image(
+            images=[img],
+            path_cat=path_cat_02,
+            plot_width=textwidths["mqthesis"],
+            plot_height=textwidths["mqthesis"],
+            n_x=1,
+            n_y=1,
+            ylabelpad=30,
+            label=False,
+            band_titles=True,
+            suffix=img.filter.band_name
+        )
+
     # Square imaging plot
     for label in (True, False):
         lib.candidate_image(
@@ -177,6 +210,20 @@ def main(
             suffix="unsubtracted",
             label=label
         )
+        # Only g & R, horizontal
+        lib.candidate_image(
+            images=(
+                lib.g_img_trimmed,
+                lib.R_img_trimmed,
+            ),
+            path_cat=path_cat_02,
+            plot_width=textwidths["MNRAS"],
+            plot_height=textwidths["MNRAS"] * 0.5,
+            n_x=2,
+            n_y=1,
+            ylabelpad=30,
+            label=label
+        )
         # Columnar imaging plot
         lib.candidate_image(
             images=(
@@ -187,6 +234,19 @@ def main(
             ),
             path_cat=path_cat_02,
             label=label
+        )
+        # Only g & R, vertical
+        lib.candidate_image(
+            images=(
+                lib.g_img_trimmed,
+                lib.R_img_trimmed,
+            ),
+            path_cat=path_cat_02,
+            label=label,
+            plot_height=textwidths["MNRAS"],
+            ylabelpad=30,
+            n_x=1,
+            n_y=2,
         )
 
         # WISE
