@@ -1,0 +1,15 @@
+name: HG20210117
+position:
+  dec: {decimal: null, dms: -16d09m05.560s}
+  ra: {decimal: null, hms: 22h39m55.0707s}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  ra: {stat: 0.0, sys: 0.0}
+  sigma: null
+  theta: 0.0
+transient: FRB20210117A
+type: TransientHostCandidate
+z: 0.214
+z_err: 0.001

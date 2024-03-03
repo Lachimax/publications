@@ -1,0 +1,42 @@
+date: '2012-11-02'
+dm: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 555.0
+dm_err: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 10.0
+host_galaxy: HG20121102A
+instrument: Arecibo
+name: FRB20121102A
+photometry_args_manual:
+  a: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  b: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  kron_radius: 3.5
+  theta: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+plotting: {frame: null}
+position:
+  alpha: {decimal: 82.99458333333332, hms: 05h31m58.7s}
+  delta: {decimal: 33.14791666666667, dms: +33d08m52.5s}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  alpha: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  delta: {stat: 0.0, sys: 0.0}
+  healpix_path: null
+  sigma: null
+  theta: 0.0
+publication_doi: null
+snr: 0.0
+tau_err: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: ms}
+  value: -999.0
+tns_name: FRB20121102A
+type: FRB
+width_int: 3.0
+width_int_err: 0.5

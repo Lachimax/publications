@@ -1,0 +1,13 @@
+centre:
+  alpha: {decimal: 82.99458333333332, hms: 05h31m58.7s}
+  delta: {decimal: 33.14791666666667, dms: +33d08m52.5s}
+data_path: FRB20121102A/
+extent: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: deg}
+  value: 0.3
+frb: FRB20121102A
+name: FRB20121102A
+subtraction:
+  template_epochs: {des: null, fors2: null, sdss: null, xshooter: null}
+survey: null
+type: FRBField

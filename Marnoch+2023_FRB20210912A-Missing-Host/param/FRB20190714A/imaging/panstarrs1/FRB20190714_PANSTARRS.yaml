@@ -1,0 +1,24 @@
+background_subtraction:
+  renormalise_centre:
+    dec: {decimal: 0.0, dms: 00d00m00s}
+    ra: {decimal: 0.0, hms: 00h00m00s}
+  test_synths:
+  - mags: {}
+    position:
+      dec: {decimal: 0.0, dms: 00d00m00s}
+      ra: {decimal: 0.0, hms: 00h00m00s}
+data_path: FRB20190714/imaging/panstarrs1
+date: null
+field: FRB20190714A
+instrument: panstarrs1
+name: FRB20190714_PANSTARRS
+program_id: null
+sextractor:
+  aperture_diameters: [7.72]
+  dual_mode: true
+  kron_factor: 2.5
+  kron_radius_min: 3.5
+  threshold: 1.5
+skip: {astrometry_net: false, esoreflex_copy: false, esorex: false, sextractor: false,
+  sextractor_individual: false}
+target: null

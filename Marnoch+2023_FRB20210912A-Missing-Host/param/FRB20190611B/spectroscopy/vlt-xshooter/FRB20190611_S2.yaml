@@ -1,0 +1,20 @@
+combined_epoch: false
+convert_to_marz_format: {}
+data_path: FRB20190611/spectroscopy/vlt-xshooter/2019-08-21-FRB20190611_S2
+date: !astropy.time.Time {format: iso, in_subfmt: '*', jd1: 2458716.0, jd2: 0.5, out_subfmt: '*',
+  precision: 3, scale: utc}
+do: {}
+download: {alternate_dir: null}
+field: FRB20190611B
+initial_setup: {}
+instrument: vlt-xshooter
+mode: spectroscopy
+name: FRB20190611_S2
+notes: []
+program_id: 0103.A-0101(B)
+pypeit_coadd: {}
+pypeit_flux: {}
+pypeit_run: {do_not_reuse_masters: false}
+pypeit_setup:
+  setups: []
+target: FRB20190611

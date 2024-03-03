@@ -1,0 +1,22 @@
+dm: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 380.1
+dm_err: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 0.4
+host_galaxy: HG20200430
+instrument: ASKAP
+mjd: 58000
+name: FRB20200430A
+position:
+  dec: {decimal: 12.37688889, dms: 12d22m36.3s}
+  ra: {decimal: 229.70641667, hms: 15h18m49.54s}
+position_err:
+  alpha: {stat: 0.167, sys: 0.2506}
+  delta: {stat: 0.24, sys: 0.98}
+  sigma: null
+  theta: 0.0
+snr: 16.0
+survey: CRAFT/ICS
+tns_name: FRB20200430A
+type: FRB

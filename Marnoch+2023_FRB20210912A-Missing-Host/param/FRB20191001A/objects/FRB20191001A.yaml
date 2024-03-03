@@ -1,0 +1,28 @@
+dm: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 506.92
+dm_err: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 0.04
+host_galaxy: HG20191001
+instrument: ASKAP
+mjd: 58000
+name: FRB20191001A
+position:
+  alpha: {decimal: null, hms: 21h33m24.46818866s}
+  delta: {decimal: null, dms: -54d44m53.6414992s}
+position_err:
+  alpha: {stat: 0.0, sys: 0.209}
+  delta: {stat: 0.0, sys: 0.154}
+  sigma: null
+  theta: 0.0
+snr: 62.0
+snr_coherent: 192
+survey: CRAFT/ICS
+tau_err: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: ms}
+  value: 0.2
+tns_name: FRB20191001A
+type: FRB
+width_int: 0.22
+width_int_err: 0.03

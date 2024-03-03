@@ -1,0 +1,28 @@
+name: HG20211203
+photometry_args_manual:
+  a: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  b: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  kron_radius: 3.5
+  theta: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+plotting: {frame: null}
+position:
+  dec: {decimal: -31.3801295422213, dms: null}
+  ra: {decimal: 204.562612151662, hms: null}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  healpix_path: null
+  ra: {stat: 0.0, sys: 0.0}
+  sigma: null
+  theta: 0.0
+transient: FRB20211203C
+type: TransientHostCandidate
+z: 0.3439
+z_err: -999.0

@@ -1,0 +1,25 @@
+astrometry: {tweak: true}
+coadd: {frames: final}
+combined_epoch: false
+data_path: FRB20210807/imaging/gs-aoi/2021-09-13-FRB20210807_GSAOI_1
+date: !astropy.time.Time {format: iso, in_subfmt: '*', jd1: 2459470.0, jd2: 0.5, out_subfmt: '*',
+  precision: 3, scale: utc}
+do: {}
+download: {overwrite_download: true}
+field: FRB20210807D
+initial_setup: {}
+instrument: gs-aoi
+mode: imaging
+name: FRB20210807_GSAOI_1
+notes: []
+program_id: GS-2021B-C-3
+reduce_flats: {}
+reduce_science: {}
+sextractor:
+  aperture_diameters: [7.72]
+  dual_mode: true
+  kron_factor: 2.5
+  kron_radius_min: 3.5
+  threshold: 1.5
+stack_science: {}
+target: null

@@ -1,0 +1,15 @@
+name: HG20200906
+position:
+  dec: {decimal: -14.0844642, dms: -14d04m59.726s}
+  ra: {decimal: 53.4952741, hms: 03h33m59.004s}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  ra: {stat: 0.0, sys: 0.0}
+  sigma: null
+  theta: 0.0
+transient: FRB20200906A
+type: TransientHostCandidate
+z: 0.3688
+z_err: -999.0

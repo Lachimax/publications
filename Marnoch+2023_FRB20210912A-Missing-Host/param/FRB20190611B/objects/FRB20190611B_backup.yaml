@@ -1,0 +1,35 @@
+dm: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 332.63
+dm_err: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 0.04
+host_galaxy: HG20190611
+instrument: ASKAP
+mjd: 58485
+name: FRB20190611B
+nu_scattering: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: GHz}
+  value: 1.2725
+position:
+  dec: {decimal: -79.39775, dms: -79d23m51.3s}
+  ra: {decimal: 320.74629167, hms: 21h22m58.91s}
+position_err:
+#  alpha: {stat: 0.3202, sys: 1.1189}
+#  delta: {stat: 0.34, sys: 1.07}
+  a: {stat: 0.3202, sys: 1.1189}
+  b: {stat: 0.34, sys: 1.07}
+  sigma: null
+  theta: 0
+snr: 9.3
+survey: CRAFT/ICS
+tau: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: ms}
+  value: 0.18
+tau_err: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: ms}
+  value: 0.02
+tns_name: FRB20190611B
+type: FRB
+width_int: 0.09
+width_int_err: 0.02

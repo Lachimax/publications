@@ -1,0 +1,11 @@
+name: local_knot
+position:
+  dec: {decimal: -14.0844642, dms: -14d04m59.9136s}
+  ra: {decimal: 53.4952741, hms: 53d29m46.2s}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  ra: {stat: 0.0, sys: 0.0}
+  sigma: null
+  theta: 0.0

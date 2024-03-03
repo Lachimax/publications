@@ -1,0 +1,41 @@
+astrometry: {tweak: true}
+coadd: {frames: final}
+combined_epoch: false
+convert_to_cs: {upper_only: false}
+correct_astrometry_coadded: {tweak: true}
+correct_astrometry_frames: {method: individual, tweak: true, upper_only: false}
+data_path: FRB20220105A/imaging/vlt-fors2/FRB20220105A_FORS2_1/
+date: !astropy.time.Time {format: isot, in_subfmt: '*', jd1: 2459619.0, jd2: -0.15354658564814816,
+  out_subfmt: '*', precision: 3, scale: utc}
+do: {}
+download: {}
+dual_mode_source_extraction: {}
+field: FRB20220105A
+frame_diagnostics: {}
+get_photometry: {}
+initial_setup: {skip_esoreflex_copy: false}
+instrument: vlt-fors2
+mode: imaging
+name: FRB20220105A_FORS2_1
+notes: []
+photometric_calibration:
+  class_star_tolerance: 0.95
+  distance_tolerance: null
+  image_type: coadded_trimmed
+  preferred_zeropoint: {}
+  skip_retrievable: false
+  snr_min: 100
+program_id: 108.21ZF.001
+register_frames: {}
+sextractor:
+  aperture_diameters: [7.72]
+  dual_mode: true
+  kron_factor: 2.5
+  kron_radius_min: 3.5
+  threshold: 1.5
+sort_reduced: {alternate_dir: null, delete_eso_output: false}
+source_extraction: {do_astrometry_diagnostics: true}
+subtract_background_frames: {}
+target: FRB 20220105A Host
+trim_coadded: {reproject: false}
+trim_reduced: {}

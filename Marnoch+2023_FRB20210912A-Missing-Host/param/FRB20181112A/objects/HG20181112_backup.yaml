@@ -1,0 +1,16 @@
+mass_stellar: 2600000000.0
+mass_stellar_err: 1100000000.0
+name: HG20181112
+position:
+  dec: {decimal: -52.969711, dms: -52d58m15.481s}
+  ra: {decimal: 327.34952, hms: 21h49m23.6554s}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 7.48e-12, sys: 0.0}
+  ra: {stat: 7.76e-12, sys: 0.0}
+  theta: 0.0
+transient: FRB20181112A
+type: TransientHostCandidate
+z: 0.4755
+z_err: 0.00015

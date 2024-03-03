@@ -1,0 +1,14 @@
+name: HG20180924
+position:
+  dec: {decimal: -40.90028, dms: null}
+  ra: {decimal: 326.1052405, hms: null}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 5.92e-12, sys: 0.0}
+  ra: {stat: 0.0, sys: 0.0}
+  theta: 0.0
+transient: FRB20180924B
+type: TransientHostCandidate
+z: 0.3214
+z_err: 0.0002

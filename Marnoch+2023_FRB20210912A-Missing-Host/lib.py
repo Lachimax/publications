@@ -61,7 +61,6 @@ def set_input_path(path):
     global input_path
     input_path = path
 
-
 objects.set_cosmology("Planck18")
 
 afg_units = units.pc ** (-2 / 3) * units.km ** (-1 / 3)
@@ -85,7 +84,7 @@ do_not_load = [
 ]
 
 # fld = field.Field.from_params("FRB20210912")
-fld = field.Field.from_file(os.path.join(script_dir, "param", "FRB20210912", "FRB20210912.yaml"))
+fld = field.Field.from_file(os.path.join(script_dir, "param", "FRB20210912A", "FRB20210912A.yaml"))
 
 frb_list = field.list_fields()
 
@@ -304,9 +303,8 @@ def load_image(name: str):
     if os.path.exists(trimmed_path):
         trimmed = image.FORS2CoaddedImage(trimmed_path)
     else:
-        frb210912 = field.Field.from_params("FRB20210912")
         left, right, bottom, top = subbed.frame_from_coord(
-            centre=frb210912.frb.position,
+            centre=fld.frb.position,
             frame=14 * units.arcsec
         )
         trimmed = subbed.trim(left, right, bottom, top)
@@ -456,7 +454,7 @@ def load_prospector_files():
         for frb_this in frb_list:
             if frb_this.startswith(frb_name):
                 frb_name = frb_this
-                fld_this = field.Field.from_params(frb_name)
+                fld_this = field.Field.from_file(os.path.join(script_dir, "param", frb_name, f"{frb_name}.yaml"))
                 if fld_this.frb.tns_name is not None:
                     frb_name = fld_this.frb.tns_name
                 z = fld_this.frb.host_galaxy.z
@@ -680,7 +678,7 @@ def multipath(
                 path_dict[img.filter_name] = copy.deepcopy(fildict)
             img_path = os.path.join(run_path_path, img.filter_name)
             u.mkdir_check(img_path)
-            cand_tbl, p_ox, p_ux = frb_object.probabilistic_association(
+            cand_tbl, p_ox, p_ux, prior_set, config_n = frb_object.probabilistic_association(
                 prior_set={"U": p_u},
                 offset_priors={"method": offset_prior, "scale": 0.5},
                 img=img,
@@ -960,6 +958,7 @@ def mag_from_model_flux(
         model: sed.SEDModel,
         z_shift: float = 1.0,
         bands: List[fil.Filter] = bands_default,
+        write: bool = False
 ):
     """
     Uses a set of bandpasses to derive observed magnitudes for an FRB host placed at a counterfactual redshift.
@@ -971,7 +970,7 @@ def mag_from_model_flux(
     :return: dict of AB magnitudes in the given bands, with keys being the band names and values being the magnitudes.
     """
     mags = {}
-    shifted_model = model.move_to_redshift(z_new=z_shift)
+    shifted_model = model.move_to_redshift(z_new=z_shift, write=write)
 
     fluxes = {}
 
@@ -990,7 +989,8 @@ def get_mags_shifted(
         z_min: float = 0.01,
         z_max: float = 2.0,
         n: int = 10,
-        bands: List[fil.Filter] = bands_default
+        bands: List[fil.Filter] = bands_default,
+        write: bool = False
 ):
     """
     Applies mag_from_model_flux() to a model over a range of redshifts.
@@ -1023,6 +1023,7 @@ def get_mags_shifted(
             model=model,
             bands=bands,
             z_shift=z,
+            write=write
         )
         for band in bands:
             band_name = band.machine_name()

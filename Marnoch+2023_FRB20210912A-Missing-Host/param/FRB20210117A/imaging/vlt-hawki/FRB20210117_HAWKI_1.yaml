@@ -1,0 +1,29 @@
+astrometry: {tweak: true}
+coadd: {frames: final}
+combined_epoch: false
+correct_astrometry_coadded: {astroalign_template: null, tweak: true}
+data_path: FRB20210117/imaging/vlt-hawki/FRB20210117_HAWKI_1
+date: !astropy.time.Time {format: isot, in_subfmt: '*', jd1: 2459741.0, jd2: -0.21046261111111114,
+  out_subfmt: '*', precision: 3, scale: utc}
+do: {}
+download: {alternate_dir: null}
+field: FRB20210117A
+get_photometry: {image_type: final, skip_plots: false}
+initial_setup: {skip_esoreflex_copy: false}
+instrument: vlt-hawki
+mode: imaging
+name: FRB20210117_HAWKI_1
+notes: []
+photometric_calibration:
+  class_star_tolerance: 0.95
+  distance_tolerance: null
+  image_type: final
+  preferred_zeropoint: {}
+  snr_min: 3.0
+  suppress_select: true
+program_id: None
+sextractor: {dual_mode: true, kron_factor: 2.5, kron_radius_min: 3.5, threshold: 1.5}
+sort_reduced: {alternate_dir: null, delete_eso_output: false}
+source_extraction: {do_astrometry_diagnostics: true}
+split_frames: {}
+target: FRB 210117 Host

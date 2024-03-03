@@ -1,0 +1,10 @@
+centre:
+  dec: {decimal: -52.969711, dms: null}
+  ra: {decimal: 327.34952, hms: null}
+data_path: FRB20181112
+frb: FRB20181112A
+name: FRB20181112A
+subtraction:
+  template_epochs: {des: 0, fors2: 3, sdss: null, xshooter: 2}
+survey: CRAFT_ICS
+type: FRBField

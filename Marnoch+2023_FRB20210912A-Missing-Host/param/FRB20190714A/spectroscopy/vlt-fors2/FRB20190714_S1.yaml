@@ -1,0 +1,9 @@
+data_path: /home/lachlan/Data/FRB20190714/spectroscopy/vlt-fors2/2021-03-07
+date: !astropy.time.Time {format: iso, in_subfmt: '*', jd1: 2459280.0, jd2: 0.5, out_subfmt: '*',
+  precision: 3, scale: utc}
+field: null
+grism: GRIS_300I
+instrument: vlt-fors2
+name: FRB20190714_S1
+obj: null
+program_id: 105.204W.002

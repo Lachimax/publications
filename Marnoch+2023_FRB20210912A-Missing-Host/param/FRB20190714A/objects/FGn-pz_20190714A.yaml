@@ -1,0 +1,27 @@
+name: FGn-pz_20190714A
+photometry_args_manual:
+  a: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  b: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  kron_radius: 3.5
+  theta: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+plotting: {frame: null}
+position:
+  dec: {decimal: -12.97143542, dms: null}
+  ra: {decimal: 184.00568523, hms: null}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  healpix_path: null
+  ra: {stat: 0.0, sys: 0.0}
+  sigma: null
+  theta: 0.0
+publication_doi: null
+type: galaxy
+z: 0.08127883

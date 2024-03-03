@@ -1,0 +1,7 @@
+mass_stellar: 48977881940.0
+mass_stellar_err: 32000000000.0
+position:
+  dec: {decimal: -52.969711, dms: null}
+  ra: {decimal: 327.34952, hms: null}
+type: galaxy
+z: 0.3674

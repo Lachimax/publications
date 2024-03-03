@@ -1,0 +1,10 @@
+centre:
+  dec: {decimal: -13.0229304, dms: null}
+  ra: {decimal: 183.9787351, hms: null}
+data_path: /home/lachlan/Data/FRB20190714/
+frb: FRB20190714A
+name: FRB20190714A
+subtraction:
+  template_epochs: {des: 0, fors2: null, sdss: null, xshooter: null}
+survey: CRAFT_ICS
+type: FRBField

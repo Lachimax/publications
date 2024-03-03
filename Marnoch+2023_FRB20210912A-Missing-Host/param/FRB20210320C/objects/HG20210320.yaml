@@ -1,0 +1,14 @@
+name: HG20210320
+position:
+  dec: {decimal: -16.1225539176371, dms: null}
+  ra: {decimal: 204.458856583377, hms: null}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  ra: {stat: 0.0, sys: 0.0}
+  theta: 0.0
+transient: FRB20210320C
+type: TransientHostCandidate
+z: 0.2797
+z_err: -999.0

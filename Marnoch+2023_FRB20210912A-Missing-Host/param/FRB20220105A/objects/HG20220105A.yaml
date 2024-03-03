@@ -1,0 +1,28 @@
+name: HG20220105A
+photometry_args_manual:
+  a: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  b: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  kron_radius: 3.5
+  theta: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+plotting: {frame: null}
+position:
+  dec: {decimal: 22.4665114926997, dms: null}
+  ra: {decimal: 208.803812915383, hms: null}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  healpix_path: null
+  ra: {stat: 0.0, sys: 0.0}
+  sigma: null
+  theta: 0.0
+transient: FRB20220105A
+type: TransientHostCandidate
+z: 0.2785
+z_err: -999.0

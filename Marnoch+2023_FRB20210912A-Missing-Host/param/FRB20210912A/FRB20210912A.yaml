@@ -1,0 +1,13 @@
+centre:
+  alpha: {decimal: 0.0, hms: 23h23m10.352s}
+  delta: {decimal: 0.0, dms: -30d24m19.2451s}
+data_path: FRB20210912/
+extent: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: deg}
+  value: 0.1
+frb: FRB20210912A
+name: FRB20210912A
+subtraction:
+  template_epochs: {des: null, fors2: null, sdss: null, xshooter: null}
+survey: CRAFT_ICS
+type: FRBField

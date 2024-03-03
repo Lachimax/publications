@@ -1,0 +1,15 @@
+name: HG20190102
+position:
+  dec: {decimal: null, dms: -79d28m32.620s}
+  ra: {decimal: null, hms: 21h29m39.7110s}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 3.09e-11, sys: 0.0}
+  ra: {stat: 1.64e-11, sys: 0.0}
+  sigma: null
+  theta: 0.0
+transient: FRB20190102C
+type: TransientHostCandidate
+z: 0.2912
+z_err: -999.0

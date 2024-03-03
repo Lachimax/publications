@@ -1,0 +1,34 @@
+dm: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 1233.696
+dm_err: 0.006
+host_galaxy: HG20210912
+mjd: 58000
+name: FRB20210912A
+nu_scattering: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: MHz}
+  value: 1263.5
+position:
+  alpha: {decimal: 0.0, hms: 23h23m10.352s}
+  delta: {decimal: 0.0, dms: -30d24m19.2451s}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  alpha: {stat: 0.4304887897107978, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  delta: {stat: 0.2966348943682091, sys: 0.0}
+  sigma: null
+  theta: 0.0
+tau: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: us}
+  value: 59.0
+tau_err: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: us}
+  value: 4.0
+tns_name: FRB20210912A
+type: FRB
+width_int: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: us}
+  value: 26.0
+width_int_err: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: us}
+  value: 2.0

@@ -1,0 +1,48 @@
+dm: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 636.2
+dm_err: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 0.4
+host_galaxy: HG20211203
+instrument: ASKAP
+mjd: 58000
+name: FRB20211203C
+photometry_args_manual:
+  a: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  b: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  kron_radius: 3.5
+  theta: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+plotting: {frame: null}
+position:
+  dec:
+    decimal: !astropy.coordinates.Latitude
+      unit: !astropy.units.Unit {unit: deg}
+      value: -31.380333333333333
+    dms: -31d22m49.2s
+  ra:
+    decimal: !astropy.coordinates.Longitude
+      unit: !astropy.units.Unit {unit: deg}
+      value: 204.56241666666665
+      wrap_angle: !astropy.coordinates.Angle
+        unit: !astropy.units.Unit {unit: deg}
+        value: 360.0
+    hms: 13h38m14.98s
+position_err:
+  a: {stat: 0.2, sys: 0.0}
+  b: {stat: 0.2, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  healpix_path: null
+  ra: {stat: 0.0, sys: 0.0}
+  sigma: null
+  theta: 0.0
+snr: 14.2
+survey: CRAFT/ICS
+tns_name: FRB20211203C
+type: FRB

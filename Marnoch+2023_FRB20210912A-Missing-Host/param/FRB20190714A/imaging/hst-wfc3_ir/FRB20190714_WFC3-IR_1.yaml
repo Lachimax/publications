@@ -1,0 +1,24 @@
+background_subtraction:
+  renormalise_centre:
+    dec: {decimal: 0.0, dms: 00d00m00s}
+    ra: {decimal: 0.0, hms: 00h00m00s}
+  test_synths:
+  - mags: {}
+    position:
+      dec: {decimal: 0.0, dms: 00d00m00s}
+      ra: {decimal: 0.0, hms: 00h00m00s}
+data_path: FRB20190714/imaging/hst-wfc3_ir/2020-09-29-FRB20190714_WFC3-IR_1
+date: '2020-09-29'
+field: FRB20190714A
+instrument: hst-wfc3_ir
+name: FRB20190714_WFC3-IR_1
+program_id: '16080'
+sextractor:
+  aperture_diameters: [7.72]
+  dual_mode: true
+  kron_factor: 2.5
+  kron_radius_min: 3.5
+  threshold: 1.5
+skip: {astrometry_net: false, esoreflex_copy: false, esorex: false, sextractor: false,
+  sextractor_individual: false}
+target: null

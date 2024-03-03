@@ -1,0 +1,29 @@
+name: HG20121102A
+photometry_args_manual:
+  a: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  b: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  kron_radius: 3.5
+  theta: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+plotting: {frame: null}
+position:
+  alpha: {decimal: 82.99458333333332, hms: 05h31m58.7s}
+  delta: {decimal: 33.14791666666667, dms: +33d08m52.5s}
+position_err:
+  a: {stat: 0.1, sys: 0.0}
+  alpha: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.1, sys: 0.0}
+  delta: {stat: 0.0, sys: 0.0}
+  healpix_path: null
+  sigma: null
+  theta: 0.0
+publication_doi: null
+transient: FRB20121102A
+type: TransientHostCandidate
+z: 0.192738
+z_err: 8.0e-05

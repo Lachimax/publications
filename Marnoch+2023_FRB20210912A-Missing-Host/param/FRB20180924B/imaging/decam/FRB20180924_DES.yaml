@@ -1,0 +1,31 @@
+astrometry: {tweak: true}
+coadd: {frames: final}
+combined_epoch: false
+data_path: FRB20180924/imaging/decam/FRB20180924_DES
+date: null
+do: {}
+download: {alternate_dir: null}
+field: FRB20180924B
+get_photometry: {}
+initial_setup: {}
+instrument: decam
+mode: imaging
+name: FRB20180924_DES
+notes: []
+photometric_calibration:
+  class_star_tolerance: 0.95
+  distance_tolerance: null
+  image_type: coadded_trimmed
+  preferred_zeropoint: {}
+  snr_min: 3.0
+  suppress_select: false
+program_id: null
+sextractor:
+  aperture_diameters: [7.72]
+  dual_mode: true
+  kron_factor: 2.5
+  kron_radius_min: 3.5
+  threshold: 1.5
+source_extraction: {do_astrometry_diagnostics: true}
+split: {}
+target: null

@@ -1,0 +1,12 @@
+position:
+  dec: {decimal: -13.02217146821349, dms: null}
+  ra: {decimal: 183.97380588375236, hms: null}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  ra: {stat: 0.0, sys: 0.0}
+  sigma: null
+  theta: 0.0
+type: galaxy
+z: 0.20936

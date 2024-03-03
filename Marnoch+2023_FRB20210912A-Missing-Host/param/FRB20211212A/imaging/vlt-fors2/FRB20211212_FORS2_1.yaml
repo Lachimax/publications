@@ -1,0 +1,43 @@
+astrometry: {tweak: true}
+coadd: {frames: final}
+combined_epoch: false
+convert_to_cs: {upper_only: false}
+correct_astrometry_coadded: {tweak: true}
+correct_astrometry_frames: {method: individual, skip_indices: true, tweak: true, upper_only: false}
+data_path: FRB20211212/imaging/vlt-fors2/FRB20211212_FORS2_1
+date: !astropy.time.Time {format: isot, in_subfmt: '*', jd1: 2459608.0, jd2: -0.23357144675925928,
+  out_subfmt: '*', precision: 3, scale: utc}
+do: {download: false}
+download: {}
+dual_mode_source_extraction: {}
+field: FRB20211212A
+frame_diagnostics: {}
+get_photometry: {}
+initial_setup: {skip_esoreflex_copy: false}
+instrument: vlt-fors2
+mode: imaging
+name: FRB20211212_FORS2_1
+notes: ['Skip download because the ESO archive does not correctly associate a set
+    of g_HIGH flats with this epoch; they had to be downloaded manually, and will
+    hence be deleted and not redownloaded by the script.']
+photometric_calibration:
+  class_star_tolerance: 0.95
+  distance_tolerance: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.2
+  image_type: coadded_trimmed
+  snr_min: 100
+program_id: 105.204W.003
+register_frames: {}
+sextractor:
+  aperture_diameters: [7.72]
+  dual_mode: true
+  kron_factor: 2.5
+  kron_radius_min: 3.5
+  threshold: 1.5
+sort_reduced: {alternate_dir: null, delete_eso_output: false, expect_sorted: true}
+source_extraction: {do_astrometry_diagnostics: true}
+subtract_background_frames: {}
+target: FRB 211212 host
+trim_coadded: {reproject: false}
+trim_reduced: {}

@@ -1,0 +1,20 @@
+combined_epoch: false
+convert_to_marz_format: {}
+data_path: FRB20190611/spectroscopy/vlt-fors2/FRB20190611_FORS2_S2
+date: !astropy.time.Time {format: iso, in_subfmt: '*', jd1: 2459128.0, jd2: -0.5,
+  out_subfmt: '*', precision: 3, scale: utc}
+do: {}
+download: {alternate_dir: null}
+field: FRB20190611B
+initial_setup: {}
+instrument: vlt-fors2
+mode: spectroscopy
+name: FRB20190611_FORS2_S2
+notes: []
+program_id: null
+pypeit_coadd: {}
+pypeit_flux: {}
+pypeit_run: {do_not_reuse_masters: false}
+pypeit_setup:
+  setups: [E, G]
+target: null

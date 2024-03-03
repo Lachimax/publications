@@ -1,0 +1,15 @@
+name: HG20190714A
+position:
+  dec: {decimal: -13.0210713, dms: null}
+  ra: {decimal: 183.9795211, hms: null}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  ra: {stat: 0.0, sys: 0.0}
+  sigma: null
+  theta: 0.0
+transient: FRB20190714A
+type: TransientHostCandidate
+z: 0.2365
+z_err: -999.0

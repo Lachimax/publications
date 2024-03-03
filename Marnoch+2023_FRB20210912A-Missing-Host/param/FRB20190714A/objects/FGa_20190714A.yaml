@@ -1,0 +1,13 @@
+mass_stellar: 143633853.97803783
+position:
+  dec: {decimal: -13.0227574682166, dms: null}
+  ra: {decimal: 183.978787216291, hms: null}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 0.0048384089, sys: 0.0}
+  ra: {stat: 0.0048978448, sys: 0.0}
+  sigma: null
+  theta: 0.0
+type: galaxy
+z: 0.08018

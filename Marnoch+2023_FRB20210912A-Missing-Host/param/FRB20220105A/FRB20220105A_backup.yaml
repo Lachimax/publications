@@ -1,0 +1,15 @@
+centre:
+  dec: {decimal: 22.466056, dms: +22d27m57.8016s}
+  ra: {decimal: 208.804208, hms: 13h55m13.00992s}
+data_path: FRB20220105A/
+extent: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: deg}
+  value: 0.1
+frb: FRB20220105A
+furby_frb: true
+name: FRB20220105A
+snr: 10.0
+subtraction:
+  template_epochs: {des: null, fors2: null, sdss: null, xshooter: null}
+survey: FURBY
+type: FRBField

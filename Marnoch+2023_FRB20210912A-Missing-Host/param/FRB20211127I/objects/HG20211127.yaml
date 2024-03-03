@@ -1,0 +1,35 @@
+name: HG20211127
+photometry_args_manual:
+  a: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  b: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  kron_radius: 3.5
+  theta: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+plotting:
+  I_BESS:
+    normalize: {stretch: log, vmax: 270}
+  Kshort:
+    normalize: {stretch: log, vmax: 200}
+  frame: 25
+  g_HIGH:
+    normalize: {stretch: log, vmax: 90}
+position:
+  alpha: {decimal: 0.0, hms: 13h19m13.964s}
+  delta: {decimal: 0.0, dms: -18d50m16.116s}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  healpix_path: null
+  ra: {stat: 0.0, sys: 0.0}
+  sigma: null
+  theta: 0.0
+transient: FRB20211127I
+type: TransientHostCandidate
+z: 0.0469
+z_err: -999.0

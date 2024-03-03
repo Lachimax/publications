@@ -1,0 +1,15 @@
+name: HG20191001
+position:
+  dec: {decimal: -54.74796406, dms: -54d44m54.493s}
+  ra: {decimal: 323.35167025, hms: 21h33m24.4722s}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  ra: {stat: 0.0, sys: 0.0}
+  sigma: null
+  theta: 0.0
+transient: FRB20191001A
+type: TransientHostCandidate
+z: 0.234
+z_err: 0.0001

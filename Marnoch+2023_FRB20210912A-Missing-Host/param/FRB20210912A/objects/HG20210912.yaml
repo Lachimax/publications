@@ -1,0 +1,26 @@
+name: HG20210912
+photometry_args_manual:
+  a: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 3.0
+  b: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 3.0
+  fix_pos: true
+  kron_radius: 1.0
+  theta: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+position:
+  alpha: {decimal: 0.0, hms: 23h23m10.352s}
+  delta: {decimal: 0.0, dms: -30d24m19.2451s}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  ra: {stat: 0.0, sys: 0.0}
+  sigma: null
+  theta: 0.0
+transient: FRB20210912A
+type: TransientHostCandidate
+z: null

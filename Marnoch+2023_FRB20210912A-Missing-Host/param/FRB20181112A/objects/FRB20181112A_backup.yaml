@@ -1,0 +1,34 @@
+dm: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 589.27
+dm_err: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 0.03
+host_galaxy: HG20181112
+instrument: ASKAP
+mjd: 58434
+name: FRB20181112A
+nu_scattering: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: GHz}
+  value: 1.3
+position:
+  dec: {decimal: -52.969711, dms: -52d58m15.4s}
+  ra: {decimal: 327.34952, hms: 21h49m23.63s}
+position_err:
+  a: {stat: 0.555, sys: 2.1}
+  alpha: {stat: 0.45, sys: 3.8485}
+  b: {stat: 0.153, sys: 1.4}
+  delta: {stat: 0.3, sys: 2.4165}
+  theta: 30
+snr: 19.3
+survey: CRAFT/ICS
+tau: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: ms}
+  value: 0.55
+tau_err: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: ms}
+  value: -999.0
+tns_name: FRB20181112A
+type: FRB
+width_int: 0.58
+width_int_err: -999.0

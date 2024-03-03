@@ -1,0 +1,46 @@
+coadd: {frames: final, sigma_clip: 1.0}
+combined_epoch: true
+convert_to_cs: {upper_only: false}
+correct_astrometry_coadded: {astroalign_template: null, tweak: true}
+correct_astrometry_frames: {back_subbed: false, correct_to_epoch: true, method: individual,
+  registration_template: null, tweak: true, upper_only: false}
+data_path: /home/lachlan/Data/FRB20190714/imaging/vlt-fors2/FRB20190714A_FORS2_combined
+date: !astropy.time.Time {format: mjd, in_subfmt: '*', jd1: 2459061.0, jd2: 0.0, out_subfmt: '*',
+  precision: 3, scale: utc}
+do: {convert_to_cs: false, correct_astrometry_frames: false, download: false, initial_setup: false,
+  sort_reduced: false, trim_reduced: false}
+download: {alternate_dir: null}
+dual_mode_source_extraction: {}
+exclude_frames: []
+field: FRB20190714A
+frame_diagnostics: {}
+get_photometry: {image_type: final, skip_plots: true}
+initial_setup: {skip_esoreflex_copy: false}
+instrument: vlt-fors2
+mode: imaging
+name: FRB20190714A_FORS2_combined
+notes: []
+photometric_calibration:
+  class_star_tolerance: 0.95
+  distance_tolerance: null
+  image_type: final
+  preferred_zeropoint: {}
+  snr_min: 3.0
+  suppress_select: true
+program_id: null
+register_frames: {include_chips: all, template: 0}
+sextractor: {dual_mode: false, kron_factor: 2.5, kron_radius_min: 3.5, threshold: 1.5}
+sort_reduced: {alternate_dir: null, delete_eso_output: false}
+source_extraction: {do_astrometry_diagnostics: true}
+subtract_background_frames:
+  centre: null
+  do_not_mask: false
+  frame: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 15.0
+  frames: astrometry
+  mask_kwargs: {}
+  method: local
+target: null
+trim_coadded: {reproject: false}
+trim_reduced: {}

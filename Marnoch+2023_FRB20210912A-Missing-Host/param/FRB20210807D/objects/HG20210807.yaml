@@ -1,0 +1,20 @@
+name: HG20210807
+plotting:
+  I_BESS:
+    normalize: {stretch: log, vmax: 162}
+  g_HIGH:
+    normalize: {stretch: log, vmax: 35, vmin: 18}
+position:
+  dec: {decimal: 0.0, dms: -00d45m43.998s}
+  ra: {decimal: 0.0, hms: 19h56m52.7945s}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  ra: {stat: 0.0, sys: 0.0}
+  sigma: null
+  theta: 0.0
+transient: FRB20210807D
+type: TransientHostCandidate
+z: 0.12927
+z_err: -999.0

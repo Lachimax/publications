@@ -4,6 +4,7 @@
 import os
 
 import numpy as np
+import yaml
 
 from astropy import table, units, coordinates, cosmology
 
@@ -17,6 +18,7 @@ description = """
 Uses GAMA DR4 (Driver et al 2022) and mNFW profiles (Prochaska & Zheng 2019) to estimate a partial foreground halo 
 contribution to the DM of FRB 20210912A.
 """
+
 
 def main(
         output_dir: str,
@@ -34,7 +36,7 @@ def main(
     u.mkdir_check(output_dir)
 
     frb210912 = lib.fld
-    gama = table.QTable.read(os.path.join(input_dir, "GAMA_KN2Fm5.csv"))
+    gama = table.QTable.read(os.path.join(lib.repo_data, "GAMA_KN2Fm5.csv"))
     gama = gama[gama["NQ"] > 2]
     # gama = gama[gama["PROB"] > 0.]
     gama["RAcen"] *= units.deg
@@ -58,7 +60,6 @@ def main(
 
     galaxies = []
     for row in subset:
-        print(row["uberID"], row["Z"])
         galaxy = objects.Galaxy(
             name=str(row["uberID"]),
             field=frb210912,
@@ -69,8 +70,6 @@ def main(
             # mass_stellar_err_minus=row["StellarMass_50"] - row["StellarMass_16"],
             # mass_stellar_err_plus=row["StellarMass_84"] - row["StellarMass_50"]
         )
-        print(galaxy.z)
-        print()
         galaxies.append(galaxy)
     subset["GalaxyObject"] = galaxies
 
@@ -96,8 +95,11 @@ def main(
     object_dir = os.path.join(output_dir, "objects")
     u.mkdir_check(object_dir)
     for galaxy in galaxies:
-        galaxy.output_file = os.path.join(object_dir, "GAMA_results.yaml")
-        galaxy.update_output_file()
+        galaxy.output_file = os.path.join(object_dir, f"{galaxy.name}_results.yaml")
+        try:
+            galaxy.update_output_file()
+        except yaml.representer.RepresenterError:
+            print(f"Output file for galaxy {galaxy.name} could not be written.")
 
     p.save_params(
         os.path.join(output_dir, "GAMA_results.yaml"),

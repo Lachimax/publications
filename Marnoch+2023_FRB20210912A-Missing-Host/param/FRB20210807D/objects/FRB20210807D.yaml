@@ -1,0 +1,24 @@
+dm: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 251.9
+dm_err: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: pc / cm3}
+  value: 0.2
+host_galaxy: HG20210807
+instrument: ASKAP
+mjd: 58000
+name: FRB20210807D
+position:
+  dec: {decimal: 0.0, dms: -00d45m44.1s}
+  ra: {decimal: 0.0, hms: 19h56m53.11s}
+position_err:
+  a: {stat: 0.49, sys: 0.0}
+  b: {stat: 0.5, sys: 0.0}
+  dec: {stat: 0.0, sys: 0.0}
+  ra: {stat: 0.0, sys: 0.0}
+  sigma: null
+  theta: 0.0
+snr: 47.1
+survey: CRAFT/ICS
+tns_name: FRB20210807D
+type: FRB

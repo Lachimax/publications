@@ -1,0 +1,21 @@
+background_subtraction:
+  renormalise_centre: {dec: 0.0, ra: 0.0}
+  test_synths: []
+data_path: FRB20190714/imaging/vlt-fors2/2021-03-06-FRB20190714_2
+date: !astropy.time.Time {format: iso, in_subfmt: '*', jd1: 2459280.0, jd2: -0.5,
+  out_subfmt: date, precision: 3, scale: utc}
+field: FRB20190714A
+get_photometry:
+  skip_plots: true
+instrument: vlt-fors2
+name: FRB20190714_FORS2_2
+program_id: 105.204W.001
+sextractor:
+  aperture_diameters: [7.72]
+  dual_mode: true
+  kron_factor: 2.5
+  kron_radius_min: 3.5
+  threshold: 1.5
+skip: {astrometry_net: false, esoreflex_copy: false, esorex: false, sextractor: false,
+  sextractor_individual: true}
+target: FRB 190714 host

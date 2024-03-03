@@ -1,0 +1,24 @@
+centre:
+  dec:
+    decimal: !astropy.coordinates.Latitude
+      unit: !astropy.units.Unit {unit: deg}
+      value: -31.380333333333333
+    dms: -31d22m49.2s
+  ra:
+    decimal: !astropy.coordinates.Longitude
+      unit: !astropy.units.Unit {unit: deg}
+      value: 204.562612151662
+      wrap_angle: !astropy.coordinates.Angle
+        unit: !astropy.units.Unit {unit: deg}
+        value: 360.0
+    hms: 13h38m14.98s
+data_path: FRB20211203/
+extent: !astropy.units.Quantity
+  unit: !astropy.units.Unit {unit: deg}
+  value: 0.1
+frb: FRB20211203C
+name: FRB20211203C
+subtraction:
+  template_epochs: {des: null, fors2: null, sdss: null, xshooter: null}
+survey: CRAFT_ICS
+type: FRBField

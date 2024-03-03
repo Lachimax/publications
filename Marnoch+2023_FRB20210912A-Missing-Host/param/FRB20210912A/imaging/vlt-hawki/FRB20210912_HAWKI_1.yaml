@@ -1,0 +1,34 @@
+astrometry: {tweak: true}
+coadd: {frames: split}
+combined_epoch: false
+correct_astrometry_coadded: {astroalign_template: null, tweak: true}
+data_path: FRB20210912/imaging/vlt-hawki/FRB20210912_HAWKI_1
+date: !astropy.time.Time {format: isot, in_subfmt: '*', jd1: 2459556.0, jd2: -0.4288961539351852,
+  out_subfmt: '*', precision: 3, scale: utc}
+do: {coadd: true}
+download: {alternate_dir: null}
+field: FRB20210912A
+get_photometry: {image_type: final, skip_plots: false}
+initial_setup: {skip_esoreflex_copy: false}
+instrument: vlt-hawki
+mode: imaging
+name: FRB20210912_HAWKI_1
+notes: []
+photometric_calibration:
+  class_star_tolerance: 0.95
+  distance_tolerance: null
+  image_type: final
+  preferred_zeropoint: {}
+  snr_min: 3.0
+  suppress_select: true
+program_id: 108.21ZF.005
+sextractor:
+  aperture_diameters: [7.72]
+  dual_mode: true
+  kron_factor: 2.5
+  kron_radius_min: 3.5
+  threshold: 1.5
+sort_reduced: {alternate_dir: null, delete_eso_output: false}
+source_extraction: {do_astrometry_diagnostics: true}
+split_frames: {}
+target: FRB 210912 Host

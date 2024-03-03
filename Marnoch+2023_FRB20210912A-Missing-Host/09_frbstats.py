@@ -26,7 +26,8 @@ consistent with z>1.
 
 def main(
         output_dir: str,
-        input_dir: str
+        input_dir: str,
+        update: bool
 ):
     lib.set_input_path(input_dir)
     lib.set_output_path(output_dir)
@@ -34,12 +35,16 @@ def main(
     output_this = os.path.join(lib.output_path, "FRBStats")
     u.mkdir_check(output_this)
 
-    frbstats_response = requests.get("https://www.herta-experiment.org/frbstats/catalogue.csv").content
-    frbstats_path = os.path.join(output_this, f"FRBSTATS-{Time.now()}.csv".replace(" ", "T"))
-    with open(frbstats_path, "wb") as file:
-        file.write(frbstats_response)
+    if update:
+        frbstats_response = requests.get("https://www.herta-experiment.org/frbstats/catalogue.csv").content
+        frbstats_path = os.path.join(output_this, f"FRBSTATS-{str(Time.now()).replace(':', '-')}.csv".replace(" ", "T"))
+        with open(frbstats_path, "wb") as file:
+            file.write(frbstats_response)
+    else:
+        frbstats_path = os.path.join(lib.repo_data, "FRBSTATS-2023-06-01.csv")
 
     frbstats = table.QTable.read(frbstats_path)
+
     frbstats["dm"] *= objects.dm_units
 
     frbstats_1000 = frbstats[frbstats["dm"] > 1000 * objects.dm_units]
@@ -128,11 +133,17 @@ if __name__ == '__main__':
         type=str,
         default=lib.default_input_path
     )
+    parser.add_argument(
+        "--update",
+        help="Download the latest FRBSTATS catalogue; otherwise, will use the version included in the repository.",
+        action="store_true"
+    )
 
     args = parser.parse_args()
     output_path = args.o
     input_path = args.i
     main(
         output_dir=output_path,
-        input_dir=input_path
+        input_dir=input_path,
+        update=args.update
     )
