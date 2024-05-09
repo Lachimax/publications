@@ -20,7 +20,7 @@ def main(
 ):
     lib.set_input_path(input_dir)
     lib.set_output_path(output_dir)
-    dl_path = os.path.expanduser(os.path.join(input_dir, ".."))
+    dl_path = os.path.dirname(input_dir)
     file_path = os.path.join(dl_path, "input.zip")
     u.rm_check(file_path)
     print("Downloading input data.")

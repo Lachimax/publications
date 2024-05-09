@@ -6,8 +6,8 @@ import os
 import matplotlib.pyplot as plt
 
 from astropy.coordinates import SkyCoord
-
 import craftutils.utils as u
+from craftutils.retrieve import load_catalogue
 
 import lib
 
@@ -32,10 +32,10 @@ def main(
     plot_path = os.path.join(lib.output_path, "Gaia")
     u.mkdir_check(plot_path)
 
-    # Pull down the Gaia catalogue for the field
-    frb210912.retrieve_catalogue("gaia", force_update=True)
-    gaia = frb210912.load_catalogue('gaia')
-
+    gaia = load_catalogue(
+        cat_name="gaia",
+        cat=os.path.join(lib.repo_data, "gaia_FRB20210912A.csv"),
+    )
     # Get pixel coordinates for the Gaia stars in each image
     gaia_coord = SkyCoord(gaia["ra"], gaia["dec"])
     gaia["skycoord"] = gaia_coord
@@ -64,7 +64,7 @@ def main(
     ax.scatter(brightest["x_g"], brightest["y_g"], marker="x", c='red')
 
     for i, row in enumerate(brightest):
-        plt.text(row["x_g"], row["y_g"], row["source_id"], c="red")
+        plt.text(row["x_g"], row["y_g"], row["SOURCE_ID"], c="red")
 
     fig.savefig(os.path.join(plot_path, "bright_stars_g.pdf"))
     brightest.write(os.path.join(plot_path, "bright_stars.ecsv"), overwrite=True)
