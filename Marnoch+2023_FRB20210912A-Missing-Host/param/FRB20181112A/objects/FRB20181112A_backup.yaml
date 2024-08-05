@@ -21,7 +21,7 @@ position_err:
   delta: {stat: 0.3, sys: 2.4165}
   theta: 30
 snr: 19.3
-survey: CRAFT/ICS
+survey: CRAFT_ICS
 tau: !astropy.units.Quantity
   unit: !astropy.units.Unit {unit: ms}
   value: 0.55

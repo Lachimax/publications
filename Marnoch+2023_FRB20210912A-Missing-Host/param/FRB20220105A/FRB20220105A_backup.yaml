@@ -11,5 +11,5 @@ name: FRB20220105A
 snr: 10.0
 subtraction:
   template_epochs: {des: null, fors2: null, sdss: null, xshooter: null}
-survey: FURBY
+survey: CRAFT_ICS
 type: FRBField

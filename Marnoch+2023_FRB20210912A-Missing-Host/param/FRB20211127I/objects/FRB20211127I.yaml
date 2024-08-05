@@ -29,6 +29,6 @@ position_err:
   sigma: null
   theta: 0.0
 snr: 0.0
-survey: CRAFT/ICS
+survey: CRAFT_ICS
 tns_name: FRB20211127I
 type: FRB
