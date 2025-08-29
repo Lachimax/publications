@@ -32,30 +32,6 @@ def main(
 
     pl.latex_setup()
 
-    fig, ax = plt.subplots(figsize=(lib.textwidth, lib.textwidth / 4))
-    # Do some plotting
-    ax.plot(
-        lib.z_p_z_dm,
-        lib.p_z_dm_best,
-        label="$p(z|\mathrm{DM})$",
-        lw=2,
-        c="purple"
-    )
-    ax.set_xlabel("$z$")
-    ax.set_ylabel("Probability density")
-    ax.set_xlim(0., 5)
-
-    dirpath = os.path.join(output_path, "distributions")
-    u.mkdir_check_nested(dirpath, False)
-    fig.savefig(os.path.join(dirpath, f"p_z_dm_only.pdf"), bbox_inches="tight")
-    fig.savefig(os.path.join(dirpath, f"p_z_dm_only.png"), bbox_inches="tight")
-
-    for band in lib.bands_default + lib.bands_wise:
-        print("=======================================================")
-        print(band.machine_name())
-        lib.band_mag_table(band)
-        print()
-
     hosts_R = [
         "FRB20121102A",
         "FRB20210117A",
@@ -98,6 +74,83 @@ def main(
     ]
 
     lib.set_plot_properties(frbs=hosts_R + hosts_K)
+
+    # THESIS VERSION
+
+    lib.textwidth = lib.textwidths["mqthesis"]
+    band = lib.R_fors2
+    lib.band_mag_table(
+        band,
+        legend_top=True
+    )
+
+    lib.magnitude_redshift_plot(
+        band=lib.R_fors2,
+        frbs=hosts_minimal,
+        draw_lstar=True,
+        draw_observed_phot=False,
+        suffix="minimal",
+        textwidth_factor=1,
+        do_legend=True,
+        do_other_photometry=False
+    )
+
+    lib.magnitude_redshift_plot(
+        band=[lib.R_fors2, lib.K_hawki],
+        suffix="all_twin",
+        grey_lines=True,
+        do_median=True,
+        # do_mean=True,
+        do_legend=False,
+        n_panels=2,
+        textwidth_factor=1
+    )
+
+    lib.magnitude_redshift_plot(
+        band=[lib.R_fors2, lib.K_hawki],
+        frbs=hosts_R,
+        draw_lstar=False,
+        draw_observed_phot=False,
+        suffix="selection_twin_thesis",
+        path_lim=False,
+        do_pdf_panel=True,
+        # do_pdf_shading=True,
+        legend_frbs=hosts_R,  # + hosts_K,
+        do_median=False,
+        grey_lines=False,
+        n_panels=2,
+        # do_mean=True,
+        do_other_photometry=False
+        # color=colors
+    )
+
+
+    # PAPER VERSION
+    lib.textwidth = lib.textwidths["MNRAS"]
+    fig, ax = plt.subplots(figsize=(lib.textwidth, lib.textwidth / 4))
+    # Do some plotting
+    ax.plot(
+        lib.z_p_z_dm,
+        lib.p_z_dm_best,
+        label="$p(z|\mathrm{DM})$",
+        lw=2,
+        c="purple"
+    )
+    ax.set_xlabel("$z$")
+    ax.set_ylabel("Probability density")
+    ax.set_xlim(0., 5)
+
+    dirpath = os.path.join(output_path, "distributions")
+    u.mkdir_check_nested(dirpath, False)
+    fig.savefig(os.path.join(dirpath, f"p_z_dm_only.pdf"), bbox_inches="tight")
+    fig.savefig(os.path.join(dirpath, f"p_z_dm_only.png"), bbox_inches="tight")
+
+    for band in lib.bands_default + lib.bands_wise: # + (lib.J_jwst, lib.J_hawki):
+        print("=======================================================")
+        print(band.machine_name())
+        lib.band_mag_table(band)
+        print()
+
 
     # ===============================================================================
     # K-band
@@ -236,6 +289,75 @@ def main(
         textwidth_factor=0.5
     )
 
+    # FOR CALEB+2025
+
+    lib.magnitude_redshift_plot(
+        band=lib.K_hawki,
+        suffix="all_K_28",
+        grey_lines=True,
+        do_median=True,
+        # do_mean=True,
+        do_legend=False,
+        n_panels=1,
+        textwidth_factor=0.5,
+        limit_override=28,
+        z_max=3
+    )
+
+    lib.magnitude_redshift_plot(
+        band=lib.K_hawki,
+        suffix="all_K_2385",
+        grey_lines=True,
+        do_median=True,
+        # do_mean=True,
+        do_legend=False,
+        n_panels=1,
+        textwidth_factor=0.5,
+        limit_override=23.85,
+        z_max=3
+    )
+
+    lib.magnitude_redshift_plot(
+        band=lib.J_hawki,
+        suffix="all_J_28",
+        grey_lines=True,
+        do_median=True,
+        # do_mean=True,
+        do_legend=False,
+        n_panels=1,
+        textwidth_factor=0.5,
+        limit_override=28,
+        z_max=3
+    )
+
+    lib.magnitude_redshift_plot(
+        band=lib.J_hawki,
+        suffix="all_J_2385",
+        grey_lines=True,
+        do_median=True,
+        # do_mean=True,
+        do_legend=False,
+        n_panels=1,
+        textwidth_factor=0.5,
+        limit_override=23.85,
+        z_max=3
+    )
+
+    lib.magnitude_redshift_plot(
+        band=lib.J_jwst,
+        suffix="all_J-jwst",
+        grey_lines=True,
+        do_median=True,
+        # do_mean=True,
+        do_legend=False,
+        n_panels=1,
+        textwidth_factor=0.5,
+        limit_override=23.85,
+        z_max=3
+    )
+
+    ## ??????
+
     lib.magnitude_redshift_plot(
         band=[lib.R_fors2, lib.K_hawki],
         frbs=hosts_R,
@@ -298,7 +420,7 @@ def main(
             do_legend=False,
             textwidth_factor=0.5
         )
-        ax, fig = lib.magnitude_redshift_plot(
+        fig, ax = lib.magnitude_redshift_plot(
             band=band,
             suffix="all",
             grey_lines=True,
@@ -312,7 +434,7 @@ def main(
         )
 
         limit_this = 28.3
-        ax, fig = lib.magnitude_redshift_plot(
+        fig, ax = lib.magnitude_redshift_plot(
             band=band,
             suffix="all_jwst",
             grey_lines=True,

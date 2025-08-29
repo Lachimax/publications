@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Code by Lachlan Marnoch, 20XX
+# Code by Lachlan Marnoch, 2023-2025
 
 import os
 import zipfile
@@ -25,7 +25,7 @@ def main(
     u.rm_check(file_path)
     print("Downloading input data.")
     r.download_file(
-        file_url="https://drive.usercontent.google.com/download?id=1RIkATMiKgyT1U7OR6DOQ5JLffwrJXCcs&export=download&authuser=0&confirm=t&uuid=35bb6cb8-37ec-4038-93be-d8eb43ae2d63&at=APZUnTXhybFPE9i6UwQW95VzSFHj:1709205577049",
+        file_url="https://drive.usercontent.google.com/download?id=1O9XpTU2upz85_Vi6FvHMDfzD67mjJ5bW&export=download&authuser=0&confirm=t&uuid=8a6d3d16-be8f-4d2d-9847-832b8e174fa0&at=AN8xHorLw5ma7sap_3Acg8LfQEpH:1752817820857",
         output_dir=dl_path,
         overwrite=True,
         filename="input.zip"

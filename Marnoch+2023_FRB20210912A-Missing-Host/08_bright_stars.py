@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Code by Lachlan Marnoch, 20XX
+# Code by Lachlan Marnoch, 2023
 
 import os
 
@@ -47,10 +47,10 @@ def main(
     # Plot Gaia positions on image
     R_gaia = gaia[gaia["in_R"]]
     g_gaia = gaia[gaia["in_g"]]
-    ax, fig = g_img.plot()
+    fig, ax = g_img.plot()
     ax.scatter(g_gaia["x_g"], g_gaia["y_g"], marker="x", c='red')
     fig.savefig(os.path.join(plot_path, "gaia_g.pdf"))
-    ax, fig = R_img.plot()
+    fig, ax = R_img.plot()
     ax.scatter(R_gaia["x_R"], R_gaia["y_R"], marker="x", c='red')
     fig.savefig(os.path.join(plot_path, "gaia_R.pdf"))
 
@@ -59,7 +59,7 @@ def main(
     brightest["distance"] = frb210912.frb.position.separation(brightest["skycoord"]).to("arcsec")
     brightest.sort("distance")
     frb_x_g, frb_y_g = g_img.world_to_pixel(frb210912.frb.position)
-    ax, fig = g_img.plot()
+    fig, ax = g_img.plot()
     ax.scatter(frb_x_g, frb_y_g, c="violet")
     ax.scatter(brightest["x_g"], brightest["y_g"], marker="x", c='red')
 

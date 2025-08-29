@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Code by Lachlan Marnoch, 20XX
+# Code by Lachlan Marnoch, 2023
 
 import os
 
@@ -32,7 +32,7 @@ def main(
     lib.set_input_path(input_dir)
     lib.set_output_path(output_dir)
     fld = lib.fld
-    fld.frb._dm_mw_ism = 30.9 * objects.dm_units
+    fld.frb._dm_mw_ism = 30.9 * lib.dm_units
 
     # Set up a range of values for redshift and AFG
     z_host = np.arange(0., 2., 0.01)
@@ -46,7 +46,7 @@ def main(
         dm_arrays.append(dm)
 
     values = {}
-    values["tau_mw"] = fld.frb.tau_mw()
+    values["tau_mw"], _ = fld.frb.tau_mw()
     values["tau_exgal"] = fld.frb.tau - values["tau_mw"]
     values["DM_host_0.1_max_obs"] = (fld.frb.dm_host_from_tau(
         z_host=z_host,
@@ -113,7 +113,7 @@ def main(
         ax.set_xlabel("$z$")
         ax.set_title(labels[i])
     fig.subplots_adjust(hspace=0.2)
-    fig.savefig(os.path.join(output, f"dm_scattering.png"), bbox_inches="tight")
+    fig.savefig(os.path.join(output, f"dm_scattering.png"), bbox_inches="tight", dpi=200)
     fig.savefig(os.path.join(output, f"dm_scattering.pdf"), bbox_inches="tight")
     plt.close(fig)
 

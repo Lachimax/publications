@@ -39,7 +39,7 @@ def main(
             model=model,
             z_max=6.,
             n=2000,
-            bands=bands_default + bands_wise,
+            bands=bands_default + bands_wise +(J_hawki, J_jwst),
             write=write
         )
         model_dict_frb["mag_table"] = mag_tbl

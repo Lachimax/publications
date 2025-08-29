@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Code by Lachlan Marnoch, 20XX
+# Code by Lachlan Marnoch, 2023
 
 import os
 
