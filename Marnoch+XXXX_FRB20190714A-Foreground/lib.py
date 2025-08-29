@@ -119,17 +119,25 @@ fld.frb.get_host()
 
 plot_dir = os.path.join(output_path, "plots")
 os.makedirs(plot_dir, exist_ok=True)
-dropbox_path = "/home/lachlan/Dropbox/Apps/Overleaf/PhD Thesis/07_frb190714"
-dropbox_figs = os.path.join(dropbox_path, "figures")
+dropbox_path = None
 
-commands_dict_path = os.path.join(output_path, "commands.yaml")
+if dropbox_path is not None:
+    dropbox_figs = os.path.join(dropbox_path, "figures")
+    latex_table_path_db = os.path.join(dropbox_path, "tables")
+    commands_path_db = os.path.join(dropbox_path, "commands_frb190714_generated_2.tex")
+
+
+else:
+    dropbox_figs = None
+    latex_table_path_db = None
+    commands_path_db = None
+
 commands_dict = {}
+commands_dict_path = os.path.join(output_path, "commands.yaml")
 commands_tex_path = os.path.join(output_path, "commands.tex")
-commands_path_db = os.path.join(dropbox_path, "commands_frb190714_generated_2.tex")
 
 latex_table_path = os.path.join(output_path, "latex_tables")
 os.makedirs(latex_table_path, exist_ok=True)
-latex_table_path_db = os.path.join(dropbox_path, "tables")
 os.makedirs(latex_table_path_db, exist_ok=True)
 
 halo_npy_dir = os.path.join(output_path, "halo_arrays")
@@ -183,12 +191,17 @@ def add_commands(new_commands: dict):
 
 def savefig(fig, filename, subdir=None, tight=True, png_to_db=False):
     output_this = plot_dir
-    db_this = str(dropbox_figs)
+    if dropbox_figs is not None:
+        db_this = str(dropbox_figs)
+    else:
+        db_this = None
     if subdir is not None:
         output_this = os.path.join(output_this, subdir)
-        db_this = os.path.join(db_this, subdir)
+        if db_this is not None:
+            db_this = os.path.join(db_this, subdir)
     os.makedirs(output_this, exist_ok=True)
-    os.makedirs(db_this, exist_ok=True)
+    if db_this is not None:
+        os.makedirs(db_this, exist_ok=True)
     output = os.path.join(output_this, filename)
     print("Saving figure to ", output + ".pdf")
     if tight:
@@ -201,12 +214,13 @@ def savefig(fig, filename, subdir=None, tight=True, png_to_db=False):
     fig.savefig(output + ".png",
                 # bbox_inches=bb,
                 dpi=400)
-    db_output = os.path.join(db_this, filename)
-    print("Saving figure to Dropbox: ", db_output + ".pdf")
-    if png_to_db:
-        fig.savefig(db_output + ".png", bbox_inches=bb, dpi=400)
-    else:
-        fig.savefig(db_output + ".pdf", bbox_inches=bb)
+    if db_this is not None:
+        db_output = os.path.join(db_this, filename)
+        print("Saving figure to Dropbox: ", db_output + ".pdf")
+        if png_to_db:
+            fig.savefig(db_output + ".png", bbox_inches=bb, dpi=400)
+        else:
+            fig.savefig(db_output + ".pdf", bbox_inches=bb)
 
 
 ##############################################################################

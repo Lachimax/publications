@@ -1,4 +1,8 @@
-data: { }
+data: 
+  ACS-GC: |
+    FITS files constituting the entire ACS-GC catalogue; will be downloaded by the script `00-retrieve.py` from https://cdsarc.cds.unistra.fr/ftp/J/ApJS/200/9/fits/.
+  chrimes+2021: |
+    The Chrimes et al 2021 neutron star catalogue; will be downloaded by the script `00-retrieve.py` from https://raw.githubusercontent.com/achrimes2/MW-NS-Flight/refs/heads/master/Data/
 data_availability: To inquire after the data used by these scripts, please contact me directly.
 dir_description: |
   The scripts found in this directory are for reproducing the results in Chapter 3 of my forthcoming PhD thesis.

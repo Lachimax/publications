@@ -4,6 +4,7 @@
 import os
 
 import craftutils.utils as u
+import craftutils.retrieve as r
 
 import lib
 
@@ -19,7 +20,40 @@ def main(
     lib.set_input_path(input_dir)
     lib.set_output_path(output_dir)
 
+    # Download ACS-GC fits files
+    
+    directory = {
+        # "ACS-GC": {
+        #     "url": "https://content.cld.iop.org/journals/0067-0049/200/1/9/revision1/apjs426137_ACS-GC_published_catalogs.tar.gz",
+        #     "files": [
+        #         "cosmos_i_public_catalog_V2.0.fits.gz",
+        #         "egs_v_i_public_catalog_V2.0.fits.gz",
+        #         "gems_v_z_public_catalog_V2.0.fits.gz",
+        #         "goods_v_i_public_catalog_V2.0.fits.gz"
+        #     ]
+        # },
+        "chrimes+2021": {
+            "url": "https://raw.githubusercontent.com/achrimes2/MW-NS-Flight/refs/heads/master/Data/",
+            "files": [
+                "data_hmxb.txt",
+                "data_lmxb.txt",
+                "data_magnetars.txt",
+                "data_pulsars.txt"
+            ]
+        },
+        
+    }
 
+    for key, props in directory.items():
+        download_dir = os.path.join(lib.output_path, key)
+        os.makedirs(download_dir)
+        for file in props["files"]:
+            r.download_file(
+            file_url=props["url"] + file,
+            output_dir=download_dir,
+            overwrite=True,
+        )
+        
 
 if __name__ == '__main__':
     import argparse

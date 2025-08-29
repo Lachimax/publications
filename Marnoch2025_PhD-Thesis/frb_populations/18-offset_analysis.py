@@ -167,7 +167,7 @@ def main(
 
     tables.append(ccsne_kk)
 
-    # Magnetars and other NS populations: Chrimes 202
+    # Magnetars and other NS populations: Chrimes 2021
 
     chrime_cols = {
         "object_name": "index",
@@ -217,19 +217,6 @@ def main(
         cat_dict.update(chrime_cols)
         tables.append(cat_dict)
 
-    # d633ff
-    # ff33c2
-    # ff335c
-    # ff7033
-    # ffd633
-    # c2ff33
-
-    # DAF7A6
-    # FFC300
-    # FF5733
-    # C70039
-    # 900C3F
-    # 581845
 
     def populations(
             main_dict,
