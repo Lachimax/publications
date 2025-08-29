@@ -11,7 +11,6 @@ import astropy.table as table
 import astropy.units as units
 from astropy.io import fits
 from astropy import cosmology
-from sncosmo.builtins import suffix
 
 import craftutils.utils as u
 import craftutils.params as p
