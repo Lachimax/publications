@@ -1,0 +1,25 @@
+data: {}
+data_availability: To inquire after the data used by these scripts, please contact me directly.
+paper_description: The scripts found in this directory are for...
+dir_description: Specifically, in this subdirectory...
+prerequisites:
+  astropy: 5.0.4
+  craft-optical-followup:
+    url: https://github.com/Lachimax/craft-optical-followup
+    branch: marnoch+2023
+  matplotlib: 3.5.2
+  numpy: 1.22.3
+publication:
+  first_author_surname: Marnoch
+  multi_author: true
+  pubtype: paper
+  urls:
+    arXiv: null
+    DOI: null
+  year: 2023
+references: [
+  "Surname, F. et al YYYY: 
+    *Paper title*, 
+    Journal xx:yy:zz 
+    [url]"
+]

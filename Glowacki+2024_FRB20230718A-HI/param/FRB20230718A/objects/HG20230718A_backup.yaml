@@ -1,0 +1,28 @@
+name: HG20230718A
+photometry_args_manual:
+  a: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  b: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  kron_radius: 3.5
+  theta: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+plotting: {frame: null}
+position:
+  alpha: {decimal: 128.16168232566665, hms: 08h32m38.80375816s}
+  delta: {decimal: -40.45175736113889, dms: -40d27m06.3265001s}
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  alpha: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  delta: {stat: 0.0, sys: 0.0}
+  healpix_path: null
+  sigma: null
+  theta: 0.0
+publication_doi: null
+transient: FRB20230718A
+type: TransientHostCandidate
+z: 0.0358

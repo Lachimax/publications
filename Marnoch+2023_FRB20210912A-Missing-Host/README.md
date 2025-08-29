@@ -97,7 +97,6 @@ and NE2001 (Cordes & Lazio 2002).
  - Cordes, J. & Lazio T. 2002: *NE2001.I. A New Model for the Galactic Distribution of Free Electrons and its Fluctuations*, [http://arxiv.org/abs/astro-ph/0207156]
  - Cordes, J. et al 2022: *Redshift Estimation and Constraints on Intergalactic and Interstellar Media from Dispersion and Scattering of Fast Radio Bursts*, ApJ 931:2:88 [https://doi.org/10.3847/1538-4357/AC6873]
  - Driver, S. et al 2023: *Galaxy And Mass Assembly (GAMA): Data Release 4 and the z < 0.1 total and z < 0.08 morphological galaxy stellar mass functions*, MNRAS 513:1:439-467 [https://doi.org/10.1093/mnras/stac472]
- - FRBSTATS PAPER!
  - Gordon, A. C. et al 2023: *The Demographics, Stellar Populations, and Star Formation Histories of Fast Radio Burst Host Galaxies: Implications for the Progenitors*, ApJ 954:1:80 [https://doi.org/10.3847/1538-4357/ace5aa]
  - James, C. W. et al 2021: *The z–DM distribution of fast radio bursts*, MNRAS 509:4:4775-4802 [https://doi.org/10.1093/mnras/stab3051]
  - Marnoch, L. et al 2023: *The unseen host galaxy and high dispersion measure of a precisely-localised Fast Radio Burst suggests a high-redshift origin*, MNRAS 525:1:994-1007 [https://doi.org/10.1093/mnras/stad2353]

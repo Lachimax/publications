@@ -1,0 +1,41 @@
+coadd: {frames: final, sigma_clip: 1.0}
+combined_epoch: false
+correct_astrometry_coadded: {astroalign_template: null, tweak: true}
+correct_astrometry_frames: {back_subbed: false, correct_to_epoch: true, method: individual,
+  registration_template: null, tweak: true, upper_only: false}
+data_path: null
+date: 2021-09-09
+do: {}
+download: {alternate_dir: null}
+dual_mode_source_extraction: {}
+exclude_frames: []
+field: FRB20210407A
+frame_diagnostics: {}
+get_photometry: {image_type: final, skip_plots: false}
+initial_setup: {}
+instrument: keck-deimos
+mode: imaging
+name: FRB20210407A_DEIMOS_1
+notes: []
+photometric_calibration:
+  class_star_tolerance: 0.95
+  distance_tolerance: null
+  image_type: final
+  preferred_zeropoint: {}
+  snr_min: 3.0
+  suppress_select: true
+program_id: null
+register_frames: {include_chips: all, template: 0}
+sextractor: {dual_mode: false, kron_factor: 2.5, kron_radius_min: 3.5, threshold: 1.5}
+source_extraction: {do_astrometry_diagnostics: true}
+subtract_background_frames:
+  centre: null
+  do_not_mask: false
+  frame: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 15.0
+  frames: astrometry
+  mask_kwargs: {}
+  method: local
+target: FRB20210407A
+trim_coadded: {reproject: false}

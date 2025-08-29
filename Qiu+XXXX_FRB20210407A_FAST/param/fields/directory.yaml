@@ -1,0 +1,4 @@
+FRB20210407A_DEIMOS_1: {epoch_name: FRB20210407A_DEIMOS_1, field_name: FRB20210407A,
+  instrument: keck-deimos, mode: imaging}
+FRB20210407A_MMT_1: {epoch_name: FRB20210407A_MMT_1, field_name: FRB20210407A, instrument: keck-deimos,
+  mode: imaging}

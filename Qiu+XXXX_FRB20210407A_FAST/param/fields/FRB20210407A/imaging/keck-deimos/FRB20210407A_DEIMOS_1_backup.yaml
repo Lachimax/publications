@@ -1,0 +1,13 @@
+combined_epoch: false
+data_path: null
+date: null
+do: {}
+exclude_frames: []
+field: null
+initial_setup: {}
+instrument: keck-deimos
+mode: imaging
+name: FRB20210407A_DEIMOS_1
+notes: []
+program_id: null
+target: null

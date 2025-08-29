@@ -1,0 +1,20 @@
+data_availability: To inquire after the data used by these scripts, please contact
+  me directly.
+paper_description: The scripts found in this directory are for reproducing some analysis performed for Gordon et al 2023.
+prerequisites:
+  astropy: 5.0.4
+  craft-optical-followup: {branch: marnoch+2023, url: 'https://github.com/Lachimax/craft-optical-followup'}
+  matplotlib: 3.5.2
+  numpy: 1.22.3
+publication:
+  first_author_surname: Gordon
+  multi_author: true
+  pubtype: paper
+  urls: {DOI: null, arXiv: null}
+  year: 2023
+references: [
+  'Gordon, A. C. et al 2023: 
+    *A Fast Radio Burst in a Compact Galaxy Group at z ∼ 1*,
+    ApJL 963:2:L34
+    [https://doi.org/10.3847/2041-8213/ad2773]]',
+]

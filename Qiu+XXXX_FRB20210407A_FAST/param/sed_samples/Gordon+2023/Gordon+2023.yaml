@@ -1,0 +1,92 @@
+- {model_flux_path: sed_samples/Gordon+2023/121102_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/121102_model_wavelengths_FM07.txt,
+  name: FRB20121102A_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/121102_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/121102_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.192738}
+- {model_flux_path: sed_samples/Gordon+2023/180301_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/180301_model_wavelengths_FM07.txt,
+  name: FRB20180301A_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/180301_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/180301_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.3304}
+- {model_flux_path: sed_samples/Gordon+2023/180916_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/180916_model_wavelengths_FM07.txt,
+  name: FRB20180916B_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/180916_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/180916_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.0337}
+- {model_flux_path: sed_samples/Gordon+2023/180924_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/180924_model_wavelengths_FM07.txt,
+  name: FRB20180924B_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/180924_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/180924_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.3214}
+- {model_flux_path: sed_samples/Gordon+2023/181112_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/181112_model_wavelengths_FM07.txt,
+  name: FRB20181112A_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/181112_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/181112_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.4755}
+- {model_flux_path: sed_samples/Gordon+2023/190102_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/190102_model_wavelengths_FM07.txt,
+  name: FRB20190102C_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/190102_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/190102_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.2912}
+- {model_flux_path: sed_samples/Gordon+2023/190520_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/190520_model_wavelengths_FM07.txt,
+  name: FRB20190520B_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/190520_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/190520_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.241}
+- {model_flux_path: sed_samples/Gordon+2023/190608_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/190608_model_wavelengths_FM07.txt,
+  name: FRB20190608B_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/190608_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/190608_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.11778}
+- {model_flux_path: sed_samples/Gordon+2023/190611_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/190611_model_wavelengths_FM07.txt,
+  name: FRB20190611B_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/190611_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/190611_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.378}
+- {model_flux_path: sed_samples/Gordon+2023/190711_model_spectrum.txt, model_wavelength_path: sed_samples/Gordon+2023/190711_model_wavelengths.txt,
+  name: FRB20190711A_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/190711_observed_spectrum_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/190711_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.522}
+- {model_flux_path: sed_samples/Gordon+2023/190714_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/190714_model_wavelengths_FM07.txt,
+  name: FRB20190714A_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/190714_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/190714_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.2365}
+- {model_flux_path: sed_samples/Gordon+2023/191001_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/191001_model_wavelengths_FM07.txt,
+  name: FRB20191001A_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/191001_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/191001_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.234}
+- {model_flux_path: sed_samples/Gordon+2023/200430_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/200430_model_wavelengths_FM07.txt,
+  name: FRB20200430A_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/200430_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/200430_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.161}
+- {model_flux_path: sed_samples/Gordon+2023/200906_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/200906_model_wavelengths_FM07.txt,
+  name: FRB20200906A_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/200906_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/200906_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.3688}
+- {model_flux_path: sed_samples/Gordon+2023/201124_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/201124_model_wavelengths_FM07.txt,
+  name: FRB20201124A_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/201124_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/201124_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.0979}
+- {model_flux_path: sed_samples/Gordon+2023/210117_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/210117_model_wavelengths_FM07.txt,
+  name: FRB20210117A_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/210117_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/210117_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.214}
+- {model_flux_path: sed_samples/Gordon+2023/210320_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/210320_model_wavelengths_FM07.txt,
+  name: FRB20210320C_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/210320_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/210320_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.2797}
+- {model_flux_path: sed_samples/Gordon+2023/210410_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/210410_model_wavelengths_FM07.txt,
+  name: FRB20210410D_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/210410_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/210410_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.1415}
+- {model_flux_path: sed_samples/Gordon+2023/210807_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/210807_model_wavelengths_FM07.txt,
+  name: FRB20210807D_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/210807_observed_spectrum_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/210807_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.12927}
+- {model_flux_path: sed_samples/Gordon+2023/211127_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/211127_model_wavelengths_FM07.txt,
+  name: FRB20211127I_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/211127_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/211127_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.0469}
+- {model_flux_path: sed_samples/Gordon+2023/211203_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/211203_model_wavelengths_FM07.txt,
+  name: FRB20211203C_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/211203_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/211203_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.3439}
+- {model_flux_path: sed_samples/Gordon+2023/211212_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/211212_model_wavelengths.txt,
+  name: FRB20211212A_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/211212_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/211212_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.0715}
+- {model_flux_path: sed_samples/Gordon+2023/220105_model_spectrum_FM07.txt, model_wavelength_path: sed_samples/Gordon+2023/220105_model_wavelengths_FM07.txt,
+  name: FRB20220105A_GordonProspector, observed_flux_path: sed_samples/Gordon+2023/220105_observed_spec_FM07.txt,
+  observed_wavelength_path: sed_samples/Gordon+2023/220105_observed_wave_FM07.txt,
+  type: GordonProspectorModel, z: 0.2785}

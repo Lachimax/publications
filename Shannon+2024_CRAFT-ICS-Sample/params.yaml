@@ -1,0 +1,12 @@
+data_availability: All necessary data is included in the directory.
+paper_description: "These scripts are for reproducing the portions of \nShannon et\
+  \ al 2024 for which I am responsible.\n"
+prerequisites:
+  astropy: 5.0.4
+  craft-optical-followup: {branch: ryder+2022, url: 'https://github.com/Lachimax/craft-optical-followup'}
+publication:
+  first_author_surname: Shannon
+  multi_author: true
+  short_name: CRAFT-ICS-Sample
+  urls: {DOI: null, arXiv: null}
+  year: 2024

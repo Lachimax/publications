@@ -1,0 +1,42 @@
+P_O: null
+P_Ox: null
+P_xO: null
+field: FRB20220610A
+name: Gordon_3
+photometry_args_manual:
+  a: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  b: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+  kron_radius: 3.5
+  theta: !astropy.units.Quantity
+    unit: !astropy.units.Unit {unit: arcsec}
+    value: 0.0
+plotting: {frame: null}
+position: !astropy.coordinates.sky_coordinate.SkyCoord
+  dec: !astropy.coordinates.Latitude
+    unit: !astropy.units.Unit {unit: deg}
+    value: -33.513596944444444
+  frame: icrs
+  ra: !astropy.coordinates.Longitude
+    unit: !astropy.units.Unit {unit: deg}
+    value: 351.0739383333333
+    wrap_angle: !astropy.coordinates.Angle
+      unit: !astropy.units.Unit {unit: deg}
+      value: 360.0
+  representation_type: spherical
+position_err:
+  a: {stat: 0.0, sys: 0.0}
+  alpha: {stat: 0.0, sys: 0.0}
+  b: {stat: 0.0, sys: 0.0}
+  delta: {stat: 0.0, sys: 0.0}
+  healpix_path: null
+  sigma: null
+  theta: 0.0
+publication_doi: null
+transient: null
+type: TransientHostCandidate
+z: null
+z_err: null

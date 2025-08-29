@@ -1,0 +1,14 @@
+WAVELENGTH       R          %15.7g  angstroms                           
+THROUGHPUT       R          %15.7g  ""                                  
+GRFTABLE t crrefer$comp/deigraph3_010427a.tab                           
+CMPTABLE t crrefer$comp/deicomp3_010427a.tab                            
+EXPR     t dmr,ccd_lot14,rg830_40a                                      
+APERAREA r 785398.2                                                     
+ZEROPT   r -21.1                                                        
+URESP    r 2.866956E-21                                                 
+PIVWV    r 9085.439                                                     
+BANDW    r 527.079                                                      
+TPEAK    r 0.671669                                                     
+EQUVW    r 969.3432                                                     
+RECTW    r 1443.186                                                     
+EMFLX    r 4.587636E-18       
