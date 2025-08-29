@@ -1,0 +1,13 @@
+data_availability: To inquire after the data used by these scripts, please contact me directly.
+dir_description: |
+  These scripts are for running the tests comparing the various astrometry solving methods for use in the
+  craft-optical-followup imaging pipeline, described in-depth in forthcoming thesis.
+prerequisites:
+  astropy: 5.0.4
+  craft-optical-followup:
+    url: https://github.com/Lachimax/craft-optical-followup
+    branch: astrometry-tests
+  matplotlib: 3.5.2
+  numpy: 1.22.3
+references: [
+]

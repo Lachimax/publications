@@ -1,0 +1,21 @@
+data: { }
+data_availability: To inquire after the data used by these scripts, please contact me directly.
+dir_description: |
+  The scripts found in this directory are for reproducing the results in Chapter 3 of my forthcoming PhD thesis.
+prerequisites:
+  astropy: 5.0.4
+  craft-optical-followup:
+    url: https://github.com/Lachimax/craft-optical-followup
+    branch: thesis-main
+  matplotlib: 3.5.2
+  numpy: 1.22.3
+references: [
+  'Bhardwaj, M. et al 2024:
+    *Selection bias obfuscates the discovery of fast radio burst sources*
+    Nature 634:8036
+    [https://doi.org/10.1038/s41586-024-08065-w]',
+  "Griffith, R. et al 2012: 
+    *The Advanced Camera for Surveys General Catalog: Structural Parameters for Approximately Half a Million Galaxies*, 
+    ApJS 200:1
+    [https://doi.org/10.1088/0067-0049/200/1/9]"
+]

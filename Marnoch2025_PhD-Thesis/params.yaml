@@ -1,0 +1,16 @@
+data_availability: To inquire after the data used by these scripts, please contact
+  me directly.
+paper_description: The scripts found here are for reproducing certain results described
+  in my forthcoming PhD thesis.
+prerequisites:
+  astropy: 5.0.4
+  craft-optical-followup: {branch: marnoch+2023, url: 'https://github.com/Lachimax/craft-optical-followup'}
+  matplotlib: 3.5.2
+  numpy: 1.22.3
+publication:
+  first_author_surname: Marnoch
+  multi_author: false
+  short_name: PhD-Thesis
+  urls: {DOI: null, arXiv: null}
+  year: 2025
+references: []
