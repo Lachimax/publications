@@ -12,7 +12,7 @@ import craftutils.observation.field as field
 import lib
 
 description = """
-Collates all GALFIT results from all bandpasses.
+Collates all GALFIT results from all bandpasses. Like 02-imaging, this will not work unless you have all of the imaging data where it is expected, so primarily for internal use.
 """
 
 

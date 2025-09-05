@@ -19,7 +19,10 @@ description = "Generates the table of photometry seen in Shannon et al 2024, **T
 def main(
         output_dir: str,
 ):
-    db_path = os.path.join(lib.dropbox_path, "tables")
+    if isinstance(lib.dropbox_path, str):
+        db_path = os.path.join(lib.dropbox_path, "tables")
+    else:
+        db_path = None
 
     # Load the object properties table.
     bands = ("u-HIGH", "g-HIGH", "R-SPECIAL", "I-BESS", "z-GUNN", "J", "H", "Ks")
@@ -127,7 +130,7 @@ def main(
         landscape=True,
         coltypes="cccc|ccccc|ccc",
         multicolumn=[(4, "c|", ""), (5, "c|", "FORS2"), (3, "c", "HAWK-I")],
-        second_path=os.path.join(db_path, "craft_photometry.tex"),
+        # second_path=os.path.join(db_path, "craft_photometry.tex"),
     )
 
     # HOST EXTINCTION
@@ -176,7 +179,7 @@ def main(
         landscape=True,
         coltypes="cccc|ccccc|ccc",
         multicolumn=[(4, "c|", ""), (5, "c|", "FORS2"), (3, "c", "HAWK-I")],
-        second_path=os.path.join(db_path, "craft_photometry_ext.tex"),
+        # second_path=os.path.join(db_path, "craft_photometry_ext.tex"),
     )
 
     # BOTH
@@ -241,7 +244,7 @@ def main(
         landscape=True,
         coltypes="cccc|ccccc|ccc",
         multicolumn=[(4, "c|", ""), (5, "c|", "FORS2"), (3, "c", "HAWK-I")],
-        second_path=os.path.join(db_path, "craft_photometry_both.tex"),
+        # second_path=os.path.join(db_path, "craft_photometry_both.tex"),
     )
 
     # HOST COLOURS
@@ -408,7 +411,7 @@ def main(
         # landscape=True,
         coltypes="cccccccc",
         # multicolumn=[(4, "c|", ""), (2, "c|", "FORS2"), (3, "c", "HAWK-I")],
-        second_path=os.path.join(db_path, "craft_colours.tex"),
+        # second_path=os.path.join(db_path, "craft_colours.tex"),
     )
 
 

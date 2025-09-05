@@ -404,9 +404,10 @@ def main(
     commands_file = os.path.join(lib.tex_path, "commands_offsets_generated.tex")
     with open(commands_file, "w") as f:
         f.writelines(latex_commands)
-    db_path = os.path.join(lib.dropbox_path, "commands")
-    if os.path.isdir(lib.dropbox_path):
-        shutil.copy(commands_file, db_path)
+    if isinstance(lib.dropbox_path, str):
+        db_path = os.path.join(lib.dropbox_path, "commands")
+        if os.path.isdir(lib.dropbox_path):
+            shutil.copy(commands_file, db_path)
 
 
 if __name__ == '__main__':

@@ -30,10 +30,15 @@ def main(
     lib.set_input_path(input_dir)
     lib.set_output_path(output_dir)
 
-    db_path = os.path.join(lib.dropbox_path, "tables")
+    if isinstance(lib.dropbox_path, str):
+        db_path = os.path.join(lib.dropbox_path, "tables")
+    else:
+        db_path = None
 
     all_frb_table = lib.load_frb_table().copy()
     all_frb_table.remove_column("frb_object")
+    all_frb_table["ra"] = all_frb_table["coord"].ra
+    all_frb_table["dec"] = all_frb_table["coord"].dec
 
     lib.build_ref_list(
         tbl=all_frb_table,
@@ -110,7 +115,7 @@ def main(
         column_dict=col_replace,
         sub_colnames=subcols,
         output_path=os.path.join(lib.tex_path, f"frb_hosts_other.tex"),
-        second_path=os.path.join(db_path, f"frb_hosts_other.tex"),
+        # second_path=os.path.join(db_path, f"frb_hosts_other.tex"),
         ra_col="ra",
         ra_err_col="ra_err",
         dec_col="dec",
@@ -196,7 +201,7 @@ def main(
         column_dict=col_replace,
         sub_colnames=subcols,
         output_path=os.path.join(lib.tex_path, f"frb_craft.tex"),
-        second_path=os.path.join(db_path, f"frb_craft.tex"),
+        # second_path=os.path.join(db_path, f"frb_craft.tex"),
         ra_col="ra",
         ra_err_col="ra_err",
         dec_col="dec",
@@ -237,7 +242,7 @@ def main(
         column_dict=col_replace,
         sub_colnames=subcols,
         output_path=os.path.join(lib.tex_path, f"frb_craft_2.tex"),
-        second_path=os.path.join(db_path, f"frb_craft_2.tex"),
+        # second_path=os.path.join(db_path, f"frb_craft_2.tex"),
         short_caption="ASKAP-localised FRB properties.",
         caption=r"ASKAP-localised FRB and host galaxy properties."
                 r" \tabscript{" + this_script + "}",
@@ -269,7 +274,7 @@ def main(
                 r"\DMMWHalo{} as we assume a fixed value of \DMSI{40}."
                 r" \tabscript{" + this_script + "}",
         label="craft_dm",
-        second_path=os.path.join(db_path, "craft_dm.tex"),
+        # second_path=os.path.join(db_path, "craft_dm.tex"),
         uncertainty_kwargs=dict(
             n_digits_err=1
         ),
@@ -410,9 +415,10 @@ def main(
     commands_file = os.path.join(lib.tex_path, "commands_frbpop_generated.tex")
     with open(commands_file, "w") as f:
         f.writelines(stats_lines)
-    db_path = os.path.join(lib.dropbox_path, "commands")
-    if os.path.isdir(lib.dropbox_path):
-        shutil.copy(commands_file, db_path)
+    if isinstance(lib.dropbox_path, str):
+        db_path = os.path.join(lib.dropbox_path, "commands")
+        if os.path.isdir(lib.dropbox_path):
+            shutil.copy(commands_file, db_path)
 
 
 if __name__ == '__main__':

@@ -2,6 +2,7 @@
 # Code by Lachlan Marnoch, 2024-2025
 
 import os
+import zipfile
 
 import craftutils.utils as u
 import craftutils.retrieve as r
@@ -20,39 +21,49 @@ def main(
     lib.set_input_path(input_dir)
     lib.set_output_path(output_dir)
 
-    # Download ACS-GC fits files
-    
-    directory = {
-        # "ACS-GC": {
-        #     "url": "https://content.cld.iop.org/journals/0067-0049/200/1/9/revision1/apjs426137_ACS-GC_published_catalogs.tar.gz",
-        #     "files": [
-        #         "cosmos_i_public_catalog_V2.0.fits.gz",
-        #         "egs_v_i_public_catalog_V2.0.fits.gz",
-        #         "gems_v_z_public_catalog_V2.0.fits.gz",
-        #         "goods_v_i_public_catalog_V2.0.fits.gz"
-        #     ]
-        # },
-        "chrimes+2021": {
-            "url": "https://raw.githubusercontent.com/achrimes2/MW-NS-Flight/refs/heads/master/Data/",
-            "files": [
-                "data_hmxb.txt",
-                "data_lmxb.txt",
-                "data_magnetars.txt",
-                "data_pulsars.txt"
-            ]
-        },
-        
-    }
+    # Download main data zip
 
-    for key, props in directory.items():
-        download_dir = os.path.join(lib.output_path, key)
-        os.makedirs(download_dir)
-        for file in props["files"]:
-            r.download_file(
-            file_url=props["url"] + file,
-            output_dir=download_dir,
-            overwrite=True,
-        )
+    dl_path = os.path.dirname(input_dir)
+    fname = "input.zip"
+    file_path = os.path.join(dl_path, fname)
+    u.rm_check(file_path)
+    print("Downloading input data.")
+    r.download_file(
+        file_url="https://drive.usercontent.google.com/download?id=1CH9szgykuW_1V0GuBrIe4Exsi1jlck3W&export=download&authuser=0&confirm=t&uuid=c4efb61b-8f68-442e-a8bf-6639d9396ac7&at=AN8xHop4OlUVjHYgHbuKGnUFyvZu:1757041091748",
+        output_dir=dl_path,
+        overwrite=True,
+        filename=fname
+    )
+
+    with zipfile.ZipFile(
+            file_path,
+            'r'
+    ) as zip_ref:
+        zip_ref.extractall(dl_path)
+
+    os.remove(file_path)
+
+    # Download FRBHostData copy.
+
+    fname = "FRBHostData.zip"
+    dl_path = os.path.dirname(os.path.join(input_dir, "frb_populations"))
+    file_path = os.path.join(dl_path, fname)
+    u.rm_check(file_path)
+    print("Downloading FRBHostData.")
+    r.download_file(
+        file_url="https://drive.usercontent.google.com/download?id=1k13wgOA-qM_PN6FAPkdZf7C-rQ_SwI88&export=download&authuser=0&confirm=t&uuid=e387ed21-45b0-4692-ade3-9edd090db00b&at=AN8xHorEPmXwGmSpWOLBzFUsVaUg:1757041448079",
+        output_dir=dl_path,
+        overwrite=True,
+        filename=fname
+    )
+
+    with zipfile.ZipFile(
+            file_path,
+            'r'
+    ) as zip_ref:
+        zip_ref.extractall(dl_path)
+
+    os.remove(file_path)
         
 
 if __name__ == '__main__':

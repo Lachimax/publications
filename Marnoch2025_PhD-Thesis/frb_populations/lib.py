@@ -70,8 +70,8 @@ os.makedirs(table_path, exist_ok=True)
 
 host_csv_path = os.path.join(table_path, "frb_hosts_gs.csv")
 undetected_csv_path = os.path.join(table_path, "frb_no_hosts_gs.csv")
-frb_path = os.path.join(table_path, "frb_hosts_derived.ecsv")
-bib_path = os.path.join(table_path, "frb_hosts_bib.csv")
+frb_path = os.path.join(input_path, "frb_hosts_derived.ecsv")
+bib_path = os.path.join(input_path, "frb_hosts_bib.csv")
 
 def craft_galfit_path(q_0=0.2):
     return os.path.join(table_path, f"craft_galfit_{q_0}.ecsv")
@@ -869,7 +869,10 @@ optical_cat = None
 def load_photometry_table(force: bool = False):
     global optical_cat
     if optical_cat is None or force:
-        optical_cat = outp.OpticalCatalogue("optical")
+        optical_cat = outp.OpticalCatalogue(
+            "optical",
+            table_dir=os.path.join(input_path, f"FRBHostData-main")
+        )
     optical_cat.load_table(force=force)
     host_photometry = optical_cat.to_astropy()
     return host_photometry
@@ -1833,11 +1836,13 @@ def y_from_lts(
 def savefig(fig, filename, subdir=None, tight=True):
     output_this = output_path
     db_this = dropbox_figs
-    if subdir is not None and db_this is not None:
+    if subdir is not None:
         output_this = os.path.join(output_this, subdir)
-        db_this = os.path.join(db_this, subdir)
+        if db_this is not None:
+            db_this = os.path.join(db_this, subdir)
     os.makedirs(output_this, exist_ok=True)
-    os.makedirs(db_this, exist_ok=True)
+    if db_this is not None:
+        os.makedirs(db_this, exist_ok=True)
     output = os.path.join(output_this, filename)
     print("Saving figure to ", output + ".pdf")
     if tight:
@@ -1846,7 +1851,8 @@ def savefig(fig, filename, subdir=None, tight=True):
         bb = None
     fig.savefig(output + ".pdf", bbox_inches=bb)
     fig.savefig(output + ".png", bbox_inches=bb, dpi=200)
-    # fig.savefig(os.path.join(db_this, filename + ".pdf"), bbox_inches=bb)
+    if db_this is not None:
+        fig.savefig(os.path.join(db_this, filename + ".pdf"), bbox_inches=bb)
 
 
 def cut_to_band(tbl, fil_name, instrument="vlt-fors2"):

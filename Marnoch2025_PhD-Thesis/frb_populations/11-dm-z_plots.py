@@ -355,10 +355,11 @@ def main(
         fig.savefig(os.path.join(plot_dir, name) + ".png", bbox_inches="tight", dpi=200)
         pdf_path = os.path.join(plot_dir, name + ".pdf")
         fig.savefig(pdf_path, bbox_inches="tight")
-        db_path = os.path.join(lib.dropbox_path, "figures", "dm-z")
-        os.makedirs(db_path, exist_ok=True)
-        if os.path.isdir(db_path):
-            shutil.copy(pdf_path, db_path)
+        if lib.dropbox_path is not None:
+            db_path = os.path.join(lib.dropbox_path, "figures", "dm-z")
+            os.makedirs(db_path, exist_ok=True)
+            if os.path.isdir(db_path):
+                shutil.copy(pdf_path, db_path)
         return ax_1, fig
 
     # Bog-standard Total DM-z

@@ -196,19 +196,21 @@ def compare_galfit(
 
     filename = f"compare_galfit_other_{lib.sanitise_filename(filename=label_1)}-v-{lib.sanitise_filename(filename=label_2)}" + suffix
 
-    p.save_params(
-        os.path.join(output_path, "acsgc", filename + ".yaml"),
-        all_stats
-    )
-    p.save_params(
-        os.path.join(lib.dropbox_figs, "acsgc", filename + ".yaml"),
-        all_stats
-    )
+    if isinstance(lib.dropbox_figs, str):
+        p.save_params(
+            os.path.join(lib.dropbox_figs, "acsgc", filename + ".yaml"),
+            all_stats
+        )
     lib.savefig(
         filename=filename,
         fig=fig,
         subdir="acsgc",
         tight=tight,
+    )
+
+    p.save_params(
+        os.path.join(output_path, "acsgc", filename + ".yaml"),
+        all_stats
     )
 
     all_stats = {}
@@ -289,10 +291,11 @@ def compare_galfit(
         os.path.join(output_path, "acsgc", filename + ".yaml"),
         all_stats
     )
-    p.save_params(
-        os.path.join(lib.dropbox_figs, "acsgc", filename + ".yaml"),
-        all_stats
-    )
+    if isinstance(lib.dropbox_figs, str):
+        p.save_params(
+            os.path.join(lib.dropbox_figs, "acsgc", filename + ".yaml"),
+            all_stats
+        )
     lib.savefig(
         filename=filename,
         fig=fig,
@@ -489,20 +492,10 @@ def main(
     commands_file = os.path.join(lib.tex_path, "commands_acsgc_generated.tex")
     with open(commands_file, "w") as f:
         f.writelines(latex_commands)
-    db_path = os.path.join(lib.dropbox_path, "commands")
-    if os.path.isdir(lib.dropbox_path):
-        shutil.copy(commands_file, db_path)
-
-    # lib.lts_prop(
-    #     "BA_GALFIT",
-    #     "MAG_GALFIT",
-    #     acsgc_v_mag,
-    #     col_x_err="BAERR_GALFIT",
-    #     col_y_err="MAGERR_GALFIT",
-    #     name_col="OBJNO"
-    # )
-    #
-    # print(acsgc_v_mag.colnames)
+    if isinstance(lib.dropbox_path, str):
+        db_path = os.path.join(lib.dropbox_path, "commands")
+        if os.path.isdir(lib.dropbox_path):
+            shutil.copy(commands_file, db_path)
 
     fig = plt.figure(figsize=(0.6 * pl.textwidths["mqthesis"], 0.6 * pl.textwidths["mqthesis"]))
 

@@ -42,7 +42,10 @@ def main(
     n_max = 2.
     this_script = u.latex_sanitise(os.path.basename(__file__))
 
-    db_path = os.path.join(lib.dropbox_path, "tables")
+    if isinstance(lib.dropbox_path, str):
+        db_path = os.path.join(lib.dropbox_path, "tables")
+    else:
+        db_path = None
 
     # Sanitise the big FRB table a little
     craft_hosts = lib.load_frb_table(hosts_only=True, craft_only=True)
@@ -189,7 +192,7 @@ def main(
             "galfit_theta": r"($\degrees$)",
             "galfit_r_eff": r"($\arcsec$)",
         },
-        second_path=os.path.join(db_path, "craft_galfit.tex"),
+        # second_path=os.path.join(db_path, "craft_galfit.tex"),
         coltypes="llcccccc"
     )
 
@@ -615,7 +618,7 @@ def main(
             "galfit_r_eff_proj": r"(kpc)",
         },
         output_path=str(os.path.join(lib.tex_path, "craft_galfit_2.tex")),
-        second_path=os.path.join(db_path, "craft_galfit_2.tex"),
+        # second_path=os.path.join(db_path, "craft_galfit_2.tex"),
         short_caption="\galfit{}-derived properties of CRAFT hosts",
         caption=r"Properties derived from single-Sérsic morphological parameters of CRAFT host galaxies. "
                 r"The sky coordinates here are the host centroid as found by \galfit{}, with FRB separations derived from this position. "
@@ -666,7 +669,7 @@ def main(
             "galfit_inclination": r"($\degrees$)",
         },
         output_path=str(os.path.join(lib.tex_path, "craft_galfit_3.tex")),
-        second_path=os.path.join(db_path, "craft_galfit_3.tex"),
+        # second_path=os.path.join(db_path, "craft_galfit_3.tex"),
         short_caption="Inclination-dependent properties of CRAFT hosts",
         caption=r"Properties derived from the inclination formula (\autoref{equ:inclination}) and \galfit{} morphological parameters (\autoref{tab:craft_galfit} and \autoref{tab:craft_galfit_derived}). Although uncertainties are estimated for each quantity, we report only the fiducial values."
                 r" \tabscript{" + this_script + "}",
@@ -698,9 +701,10 @@ def main(
         output_path=commands_file
     )
 
-    db_path = os.path.join(lib.dropbox_path, "commands")
-    if os.path.isdir(lib.dropbox_path):
-        shutil.copy(commands_file, db_path)
+    if isinstance(lib.dropbox_path, str):
+        db_path = os.path.join(lib.dropbox_path, "commands")
+        if os.path.isdir(lib.dropbox_path):
+            shutil.copy(commands_file, db_path)
 
     galfit_colnames = [
         "field_name", "z", "frb_ra", "frb_ra_err", "frb_dec", "frb_dec_err", "frb_a", "frb_b", "frb_theta"

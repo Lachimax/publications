@@ -207,15 +207,6 @@ def main(
         command_lines=commands
     )
 
-    fig.savefig(
-        os.path.join(
-            lib.output_path, "correlations", "dmexcess_v_axisratio_accumulation",
-            f"dmexcess_v_axisratio_n{len(craft_galfit_z)}.png"
-        ),
-        bbox_inches="tight"
-    )
-
-
     plt.close(fig)
     lib.y_from_lts(
         x_col="galfit_axis_ratio",
@@ -915,7 +906,7 @@ def main(
         )
         plt.close(fig)
 
-        fig, ax, fit_plane_1, props = lib.lts_prop(
+        fig, ax, fit_plane_1, props, _ = lib.lts_prop(
             col_x=["g-I", "galfit_axis_ratio"],
             col_y="dm_excess_rest",
             tbl_name="craft_gI",
@@ -1112,9 +1103,10 @@ def main(
         commands_file = os.path.join(lib.tex_path, "commands_lts_generated.tex")
         with open(commands_file, "w") as f:
             f.writelines(commands)
-        db_path = os.path.join(lib.dropbox_path, "commands")
-        if os.path.isdir(lib.dropbox_path):
-            shutil.copy(commands_file, db_path)
+        if isinstance(lib.dropbox_path, str):
+            db_path = os.path.join(lib.dropbox_path, "commands")
+            if os.path.isdir(lib.dropbox_path):
+                shutil.copy(commands_file, db_path)
 
     new_table_dir = os.path.join(output_dir, "tables", "downstream")
     os.makedirs(new_table_dir, exist_ok=True)

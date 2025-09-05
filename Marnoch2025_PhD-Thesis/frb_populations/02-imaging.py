@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Code by Lachlan Marnoch, 20XX
+# Code by Lachlan Marnoch, 2024 - 2025
 import shutil
 
 import matplotlib.pyplot as plt
@@ -21,7 +21,7 @@ import craftutils.observation.image as image
 import lib
 
 description = """
-Generates imaging figures.
+Generates imaging figures. This script is for internal use only, as it depends on the fully-processed imaging data being in the correct place; but it is presented here to show how the figures were generated.
 """
 
 pl.latex_setup()

@@ -18,7 +18,7 @@ from craftutils.wrap import galfit
 import lib
 
 description = """
-Generates residual figures showcasing the GALFIT models.
+Generates residual figures showcasing the GALFIT models.  Like 02-imaging, this will not work unless you have all of the imaging data where it is expected, so primarily for internal use.
 """
 
 
