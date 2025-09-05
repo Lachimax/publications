@@ -8,16 +8,9 @@ The scripts found in this directory are for reproducing the results in Chapter 3
 Currently does nothing; will retrieve data for the following scripts.
 
 
-#### `01-frb_table.py`
-
-Downloads a CSV version of a Google Sheet I've been maintaining, which tabulates all of the FRB hosts in the literature 
-that I'm aware of (as of September 2024), as well as unpublished CRAFT hosts. It then adds some derived values and re-saves it in a more 
-machine-readable format. This takes quite a while; it will also not work .
-
-
 #### `02-imaging.py`
 
-Generates imaging figures.
+Generates imaging figures. This script is for internal use only, as it depends on the fully-processed imaging data being in the correct place; but it is presented here to show how the figures were generated.
 
 
 #### `11-dm-z_plots.py`
@@ -40,12 +33,12 @@ Does some analysis with the GALFIT results and writes some tables.
 
 #### `15-0-galfit_all_bands.py`
 
-Collates all GALFIT results from all bandpasses.
+Collates all GALFIT results from all bandpasses. Like 02-imaging, this will not work unless you have all of the imaging data where it is expected, so primarily for internal use.
 
 
 #### `15-1-residuals.py`
 
-Generates residual figures showcasing the GALFIT models.
+Generates residual figures showcasing the GALFIT models.  Like 02-imaging, this will not work unless you have all of the imaging data where it is expected, so primarily for internal use.
 
 
 #### `16-acsgc.py`
