@@ -10,7 +10,7 @@ import craftutils.retrieve as r
 import lib
 
 description = """
-Currently does nothing; will retrieve data for the following scripts.
+Retrieve data for the following scripts.
 """
 
 

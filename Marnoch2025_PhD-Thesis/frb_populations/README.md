@@ -5,7 +5,7 @@ The scripts found in this directory are for reproducing the results in Chapter 3
 
 #### `00-retrieve.py`
 
-Currently does nothing; will retrieve data for the following scripts.
+Retrieve data for the following scripts.
 
 
 #### `02-imaging.py`

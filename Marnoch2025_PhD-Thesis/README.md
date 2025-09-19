@@ -28,17 +28,17 @@ Generates figures illustrating pipeline stages.
 Generates the figures for the Validation section.
 
 
-#### `astrometry-tests/`
-These scripts are for running the tests comparing the various astrometry solving methods for use in the
-craft-optical-followup imaging pipeline, described in-depth in forthcoming thesis.
-
-Scripts in this subdirectory have a set of prerequisites separate to those below; please see the README file there.
-
 #### `path/`
 The scripts found in this directory are for reproducing the results in Appendix D of my PhD thesis.
 Scripts in this subdirectory have a set of prerequisites separate to those below; please see the README file there.
 
 #### `frb_populations/`
 The scripts found in this directory are for reproducing the results in Chapter 3 of my forthcoming PhD thesis.
+
+Scripts in this subdirectory have a set of prerequisites separate to those below; please see the README file there.
+
+#### `astrometry-tests/`
+These scripts are for running the tests comparing the various astrometry solving methods for use in the
+craft-optical-followup imaging pipeline, described in-depth in forthcoming thesis.
 
 Scripts in this subdirectory have a set of prerequisites separate to those below; please see the README file there.
