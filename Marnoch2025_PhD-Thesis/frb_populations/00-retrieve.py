@@ -29,7 +29,7 @@ def main(
     u.rm_check(file_path)
     print("Downloading input data.")
     r.download_file(
-        file_url="https://drive.usercontent.google.com/download?id=1CH9szgykuW_1V0GuBrIe4Exsi1jlck3W&export=download&authuser=0&confirm=t&uuid=1d15b77a-11e4-462e-8ea8-51c3f3b4d7c4&at=AN8xHorlhsMgO5hNsAV38xGZqFPD:1758250784068",
+        file_url="https://drive.usercontent.google.com/download?id=1THh3Of4_tOzRZ0qFpF2jAJlEUa7knML6&export=download&authuser=0&confirm=t&uuid=c478e185-5d07-41cc-a236-06b3b77764d4&at=AN8xHoo-dXaP-sxJWDS897wLKldm:1758260673223",
         output_dir=dl_path,
         overwrite=True,
         filename=fname
