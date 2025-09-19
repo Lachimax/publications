@@ -4,7 +4,9 @@ data_availability: To inquire after the data used by these scripts, please conta
 paper_description: The scripts found in this directory are for reproducing the results in Chapter 5 of my PhD thesis.
 prerequisites:
   astropy: 5.0.4
-  craft-optical-followup: {branch: marnoch+2023, url: 'https://github.com/Lachimax/craft-optical-followup'}
+  craft-optical-followup:
+    release: v0.5-phd-thesis
+    url: 'https://github.com/Lachimax/craft-optical-followup'
   matplotlib: 3.5.2
   numpy: 1.22.3
 publication:

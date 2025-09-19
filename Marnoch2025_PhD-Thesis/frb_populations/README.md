@@ -64,6 +64,6 @@ Uses figures from Bhardwaj et al 2024 as templates for CRAFT FRB hosts.
 ### Prerequisites
  - `astropy`: tested with version `5.0.4`
  - `craft-optical-followup`(https://github.com/Lachimax/craft-optical-followup); tested with:
-   - Branch: `thesis-main`
+   - Release: `v0.5-phd-thesis`
  - `matplotlib`: tested with version `3.5.2`
  - `numpy`: tested with version `1.22.3`

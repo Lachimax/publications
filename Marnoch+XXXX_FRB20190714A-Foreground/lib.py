@@ -138,7 +138,8 @@ commands_tex_path = os.path.join(output_path, "commands.tex")
 
 latex_table_path = os.path.join(output_path, "latex_tables")
 os.makedirs(latex_table_path, exist_ok=True)
-os.makedirs(latex_table_path_db, exist_ok=True)
+if latex_table_path_db is not None:
+    os.makedirs(latex_table_path_db, exist_ok=True)
 
 halo_npy_dir = os.path.join(output_path, "halo_arrays")
 os.makedirs(halo_npy_dir, exist_ok=True)

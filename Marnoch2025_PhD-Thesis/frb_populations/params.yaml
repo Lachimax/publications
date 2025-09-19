@@ -9,8 +9,8 @@ dir_description: |
 prerequisites:
   astropy: 5.0.4
   craft-optical-followup:
-    url: https://github.com/Lachimax/craft-optical-followup
-    branch: thesis-main
+    release: v0.5-phd-thesis
+    url: 'https://github.com/Lachimax/craft-optical-followup'
   matplotlib: 3.5.2
   numpy: 1.22.3
 references: [
