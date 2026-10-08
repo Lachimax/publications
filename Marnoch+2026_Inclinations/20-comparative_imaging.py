@@ -20,7 +20,7 @@ import craftutils.plotting as pl
 import lib
 
 description = """
-Does something cool.
+Generates the imaging figures that compare our VLT imaging with the survey imaging used by B+24.
 """
 
 

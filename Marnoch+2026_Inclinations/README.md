@@ -60,7 +60,8 @@ Uses figures from Bhardwaj et al 2024 as templates for CRAFT FRB hosts.
 
 #### `20-comparative_imaging.py`
 
-Does something cool.
+Generates the imaging figures that compare our VLT imaging with the survey imaging used by B+24.
+
 
 
 ### References
