@@ -1,0 +1,21 @@
+data_availability: The data used by most of these scripts will be downloaded by `00-retrieve.py`.
+  The scripts `15-0-galfit_all_bands.py` and `15-1-residuals.py` require a lot of data products to be in particular locations, and so are mainly for internal use; however, if you're brave enough to try and reproduce every step of this paper, contact me and we can probably work it out.
+paper_description: 'These scripts are for reproducing the results of Marnoch et al 2026.'
+prerequisites:
+  astropy: 5.0.4
+  craft-optical-followup: {release: v0.6, url: 'https://github.com/Lachimax/craft-optical-followup'}
+  matplotlib: 3.10.6
+  numpy: 2.3.4
+publication:
+  first_author_surname: Marnoch
+  multi_author: true
+  short_name: Inclinations
+  urls: {DOI: null, arXiv: null}
+  year: 2026
+references: ['Bhardwaj, M. et al 2024: *Selection bias obfuscates the discovery of
+    fast radio burst sources* Nature 634:8036 [https://doi.org/10.1038/s41586-024-08065-w]',
+  'Griffith, R. et al 2012: *The Advanced Camera for Surveys General Catalog: Structural
+    Parameters for Approximately Half a Million Galaxies*, ApJS 200:1 [https://doi.org/10.1088/0067-0049/200/1/9]',
+  'SDSS Collaboration 2020: *The 16th Data Release of the Sloan Digital Sky Surveys: First Release from the APOGEE-2 
+    Southern Survey and Full Release of eBOSS Spectra*, ApJS 249:3 [https://doi.org/10.3847/1538-4365/ab929e]'
+]
