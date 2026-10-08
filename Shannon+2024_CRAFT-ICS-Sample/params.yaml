@@ -8,5 +8,5 @@ publication:
   first_author_surname: Shannon
   multi_author: true
   short_name: CRAFT-ICS-Sample
-  urls: {DOI: null, arXiv: null}
+  urls: {DOI: https://doi.org/10.1017/PASA.2025.8, arXiv: null}
   year: 2024
