@@ -1,11 +1,13 @@
 data_availability: The data used by most of these scripts will be downloaded by `00-retrieve.py`.
-  The scripts `15-0-galfit_all_bands.py` and `15-1-residuals.py` require a lot of data products to be in particular locations, and so are mainly for internal use; however, if you're brave enough to try and reproduce every step of this paper, contact me and we can probably work it out.
+  The script `15-residuals.py` requires a lot of data products to be in particular locations, and so are mainly for internal use; however, if you're brave enough to try and reproduce every step of this paper, contact me and we can probably work it out.
 paper_description: 'These scripts are for reproducing the results of Marnoch et al 2026.'
 prerequisites:
   astropy: 5.0.4
-  craft-optical-followup: {release: v0.6, url: 'https://github.com/Lachimax/craft-optical-followup'}
+  craft-optical-followup: {release: v0.6dev-marnoch+2026, url: 'https://github.com/Lachimax/craft-optical-followup'}
   matplotlib: 3.10.6
   numpy: 2.3.4
+  ltsfit: 6.0.2
+  scipy: 1.16.3
 publication:
   first_author_surname: Marnoch
   multi_author: true
